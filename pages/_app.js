@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import "../styles/main.scss";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+// GSAP global setup
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+if (typeof window !== `undefined`) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.core.globals("ScrollTrigger", ScrollTrigger);
 }
 
-export default MyApp
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+
+export default MyApp;
