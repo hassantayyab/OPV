@@ -10,13 +10,13 @@
   "dependencies": {
     "gsap": "^3.6.1",
     "next": "10.2.0",
-    "next-compose-plugins": "^2.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-transition-group": "^4.4.1",
     "sass": "^1.32.12"
   },
   "devDependencies": {
+    "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "^7.0.0"
   }
 }

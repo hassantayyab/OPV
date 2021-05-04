@@ -1,17 +1,18 @@
-import { useEffect, useRef } from "react";
-import styles from "./sections.module.scss";
-import { gsap } from "gsap";
+import { useEffect, useRef } from 'react'
+import styles from './sections.module.scss'
+import { gsap } from 'gsap'
 
+// TODO: Remove this component
 export default function Sections() {
-  const containerRef = useRef();
-  const headingRef = useRef();
+  const containerRef = useRef()
+  const headingRef = useRef()
 
   useEffect(() => {
     gsap.to(containerRef.current, {
-      background: "pink",
+      background: 'pink',
       scrollTrigger: { trigger: headingRef.current, srub: true },
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <>
@@ -22,5 +23,5 @@ export default function Sections() {
         <h1 ref={headingRef}>Section 2</h1>
       </section>
     </>
-  );
+  )
 }

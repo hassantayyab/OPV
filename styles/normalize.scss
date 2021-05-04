@@ -15,6 +15,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Beausite Classic Web', sans-serif;
+}
+
 article,
 aside,
 details,
@@ -43,6 +47,15 @@ textarea {
   font: inherit;
 }
 
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
 button,
 input {
   overflow: visible;
@@ -64,7 +77,7 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus,
-[contenteditable="true"]:focus,
+[contenteditable='true']:focus,
 video {
   outline: none;
 }

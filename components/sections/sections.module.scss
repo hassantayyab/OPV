@@ -7,4 +7,8 @@
   align-items: center;
 
   background: $primary;
+
+  @include device(md) {
+    background: $secondary;
+  }
 }

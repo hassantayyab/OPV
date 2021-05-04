@@ -1,0 +1,48 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $light;
+  height: 12vh;
+  border-bottom: 1px solid $secondary;
+  @include device(sm) {
+    border-bottom: none;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img {
+      width: 2.5rem;
+    }
+    span {
+      margin-left: 1.25rem;
+      color: $dark-900;
+      @include device(sm) {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .menus {
+    a {
+      color: $dark;
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @include device(sm) {
+      display: none;
+    }
+  }
+}
+
+.toggler {
+  display: none;
+
+  @include device(sm) {
+    display: inline-block;
+  }
+}
