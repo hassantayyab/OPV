@@ -1,7 +1,7 @@
 import Container from '../components/container'
 import Nav from '../components/nav'
 
-const portfolio = () => {
+const Portfolio = () => {
 	return (
 		<div>
 			<Nav />
@@ -12,4 +12,4 @@ const portfolio = () => {
 	)
 }
 
-export default portfolio
+export default Portfolio

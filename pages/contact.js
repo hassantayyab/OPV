@@ -1,7 +1,7 @@
 import Container from '../components/container'
 import Nav from '../components/nav'
 
-const contact = () => {
+const Contact = () => {
 	return (
 		<div>
 			<Nav />
@@ -12,4 +12,4 @@ const contact = () => {
 	)
 }
 
-export default contact
+export default Contact

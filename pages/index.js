@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Nav from '../components/nav/index.js'
 import Container from '../components/container'
-import Hero from '../components/sections/hero/index.js'
-import Contact from '../components/sections/contact/index.js'
+import Hero from '../components/home/hero'
+import Contact from '../components/home/contact'
 
 const Home = () => {
 	return (
