@@ -1,5 +1,6 @@
-@import "./normalize.scss";
+@import './normalize.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 html {
-  font-size: clamp(1rem, 1.1vw, 1.5rem);
+	font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
