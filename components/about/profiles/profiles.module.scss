@@ -1,0 +1,19 @@
+.profiles {
+  background-color: $dark-600;
+  color: $dark-400;
+  padding: 8rem 0;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      font-size: 1.5rem;
+    }
+
+    img {
+      display: inline-block;
+    }
+  }
+}

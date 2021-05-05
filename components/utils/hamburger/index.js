@@ -1,8 +1,8 @@
 import styles from './hamburger.module.scss'
 
-const Hamburger = () => {
+const Hamburger = ({ color = 'light' }) => {
   return (
-    <div className={styles.hamburger}>
+    <div className={`${styles.hamburger} ${color === 'dark' && styles.dark}`}>
       <div></div>
       <div></div>
       <div></div>

@@ -1,0 +1,22 @@
+#main {
+  padding: 10rem 0;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    > h3 {
+      color: $dark-500;
+      font-size: 1.75rem;
+    }
+
+    .members {
+      width: 75%;
+      margin-left: auto;
+
+      .member:not(:last-child) {
+        margin-bottom: 4rem;
+      }
+    }
+  }
+}

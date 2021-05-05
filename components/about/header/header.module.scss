@@ -1,0 +1,55 @@
+.header {
+  background-color: $dark-500;
+  color: $light;
+  padding: 12rem 0;
+
+  section:first-of-type {
+    margin-bottom: 15rem;
+
+    h6 {
+      font-size: 1.5rem;
+      color: $dark-400;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      width: 60%;
+      font-size: 3rem;
+    }
+  }
+
+  section:last-of-type {
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    margin-right: 6rem;
+    font-weight: lighter;
+    line-height: 1.5;
+
+    .leftSec {
+      flex-basis: 30%;
+      flex-shrink: 0;
+      margin-right: 1.5rem;
+      border-top: 1px solid #b5b5b5;
+      font-size: 0.85rem;
+
+      div {
+        margin-top: 1.25rem;
+      }
+    }
+
+    .rightSec {
+      margin-top: 1.25rem;
+
+      p {
+        span {
+          display: block;
+
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -40,8 +40,9 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
     prependData: `
-    @import "./_variables.scss";
-    @import "./_mediaQueries.scss";
+    @import "./variables.scss";
+    @import "./mixins.scss";
+    @import "./typography.scss";
   `,
   },
 

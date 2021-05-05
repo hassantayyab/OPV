@@ -1,0 +1,67 @@
+.contact {
+  background-color: $primary;
+  color: $light;
+  padding: 5rem 0;
+
+  h3 {
+    font-size: 2.25rem;
+    width: 60%;
+    margin-bottom: 9rem;
+    @include device(md) {
+      width: 100%;
+    }
+  }
+
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    > div {
+      flex-basis: 60%;
+
+      h5 {
+        font-size: 1.5rem;
+      }
+
+      .separator {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(197, 197, 197, 1) 13%,
+          rgba(197, 197, 197, 1) 100%
+        );
+        margin: 1rem 0;
+      }
+
+      .links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 75%;
+        a {
+          color: $dark-400;
+          font-size: 0.875rem;
+          @include transition();
+          &:hover,
+          &:focus {
+            color: $light;
+          }
+        }
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      span {
+        font-size: 1.4rem;
+        font-weight: lighter;
+      }
+      img {
+        width: 1.75rem;
+        margin-left: 2rem;
+      }
+    }
+  }
+}
