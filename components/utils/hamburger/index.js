@@ -1,13 +1,11 @@
 import styles from './hamburger.module.scss'
 
-const Hamburger = () => {
-  return (
-    <div className={styles.hamburger}>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  )
-}
+const Hamburger = ({ color = 'light' }) => (
+  <div className={`${styles.hamburger} ${color === 'dark' && styles.dark}`}>
+    <div />
+    <div />
+    <div />
+  </div>
+)
 
 export default Hamburger

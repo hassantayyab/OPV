@@ -5,4 +5,10 @@
     background-color: $dark-900;
     margin: 0.55rem 0;
   }
+
+  &.dark {
+    div {
+      background-color: $light;
+    }
+  }
 }

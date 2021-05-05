@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import styles from './sections.module.scss'
 import { gsap } from 'gsap'
+import styles from './sections.module.scss'
 
 // TODO: Remove this component
 export default function Sections() {

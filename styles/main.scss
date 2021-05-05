@@ -4,3 +4,11 @@
 html {
   font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
+
+body {
+  font-family: 'Beausite Classic Web', sans-serif;
+}
+
+a {
+  color: $light;
+}
