@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import Container from '../container'
 import styles from './nav.module.scss'
-import Link from 'next/link'
 import Hamburger from '../utils/hamburger'
 
 const Nav = ({ theme = 'light' }) => {
