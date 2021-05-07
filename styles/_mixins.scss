@@ -1,34 +1,34 @@
 @mixin device($breakpoint) {
-  @if $breakpoint == xs {
-    @media (max-width: 500px) {
-      @content;
-    }
-  }
-  @if $breakpoint == sm {
-    @media (max-width: 768px) {
-      @content;
-    }
-  }
+	@if $breakpoint == xs {
+		@media (max-width: 350px) {
+			@content;
+		}
+	}
+	@if $breakpoint == sm {
+		@media (max-width: 700px) {
+			@content;
+		}
+	}
 
-  @if $breakpoint == md {
-    @media (max-width: 1024px) {
-      @content;
-    }
-  }
+	@if $breakpoint == md {
+		@media (max-width: 900px) {
+			@content;
+		}
+	}
 
-  @if $breakpoint == lg {
-    @media (max-width: 1440px) {
-      @content;
-    }
-  }
+	@if $breakpoint == lg {
+		@media (max-width: 1280px) {
+			@content;
+		}
+	}
 
-  @if $breakpoint == xl {
-    @media (min-width: 1441px) {
-      @content;
-    }
-  }
+	@if $breakpoint == xl {
+		@media (min-width: 1441px) {
+			@content;
+		}
+	}
 }
 
 @mixin transition($property: all, $duration: 0.2s, $type: ease-in-out) {
-  transition: $property $duration $type;
+	transition: $property $duration $type;
 }

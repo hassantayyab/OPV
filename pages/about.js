@@ -11,8 +11,9 @@ const About = () => (
     <Profiles />
     <Main />
     <Footer>
-      Whether it’s regarding an investement, collaboration or new talent, we’d
-      love to hear.
+      <div>Whether it’s regarding an investement,</div>
+      <div>collaboration or new talent,</div>
+      <div>we’d love to hear.</div>
     </Footer>
   </div>
 )

@@ -1,18 +1,48 @@
 .hero {
+	min-height: 38rem;
 	height: 90vh;
-	padding: 8rem 0;
+
 	h1 {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
-		font-size: 8.75rem;
+		justify-content: center;
+		font-size: 8.4375rem;
 		font-weight: lighter;
 		height: 100%;
-		@include device(sm) {
-			font-size: 5rem;
+		line-height: 1.2;
+
+		@include device(md) {
+			font-size: 6.5rem;
 		}
-		div:last-child {
-			text-align: right;
+
+		@include device(sm) {
+			font-size: 3.75rem;
+		}
+
+		@include device(xs) {
+			font-size: 3rem;
+		}
+
+		div {
+			line-height: 1.2;
+
+			&:nth-child(2) {
+				text-align: right;
+			}
+
+			&:last-child {
+				margin-left: 16%;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 1rem;
+			}
+
+			@include device(sm) {
+				&:not(:last-child) {
+					margin-bottom: 2.75rem;
+				}
+			}
 		}
 	}
 }

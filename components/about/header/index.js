@@ -7,32 +7,26 @@ const Header = () => (
       <section>
         <h6>About</h6>
         <h2>
-          Open Process invests in seed and private sale rounds into promising
-          and upcoming crypto projects.
+          A process that’s open, and a team that’s agile – to light the way for
+          Web3 trailblazers.
         </h2>
       </section>
 
       <section>
         <div className={styles.leftSec}>
-          <div>
-            An agile approach to finding the best projects in the business
-          </div>
+          <div>Web3 Specialists</div>
         </div>
         <div className={styles.rightSec}>
           <p>
-            <span>OPV is an SF-based seed investor.</span>
+            <span>We are innovation enablers.</span>
             <span>
-              We are way pavers for founders, making vital connections for
-              fundraising, talent, customers and advice.
+              We are fluid and adaptive, realising every good idea has a path to
+              success, but every path is different.
             </span>
             <span>
-              We are dot con÷nectors, counting the world’s most visionary
-              investors, founders and industry leaders as our allies.
-            </span>
-            <span>
-              We are first movers, operating at the speed of our founders and
-              matching the creative hustle required to achieve unimaginable
-              goals.
+              We guide nascent projects. Helping nourish and grow conceptual
+              beginnings into powerful disruptors. With a network of industry
+              leaders and specialists, the right guidance is always at hand.
             </span>
           </p>
         </div>

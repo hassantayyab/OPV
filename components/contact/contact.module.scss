@@ -1,6 +1,7 @@
 .contact {
 	background-color: $dark-700;
 	color: $light;
+	min-height: 40rem;
 	height: 90vh;
 	padding: 4rem 0;
 
@@ -11,7 +12,7 @@
 		justify-content: center;
 
 		h4 {
-			font-size: 2.5rem;
+			font-size: 3.625rem;
 		}
 
 		.row {
@@ -29,19 +30,12 @@
 					flex-wrap: wrap;
 					align-items: center;
 					margin-top: 2.75rem;
-					margin-bottom: 2rem;
+					margin-bottom: 2.5rem;
 
 					span {
 						margin-right: 2rem;
 						font-weight: lighter;
-						font-size: 1rem;
 						color: $secondary;
-
-						@include device(xs) {
-							margin-right: 0;
-							margin-bottom: 1.5rem;
-							width: 100%;
-						}
 					}
 
 					label {
@@ -55,21 +49,30 @@
 							color: $secondary;
 						}
 
-						@include device(xs) {
+						@include device(sm) {
 							margin-right: 0.5rem;
-							margin-bottom: 1rem;
+							margin-bottom: 0.5rem;
 						}
 					}
 
 					input {
 						visibility: hidden;
 					}
+
+					@include device(md) {
+						margin-bottom: 2.5rem;
+
+						span {
+							margin-right: 0;
+							margin-bottom: 1.25rem;
+							width: 100%;
+						}
+					}
 				}
 
 				input,
 				textarea {
 					background: transparent;
-					font-size: 1rem;
 					font-weight: lighter;
 					caret-color: $light;
 					color: $light;
@@ -102,20 +105,21 @@
 						}
 					}
 
-					@include device(xs) {
+					@include device(sm) {
 						flex-direction: column;
 
 						label {
 							flex-basis: 100%;
+
 							&:first-child {
-								margin-bottom: 2rem;
+								margin-bottom: 3.5rem;
 							}
 						}
 					}
 				}
 
 				.secRow {
-					margin: 2rem 0;
+					margin: 2.5rem 0;
 
 					label {
 						color: $secondary;
@@ -124,7 +128,12 @@
 					textarea {
 						border: 1px solid $light;
 						margin-top: 1rem;
+						padding: 0.5rem;
 						width: 100%;
+					}
+
+					@include device(sm) {
+						margin: 3.5rem 0;
 					}
 				}
 
@@ -165,13 +174,12 @@
 				> span {
 					margin-bottom: 1rem;
 					font-weight: lighter;
-					font-size: 1rem;
 					color: $secondary;
 				}
 
 				.address {
-					font-size: 1rem;
-					line-height: 1.5;
+					font-weight: lighter;
+					line-height: 1.6;
 					margin-bottom: 2rem;
 				}
 
@@ -189,7 +197,7 @@
 					}
 				}
 
-				@include device(md) {
+				@include device(lg) {
 					flex-basis: 25%;
 				}
 
@@ -203,5 +211,11 @@
 	@include device(sm) {
 		height: unset;
 		min-height: 90vh;
+
+		.wrapper {
+			h4 {
+				font-size: 3rem;
+			}
+		}
 	}
 }

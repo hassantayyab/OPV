@@ -5,14 +5,16 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
-	font-size: 16px;
+	font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
 
 *,
 *::before,
 *::after {
 	margin: 0;
-	box-sizing: border-box;
+	box-sizing: inherit;
+	font-family: 'Beausite Classic Web', sans-serif;
+	line-height: 1.4;
 }
 
 h1,
@@ -23,6 +25,11 @@ h5,
 h6,
 button {
 	font-weight: lighter;
+}
+
+h1,
+h2 {
+	line-height: 1.2;
 }
 
 article,
@@ -54,7 +61,7 @@ textarea {
 }
 
 a {
-	color: $dark-400;
+	color: $light;
 	text-decoration: none;
 }
 

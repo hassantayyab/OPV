@@ -13,7 +13,7 @@
 
 			div {
 				color: $dark-500;
-				font-size: 0.875rem;
+				font-size: 1rem;
 				font-weight: lighter;
 				margin-top: 1.25rem;
 			}
@@ -25,14 +25,13 @@
 
 			h4 {
 				margin-top: 1.25rem;
-				margin-bottom: 1.25rem;
+				margin-bottom: 1.0625rem;
 				color: $dark-900;
 			}
 
 			p {
 				font-weight: lighter;
 				line-height: 1.5;
-				font-size: 0.875rem;
 				color: $dark-500;
 
 				&.expanded {
@@ -46,7 +45,7 @@
 			.actions {
 				display: flex;
 				align-items: center;
-				margin-top: 1.25rem;
+				margin-top: 1.0625rem;
 
 				button {
 					background-color: transparent;
@@ -96,25 +95,18 @@
 				order: 2;
 				border-top: none;
 				margin-top: 1rem;
-				div {
-					font-size: 1rem;
-				}
 			}
 
 			.description {
 				order: 3;
 
 				h4 {
-					margin-top: 0.75rem;
-					font-size: 1.25rem;
-				}
-
-				p {
-					font-size: 1rem;
+					margin-top: 0.5625rem;
+					margin-bottom: 1.6875rem;
 				}
 
 				.actions {
-					margin-top: 1.5rem;
+					margin-top: 1.6875rem;
 
 					button {
 						width: 3rem;
