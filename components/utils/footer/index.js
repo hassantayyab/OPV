@@ -19,7 +19,7 @@ const Footer = ({ children }) => (
           </div>
           <div className={styles.separator} />
           <div className={styles.links}>
-            <Link href="emaol:hello@openprocessventures.com">
+            <Link href="mailto:hello@openprocessventures.com">
               hello@openprocessventures.com
             </Link>
             <Link href="/terms-and-conditions">Ts & Cs</Link>
