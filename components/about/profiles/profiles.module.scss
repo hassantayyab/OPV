@@ -1,19 +1,35 @@
 .profiles {
-  background-color: $dark-600;
-  color: $dark-400;
-  padding: 8rem 0;
+	background-color: $dark-600;
+	color: $dark-400;
+	padding: 8rem 0;
 
-  .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-    h4 {
-      font-size: 1.5rem;
-    }
+		h4 {
+			font-size: 1.5rem;
+		}
 
-    img {
-      display: inline-block;
-    }
-  }
+		img {
+			display: inline-block;
+		}
+	}
+
+	@include device(md) {
+		padding: 5.5rem 0;
+
+		.wrapper {
+			flex-direction: column;
+
+			h4 {
+				margin-bottom: 3rem;
+			}
+
+			img:not(:last-of-type) {
+				margin-bottom: 3rem;
+			}
+		}
+	}
 }

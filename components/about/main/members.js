@@ -21,6 +21,6 @@ export const members = [
     profile: 'https://www.twitter.com',
     image: '/member-1.svg',
     description:
-      'As a founder of a Web3 Foundation funded project, Jacob has contributed to books on blockchain, spoken at countless conferences around the world, been interviewed in mainstream media, as well as served as an advisor to London Blockchain Labs.',
+      'As a founder of a Web3 Foundation funded project, Jacob has contributed to books on blockchain, spoken at countless conferences around the world, been interviewed in mainstream media, as well as served as an advisor to London Blockchain Labs. As a founder of a Web3 Foundation funded project, Jacob has contributed to books on blockchain, spoken at countless conferences around the world, been interviewed in mainstream media, as well as served as an advisor to London Blockchain Labs.',
   },
 ]

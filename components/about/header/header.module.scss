@@ -1,55 +1,93 @@
 .header {
-  background-color: $dark-500;
-  color: $light;
-  padding: 12rem 0;
+	background-color: $dark-500;
+	color: $light;
+	padding: 12rem 0;
 
-  section:first-of-type {
-    margin-bottom: 15rem;
+	section:first-of-type {
+		margin-bottom: 15rem;
 
-    h6 {
-      font-size: 1.5rem;
-      color: $dark-400;
-      margin-bottom: 1rem;
-    }
+		h6 {
+			font-size: 1.5rem;
+			color: $dark-400;
+			margin-bottom: 1rem;
+		}
 
-    h2 {
-      width: 60%;
-      font-size: 3rem;
-    }
-  }
+		h2 {
+			width: 60%;
+			font-size: 3rem;
+		}
 
-  section:last-of-type {
-    display: flex;
-    width: 60%;
-    margin-left: auto;
-    margin-right: 6rem;
-    font-weight: lighter;
-    line-height: 1.5;
+		@include device(md) {
+			margin-bottom: 3rem;
 
-    .leftSec {
-      flex-basis: 30%;
-      flex-shrink: 0;
-      margin-right: 1.5rem;
-      border-top: 1px solid #b5b5b5;
-      font-size: 0.85rem;
+			h2 {
+				width: 100%;
+				font-size: 1.875rem;
+			}
+		}
+	}
 
-      div {
-        margin-top: 1.25rem;
-      }
-    }
+	section:last-of-type {
+		display: flex;
+		width: 60%;
+		margin-left: auto;
+		margin-right: 6rem;
+		font-weight: lighter;
+		line-height: 1.5;
 
-    .rightSec {
-      margin-top: 1.25rem;
+		.leftSec {
+			flex-basis: 30%;
+			flex-shrink: 0;
+			margin-right: 1.5rem;
+			border-top: 1px solid #b5b5b5;
+			font-size: 0.85rem;
 
-      p {
-        span {
-          display: block;
+			div {
+				margin-top: 1.25rem;
+			}
+		}
 
-          &:not(:last-child) {
-            margin-bottom: 2rem;
-          }
-        }
-      }
-    }
-  }
+		.rightSec {
+			margin-top: 1.25rem;
+
+			p {
+				span {
+					display: block;
+
+					&:not(:last-child) {
+						margin-bottom: 2rem;
+					}
+				}
+			}
+		}
+
+		@include device(md) {
+			width: 100%;
+		}
+
+		@include device(xs) {
+			flex-direction: column;
+
+			.leftSec {
+				margin-bottom: 1rem;
+				div {
+					width: 75%;
+				}
+			}
+
+			.rightSec {
+				p {
+					span {
+						&:not(:last-child) {
+							margin-bottom: 1rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include device(sm) {
+		padding: 5.5rem 0;
+	}
 }

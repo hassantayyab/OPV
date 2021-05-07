@@ -1,22 +1,35 @@
 #main {
-  padding: 10rem 0;
+	padding: 10rem 0;
 
-  .wrapper {
-    display: flex;
-    justify-content: space-between;
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
 
-    > h3 {
-      color: $dark-500;
-      font-size: 1.75rem;
-    }
+		> h3 {
+			color: $dark-500;
+			font-size: 1.75rem;
+		}
 
-    .members {
-      width: 75%;
-      margin-left: auto;
+		.members {
+			width: 75%;
+			margin-left: auto;
 
-      .member:not(:last-child) {
-        margin-bottom: 4rem;
-      }
-    }
-  }
+			.member:not(:last-child) {
+				margin-bottom: 4rem;
+			}
+		}
+	}
+
+	@include device(md) {
+		padding: 5.5rem 0;
+
+		.wrapper {
+			display: block;
+
+			.members {
+				width: 100%;
+				margin-top: 2rem;
+			}
+		}
+	}
 }

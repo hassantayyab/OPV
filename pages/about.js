@@ -1,7 +1,7 @@
 import Header from '../components/about/header'
 import Main from '../components/about/main'
 import Profiles from '../components/about/profiles'
-import Contact from '../components/contact'
+import Footer from '../components/utils/footer'
 import Nav from '../components/nav'
 
 const About = () => (
@@ -10,7 +10,10 @@ const About = () => (
     <Header />
     <Profiles />
     <Main />
-    <Contact />
+    <Footer>
+      Whether it’s regarding an investement, collaboration or new talent, we’d
+      love to hear.
+    </Footer>
   </div>
 )
 
