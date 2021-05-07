@@ -1,7 +1,7 @@
 import Header from '../components/about/header'
 import Main from '../components/about/main'
 import Profiles from '../components/about/profiles'
-import Contact from '../components/contact'
+import Footer from '../components/utils/footer'
 import Nav from '../components/nav'
 
 const About = () => (
@@ -10,7 +10,11 @@ const About = () => (
     <Header />
     <Profiles />
     <Main />
-    <Contact />
+    <Footer>
+      <div>Whether it’s regarding an investement,</div>
+      <div>collaboration or new talent,</div>
+      <div>we’d love to hear.</div>
+    </Footer>
   </div>
 )
 

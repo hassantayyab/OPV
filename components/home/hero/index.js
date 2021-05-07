@@ -3,8 +3,9 @@ import styles from './hero.module.scss'
 const Hero = () => (
   <div className={styles.hero}>
     <h1>
-      <div>Investing in</div>
-      <div>future finance</div>
+      <div>Confidence</div>
+      <div>Through</div>
+      <div>Clarity</div>
     </h1>
   </div>
 )

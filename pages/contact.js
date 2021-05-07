@@ -1,12 +1,11 @@
-import Container from '../components/container'
 import Nav from '../components/nav'
+// eslint-disable-next-line import/named
+import { ContactSection } from '../components/contact'
 
 const Contact = () => (
   <div>
-    <Nav />
-    <Container>
-      <h1>Contact Page</h1>
-    </Container>
+    <Nav theme="extra-dark" />
+    <ContactSection />
   </div>
 )
 

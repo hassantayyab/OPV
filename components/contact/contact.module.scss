@@ -1,67 +1,221 @@
 .contact {
-  background-color: $primary;
-  color: $light;
-  padding: 5rem 0;
+	background-color: $dark-700;
+	color: $light;
+	min-height: 40rem;
+	height: 90vh;
+	padding: 4rem 0;
 
-  h3 {
-    font-size: 2.25rem;
-    width: 60%;
-    margin-bottom: 9rem;
-    @include device(md) {
-      width: 100%;
-    }
-  }
+	.wrapper {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 
-  section {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+		h4 {
+			font-size: 3.625rem;
+		}
 
-    > div {
-      flex-basis: 60%;
+		.row {
+			display: flex;
 
-      h5 {
-        font-size: 1.5rem;
-      }
+			.leftSec {
+				flex-basis: 60%;
 
-      .separator {
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          rgba(197, 197, 197, 1) 13%,
-          rgba(197, 197, 197, 1) 100%
-        );
-        margin: 1rem 0;
-      }
+				label {
+					font-weight: lighter;
+				}
 
-      .links {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 75%;
-        a {
-          color: $dark-400;
-          font-size: 0.875rem;
-          @include transition();
-          &:hover,
-          &:focus {
-            color: $light;
-          }
-        }
-      }
-    }
+				.selection {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					margin-top: 2.75rem;
+					margin-bottom: 2.5rem;
 
-    button {
-      display: flex;
-      align-items: center;
-      span {
-        font-size: 1.4rem;
-        font-weight: lighter;
-      }
-      img {
-        width: 1.75rem;
-        margin-left: 2rem;
-      }
-    }
-  }
+					span {
+						margin-right: 2rem;
+						font-weight: lighter;
+						color: $secondary;
+					}
+
+					label {
+						font-size: 1.25rem;
+						margin-right: 1.25rem;
+						cursor: pointer;
+						@include transition(color);
+
+						&:hover,
+						&:focus {
+							color: $secondary;
+						}
+
+						@include device(sm) {
+							margin-right: 0.5rem;
+							margin-bottom: 0.5rem;
+						}
+					}
+
+					input {
+						visibility: hidden;
+					}
+
+					@include device(md) {
+						margin-bottom: 2.5rem;
+
+						span {
+							margin-right: 0;
+							margin-bottom: 1.25rem;
+							width: 100%;
+						}
+					}
+				}
+
+				input,
+				textarea {
+					background: transparent;
+					font-weight: lighter;
+					caret-color: $light;
+					color: $light;
+					@include transition();
+
+					&:focus {
+						border-color: $dark-450;
+					}
+				}
+
+				input {
+					border: none;
+					border-bottom: 1px solid $light;
+					padding-bottom: 1.25rem;
+				}
+
+				.firstRow {
+					display: flex;
+					justify-content: space-between;
+
+					label {
+						flex-basis: 47%;
+					}
+
+					input {
+						width: 100%;
+
+						&::placeholder {
+							color: $secondary;
+						}
+					}
+
+					@include device(sm) {
+						flex-direction: column;
+
+						label {
+							flex-basis: 100%;
+
+							&:first-child {
+								margin-bottom: 3.5rem;
+							}
+						}
+					}
+				}
+
+				.secRow {
+					margin: 2.5rem 0;
+
+					label {
+						color: $secondary;
+					}
+
+					textarea {
+						border: 1px solid $light;
+						margin-top: 1rem;
+						padding: 0.5rem;
+						width: 100%;
+					}
+
+					@include device(sm) {
+						margin: 3.5rem 0;
+					}
+				}
+
+				button {
+					padding: 0.75rem 2rem;
+					background-color: transparent;
+					color: $light;
+					border: 1px solid $light;
+					border-radius: 6rem;
+					cursor: pointer;
+					font-size: 1.2rem;
+					font-weight: lighter;
+					@include transition();
+
+					&:hover,
+					&:focus {
+						border-color: $dark-450;
+						color: $dark-450;
+					}
+				}
+
+				@include device(md) {
+					flex-basis: 65%;
+				}
+
+				@include device(sm) {
+					flex-basis: 100%;
+				}
+			}
+
+			.rightSec {
+				flex-basis: 20%;
+				margin-left: auto;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				> span {
+					margin-bottom: 1rem;
+					font-weight: lighter;
+					color: $secondary;
+				}
+
+				.address {
+					font-weight: lighter;
+					line-height: 1.6;
+					margin-bottom: 2rem;
+				}
+
+				.socials {
+					display: flex;
+					align-items: center;
+
+					img {
+						display: inline-block;
+						width: 1.5rem;
+
+						&:first-child {
+							margin-right: 1rem;
+						}
+					}
+				}
+
+				@include device(lg) {
+					flex-basis: 25%;
+				}
+
+				@include device(sm) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include device(sm) {
+		height: unset;
+		min-height: 90vh;
+
+		.wrapper {
+			h4 {
+				font-size: 3rem;
+			}
+		}
+	}
 }

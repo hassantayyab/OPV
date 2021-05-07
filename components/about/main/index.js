@@ -1,13 +1,13 @@
 import Container from '../../container'
 import styles from './main.module.scss'
 import Member from './member'
-import { members } from './member/members'
+import { members } from './members'
 
 const Main = () => {
   const renderMembers = () =>
     members.map((m, i) => (
-      <div className={styles.member}>
-        <Member key={i} data={m} />
+      <div key={i} className={styles.member}>
+        <Member data={m} />
       </div>
     ))
 

@@ -1,0 +1,126 @@
+.footer {
+	background-color: $primary;
+	color: $light;
+	padding: 5rem 0;
+
+	h3 {
+		font-size: 2.8125rem;
+		width: 70%;
+		margin-bottom: 9rem;
+
+		@include device(lg) {
+			width: 80%;
+		}
+
+		@include device(md) {
+			font-size: 1.875rem;
+			width: 100%;
+			margin-bottom: 6rem;
+		}
+	}
+
+	section {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+
+		.leftCol {
+			flex-basis: 60%;
+
+			h5 {
+				font-size: 1.5625rem;
+			}
+
+			.mBtn {
+				display: none;
+				margin-top: 1rem;
+				margin-bottom: 4rem;
+			}
+
+			.separator {
+				height: 1px;
+				background: linear-gradient(
+					90deg,
+					rgba(197, 197, 197, 1) 13%,
+					rgba(197, 197, 197, 1) 100%
+				);
+				margin: 1rem 0;
+			}
+
+			.links {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 75%;
+
+				a {
+					font-size: 0.875rem;
+					@include transition(color);
+
+					&:hover,
+					&:focus {
+						color: $dark-450;
+					}
+				}
+
+				@include device(md) {
+					width: 100%;
+				}
+			}
+		}
+
+		.dBtn {
+			display: inline-block;
+		}
+
+		button {
+			display: flex;
+			align-items: center;
+
+			span {
+				font-size: 1.875rem;
+			}
+
+			img {
+				width: 1.75rem;
+				margin-left: 2rem;
+			}
+		}
+
+		@include device(sm) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+
+			.leftCol {
+				h5 {
+					font-size: 1.25rem;
+				}
+
+				.mBtn {
+					display: inline-block;
+				}
+
+				.separator {
+					display: none;
+				}
+
+				.links {
+					width: 80%;
+
+					a:first-child {
+						display: none;
+					}
+				}
+			}
+
+			.dBtn {
+				display: none;
+			}
+		}
+	}
+
+	@include device(md) {
+		padding: 2.5rem 0;
+	}
+}

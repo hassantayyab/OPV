@@ -1,18 +1,20 @@
 html {
-  text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  font-size: 16px;
+	text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
 
 *,
 *::before,
 *::after {
-  margin: 0;
-  box-sizing: border-box;
+	margin: 0;
+	box-sizing: inherit;
+	font-family: 'Beausite Classic Web', sans-serif;
+	line-height: 1.4;
 }
 
 h1,
@@ -22,7 +24,12 @@ h4,
 h5,
 h6,
 button {
-  font-weight: lighter;
+	font-weight: lighter;
+}
+
+h1,
+h2 {
+	line-height: 1.2;
 }
 
 article,
@@ -38,45 +45,46 @@ nav,
 section,
 summary,
 canvas {
-  display: block;
+	display: block;
 }
 
 img {
-  border-style: none;
-  backface-visibility: hidden;
+	border-style: none;
+	backface-visibility: hidden;
 }
 
 input,
 optgroup,
 select,
 textarea {
-  font: inherit;
+	font: inherit;
 }
 
 a {
-  text-decoration: none;
+	color: $light;
+	text-decoration: none;
 }
 
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 
 button,
 input {
-  overflow: visible;
+	overflow: visible;
 }
 
 select {
-  text-transform: none;
+	text-transform: none;
 }
 
 textarea {
-  height: auto;
-  overflow: auto;
-  text-overflow: ellipsis;
-  resize: none;
-  -webkit-appearance: none;
+	height: auto;
+	overflow: auto;
+	text-overflow: ellipsis;
+	resize: none;
+	-webkit-appearance: none;
 }
 
 input:focus,
@@ -85,5 +93,5 @@ textarea:focus,
 button:focus,
 [contenteditable='true']:focus,
 video {
-  outline: none;
+	outline: none;
 }

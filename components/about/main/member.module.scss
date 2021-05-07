@@ -1,0 +1,138 @@
+#member {
+	display: inline-block;
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		.designation {
+			flex-basis: 33%;
+			margin-right: 2rem;
+			border-top: 1px solid $secondary;
+
+			div {
+				color: $dark-500;
+				font-size: 1rem;
+				font-weight: lighter;
+				margin-top: 1.25rem;
+			}
+		}
+
+		.description {
+			flex-basis: 33%;
+			margin-right: 2rem;
+
+			h4 {
+				margin-top: 1.25rem;
+				margin-bottom: 1.0625rem;
+				color: $dark-900;
+			}
+
+			p {
+				font-weight: lighter;
+				line-height: 1.5;
+				color: $dark-500;
+
+				&.expanded {
+					display: -webkit-box;
+					-webkit-line-clamp: 6;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+				}
+			}
+
+			.actions {
+				display: flex;
+				align-items: center;
+				margin-top: 1.0625rem;
+
+				button {
+					background-color: transparent;
+					border: 1px solid #898989;
+					border-radius: 50%;
+					width: 1.5rem;
+					height: 1.5rem;
+					padding: 0;
+					margin-right: 1rem;
+					cursor: pointer;
+
+					img {
+						width: 0.75rem;
+						@include transition(transform, 0.4s, ease-out);
+
+						&.expanded {
+							transform: rotate(180deg);
+						}
+					}
+				}
+
+				img {
+					cursor: pointer;
+					width: 1.5rem;
+
+					&.expanded {
+						margin-top: 0.375rem;
+					}
+				}
+			}
+		}
+
+		.image {
+			img {
+				width: 13rem;
+			}
+		}
+	}
+
+	@include device(md) {
+		display: block;
+
+		.wrapper {
+			flex-direction: column;
+
+			.designation {
+				order: 2;
+				border-top: none;
+				margin-top: 1rem;
+			}
+
+			.description {
+				order: 3;
+
+				h4 {
+					margin-top: 0.5625rem;
+					margin-bottom: 1.6875rem;
+				}
+
+				.actions {
+					margin-top: 1.6875rem;
+
+					button {
+						width: 3rem;
+						height: 3rem;
+						margin-right: 1.5rem;
+
+						img {
+							width: 1.5rem;
+							padding-bottom: 0.25rem;
+
+							&.expanded {
+								margin-top: 0.5rem;
+							}
+						}
+					}
+
+					img {
+						width: 3rem;
+					}
+				}
+			}
+
+			.image {
+				order: 1;
+				margin: auto;
+			}
+		}
+	}
+}
