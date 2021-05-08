@@ -1,65 +1,166 @@
+import { Form, Formik } from 'formik'
+import { useState } from 'react'
 import Container from '../container'
+import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
+import { Schema, submitForm } from '../utils/form-utils'
 
-const Contact = () => (
-  <div className={styles.contact}>
-    <Container>
-      <div className={styles.wrapper}>
-        <h4>In good company.</h4>
+const Contact = () => {
+  const [submit, setSubmit] = useState({
+    sent: false,
+    error: false,
+    message: '',
+  })
 
-        <div className={styles.row}>
-          <div className={styles.leftSec}>
-            <div className={styles.selection}>
-              <span>I'm enquiring about</span>
-              <label htmlFor="investment">
-                Investment
-                <input type="radio" id="investment" value="investment" />
-              </label>
-              <label htmlFor="investment">
-                Partnerships
-                <input type="radio" id="partnerships" value="partnerships" />
-              </label>
-              <label htmlFor="other">
-                Other
-                <input type="radio" id="other" value="other" />
-              </label>
+  const [selected, setSelected] = useState('other')
+
+  const handleSubmit = async (values, setSubmitting, resetForm) => {
+    try {
+      await submitForm(values, setSubmitting, resetForm)
+      resetForm()
+    } catch (error) {
+      setSubmit({
+        sent: true,
+        error: true,
+        message: 'Something went wrong! Please try again.',
+      })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <div className={styles.contact}>
+      <Container>
+        <div className={styles.wrapper}>
+          <h4>In good company.</h4>
+
+          <div className={styles.row}>
+            <div className={styles.leftSec}>
+              <Formik
+                initialValues={{
+                  about: 'other',
+                  name: '',
+                  email: '',
+                  message: '',
+                }}
+                validationSchema={Schema}
+                onSubmit={(values, { setSubmitting, resetForm }) => {
+                  handleSubmit(values, setSubmitting, resetForm)
+                }}
+              >
+                {({ isSubmitting }) => (
+                  <Form
+                    method="post"
+                    name="contact"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                  >
+                    <input type="hidden" name="bot-field" />
+                    <input type="hidden" name="form-name" value="contact" />
+                    <div className={styles.selection}>
+                      <span>I'm enquiring about</span>
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className={`${styles.input} ${
+                          selected === 'investment' ? styles.active : ''
+                        }`}
+                        onClick={() => setSelected('investment')}
+                        onKeyPress={() => setSelected('investment')}
+                      >
+                        Investment
+                        <FormInput
+                          name="investment"
+                          type="radio"
+                          value="investment"
+                        />
+                      </div>
+                      <div
+                        role="button"
+                        tabIndex="-1"
+                        className={`${styles.input} ${
+                          selected === 'partnerships' ? styles.active : ''
+                        }`}
+                        onClick={() => setSelected('partnerships')}
+                        onKeyPress={() => setSelected('partnerships')}
+                      >
+                        Partnerships
+                        <FormInput
+                          name="partnerships"
+                          type="radio"
+                          value="partnerships"
+                        />
+                      </div>
+                      <div
+                        role="button"
+                        tabIndex="-2"
+                        className={`${styles.input} ${
+                          selected === 'other' ? styles.active : ''
+                        }`}
+                        onClick={() => setSelected('other')}
+                        onKeyPress={() => setSelected('other')}
+                      >
+                        Other
+                        <FormInput name="other" type="radio" value="other" />
+                      </div>
+                    </div>
+
+                    <div className={styles.firstRow}>
+                      <div className={styles.input}>
+                        <FormInput
+                          name="email"
+                          label="Email Address"
+                          type="email"
+                        />
+                      </div>
+                      <div className={styles.input}>
+                        <FormInput name="name" label="Name" />
+                      </div>
+                    </div>
+
+                    <div className={styles.secRow}>
+                      <div className={styles.input}>
+                        Message
+                        <FormInput
+                          name="message"
+                          label="Message"
+                          component="textarea"
+                          rows="6"
+                        />
+                      </div>
+                    </div>
+
+                    {/* TODO: Needs to be properly set */}
+                    {submit.sent && (
+                      <small error={submit.error}>{submit.message}</small>
+                    )}
+
+                    <button type="submit" disabled={isSubmitting}>
+                      Send
+                    </button>
+                  </Form>
+                )}
+              </Formik>
             </div>
 
-            <div className={styles.firstRow}>
-              <label htmlFor="email">
-                <input type="email" id="email" placeholder="Email Address" />
-              </label>
-              <label htmlFor="name">
-                <input type="name" id="name" placeholder="Name" />
-              </label>
-            </div>
-
-            <div className={styles.secRow}>
-              <label htmlFor="message">
-                Message
-                <textarea type="message" id="message" rows="6" />
-              </label>
-            </div>
-
-            <button type="submit">Send</button>
-          </div>
-
-          <div className={styles.rightSec}>
-            <span>Location</span>
-            <div className={styles.address}>
-              <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
-              <div>SW4 7fj</div>
-            </div>
-            <span>Find us at</span>
-            <div className={styles.socials}>
-              <img src="/twitter-filled.svg" alt="twitter social link" />
-              <img src="/linkedin.svg" alt="linkedin social link" />
+            <div className={styles.rightSec}>
+              <span>Location</span>
+              <div className={styles.address}>
+                <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
+                <div>SW4 7fj</div>
+              </div>
+              <span>Find us at</span>
+              <div className={styles.socials}>
+                <img src="/twitter-filled.svg" alt="twitter social link" />
+                <img src="/linkedin.svg" alt="linkedin social link" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Container>
-  </div>
-)
+      </Container>
+    </div>
+  )
+}
 
 export { Contact as ContactSection }

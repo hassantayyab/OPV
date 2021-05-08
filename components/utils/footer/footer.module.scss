@@ -8,13 +8,16 @@
 		width: 70%;
 		margin-bottom: 9rem;
 
+		> div {
+			line-height: 1.2;
+		}
+
 		@include device(lg) {
-			width: 80%;
+			width: 100%;
 		}
 
 		@include device(md) {
 			font-size: 1.875rem;
-			width: 100%;
 			margin-bottom: 6rem;
 		}
 	}
@@ -25,7 +28,7 @@
 		align-items: flex-end;
 
 		.leftCol {
-			flex-basis: 60%;
+			flex-basis: 62%;
 
 			h5 {
 				font-size: 1.5625rem;
@@ -82,7 +85,7 @@
 			}
 
 			img {
-				width: 1.75rem;
+				width: 2.5rem;
 				margin-left: 2rem;
 			}
 		}

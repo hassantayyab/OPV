@@ -21,7 +21,8 @@
 			.leftSec {
 				flex-basis: 60%;
 
-				label {
+				.input {
+					position: relative;
 					font-weight: lighter;
 				}
 
@@ -38,15 +39,20 @@
 						color: $secondary;
 					}
 
-					label {
+					.input {
+						position: relative;
+						display: inline;
 						font-size: 1.25rem;
 						margin-right: 1.25rem;
 						cursor: pointer;
-						@include transition(color);
+						@include transition();
 
-						&:hover,
-						&:focus {
+						&:hover {
 							color: $secondary;
+						}
+
+						&.active {
+							font-weight: bolder;
 						}
 
 						@include device(sm) {
@@ -93,7 +99,7 @@
 					display: flex;
 					justify-content: space-between;
 
-					label {
+					.input {
 						flex-basis: 47%;
 					}
 
@@ -108,7 +114,7 @@
 					@include device(sm) {
 						flex-direction: column;
 
-						label {
+						.input {
 							flex-basis: 100%;
 
 							&:first-child {
@@ -121,7 +127,7 @@
 				.secRow {
 					margin: 2.5rem 0;
 
-					label {
+					.input {
 						color: $secondary;
 					}
 

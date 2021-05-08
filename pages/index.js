@@ -14,12 +14,14 @@ const Home = () => (
 
     <Nav />
     <Container>
-      <Hero />
+      <Hero scrollRef="#footer" />
     </Container>
-    <Footer>
-      Open Process Ventures is a Web3 specialised investment firm and strategic
-      consultancy.
-    </Footer>
+    <div id="footer">
+      <Footer>
+        Open Process Ventures is a Web3 specialised investment firm and
+        strategic consultancy.
+      </Footer>
+    </div>
   </div>
 )
 
