@@ -3,6 +3,8 @@ const withTM = require('next-transpile-modules')(['gsap'])
 const path = require('path')
 
 const nextConfig = {
+  target: 'serverless',
+
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
     prependData: `
