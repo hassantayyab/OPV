@@ -2,7 +2,7 @@ import Container from '../../container'
 import styles from './profiles.module.scss'
 
 const Profiles = () => (
-  <div className={styles.profiles}>
+  <div className={styles.profiles} id="featured-profiles">
     <Container>
       <div className={styles.wrapper}>
         <h4>Featured Profiles</h4>

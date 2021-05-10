@@ -45,4 +45,19 @@
 			}
 		}
 	}
+
+	button {
+		display: block;
+		margin: auto;
+		border: none;
+		background-color: transparent;
+		border-radius: 50%;
+		margin-top: -4.5rem;
+		line-height: 0;
+		cursor: pointer;
+
+		img {
+			width: 2.5rem;
+		}
+	}
 }

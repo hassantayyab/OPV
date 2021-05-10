@@ -56,7 +56,8 @@
 	.menus {
 		margin-bottom: 0.9rem;
 
-		span {
+		div {
+			display: inline;
 			padding-bottom: 1rem;
 			color: $dark;
 			cursor: pointer;
@@ -86,7 +87,7 @@
 
 		&.dark,
 		&.extraDark {
-			span {
+			div {
 				&,
 				a {
 					color: $light;

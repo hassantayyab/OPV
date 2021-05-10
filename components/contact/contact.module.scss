@@ -21,8 +21,28 @@
 			.leftSec {
 				flex-basis: 60%;
 
-				label {
+				.input {
+					position: relative;
 					font-weight: lighter;
+					color: $secondary;
+				}
+
+				input,
+				textarea {
+					background: transparent;
+					font-weight: lighter;
+					caret-color: $light;
+					color: $light;
+					@include transition();
+
+					&:focus {
+						border-color: $dark-450;
+					}
+				}
+
+				input {
+					border: none;
+					border-bottom: 1px solid $light;
 				}
 
 				.selection {
@@ -36,17 +56,29 @@
 						margin-right: 2rem;
 						font-weight: lighter;
 						color: $secondary;
+						cursor: pointer;
 					}
 
-					label {
+					.input {
+						display: inline;
 						font-size: 1.25rem;
 						margin-right: 1.25rem;
-						cursor: pointer;
-						@include transition(color);
+						@include transition();
 
-						&:hover,
-						&:focus {
+						&:not(.active) {
+							opacity: 0.6;
+						}
+
+						&:hover {
 							color: $secondary;
+						}
+
+						&.active {
+							color: $light;
+						}
+
+						label {
+							cursor: pointer;
 						}
 
 						@include device(sm) {
@@ -70,30 +102,11 @@
 					}
 				}
 
-				input,
-				textarea {
-					background: transparent;
-					font-weight: lighter;
-					caret-color: $light;
-					color: $light;
-					@include transition();
-
-					&:focus {
-						border-color: $dark-450;
-					}
-				}
-
-				input {
-					border: none;
-					border-bottom: 1px solid $light;
-					padding-bottom: 1.25rem;
-				}
-
 				.firstRow {
 					display: flex;
 					justify-content: space-between;
 
-					label {
+					.input {
 						flex-basis: 47%;
 					}
 
@@ -108,7 +121,7 @@
 					@include device(sm) {
 						flex-direction: column;
 
-						label {
+						.input {
 							flex-basis: 100%;
 
 							&:first-child {
@@ -120,10 +133,6 @@
 
 				.secRow {
 					margin: 2.5rem 0;
-
-					label {
-						color: $secondary;
-					}
 
 					textarea {
 						border: 1px solid $light;

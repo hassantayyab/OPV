@@ -1,11 +1,11 @@
 import Header from '../components/about/header'
 import Main from '../components/about/main'
 import Profiles from '../components/about/profiles'
-import Footer from '../components/utils/footer'
+import Footer from '../components/footer'
 import Nav from '../components/nav'
 
 const About = () => (
-  <div>
+  <>
     <Nav theme="dark" />
     <Header />
     <Profiles />
@@ -15,7 +15,7 @@ const About = () => (
       <div>collaboration or new talent,</div>
       <div>we’d love to hear.</div>
     </Footer>
-  </div>
+  </>
 )
 
 export default About

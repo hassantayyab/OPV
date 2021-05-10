@@ -4,12 +4,20 @@
 		height: 1px;
 		background-color: $dark-900;
 		margin: 0.55rem 0;
+		@include transition();
 	}
 
 	&.dark,
 	&.extraDark {
 		div {
 			background-color: $light;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		div {
+			background-color: $dark-450;
 		}
 	}
 }

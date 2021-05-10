@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import Container from '../../container'
-import Button from '../button'
+import Container from '../container'
+import Button from '../utils/button'
 import styles from './footer.module.scss'
 
 const Footer = ({ children }) => (
-  <div className={styles.footer}>
+  <footer className={styles.footer}>
     <Container>
       <h3>{children}</h3>
 
@@ -34,7 +34,7 @@ const Footer = ({ children }) => (
         </div>
       </section>
     </Container>
-  </div>
+  </footer>
 )
 
 export default Footer
