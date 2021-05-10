@@ -3,6 +3,9 @@
   "rules": {
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
+    "guard-for-in": "off",
+    "no-restricted-syntax": "off",
+    "global-require": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "prettier/prettier": [
       "error",

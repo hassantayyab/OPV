@@ -1,63 +1,65 @@
 .hero {
-	min-height: 38rem;
-	height: 90vh;
+  min-height: 38rem;
+  height: 90vh;
 
-	h1 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		font-size: 8.4375rem;
-		font-weight: lighter;
-		height: 100%;
-		line-height: 1.2;
+  h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 8.4375rem;
+    font-weight: lighter;
+    height: 100%;
+    line-height: 1.2;
 
-		@include device(md) {
-			font-size: 6.5rem;
-		}
+    @include device(md) {
+      font-size: 6.5rem;
+    }
 
-		@include device(sm) {
-			font-size: 3.75rem;
-		}
+    @include device(sm) {
+      font-size: 3.75rem;
+    }
 
-		@include device(xs) {
-			font-size: 3rem;
-		}
+    @include device(xs) {
+      font-size: 3rem;
+    }
 
-		div {
-			line-height: 1.2;
+    div {
+      line-height: 1.2;
 
-			&:nth-child(2) {
-				text-align: right;
-			}
+      &:nth-child(2) {
+        text-align: right;
+      }
 
-			&:last-child {
-				margin-left: 16%;
-			}
+      &:last-child {
+        margin-left: 16%;
+      }
 
-			&:not(:last-child) {
-				margin-bottom: 1rem;
-			}
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
 
-			@include device(sm) {
-				&:not(:last-child) {
-					margin-bottom: 2.75rem;
-				}
-			}
-		}
-	}
+      @include device(sm) {
+        &:not(:last-child) {
+          margin-bottom: 2.75rem;
+        }
+      }
+    }
+  }
 
-	button {
-		display: block;
-		margin: auto;
-		border: none;
-		background-color: transparent;
-		border-radius: 50%;
-		margin-top: -4.5rem;
-		line-height: 0;
-		cursor: pointer;
+  button {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: auto;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-top: -4.5rem;
+    line-height: 0;
+    cursor: pointer;
 
-		img {
-			width: 2.5rem;
-		}
-	}
+    img {
+      width: 2.5rem;
+    }
+  }
 }

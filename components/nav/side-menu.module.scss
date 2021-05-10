@@ -1,71 +1,71 @@
 .sideMenu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	overflow-x: hidden;
-	background-color: $dark-700;
-	color: $light;
-	z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: $dark-700;
+  color: $light;
+  z-index: 1;
 
-	.closeBtn {
-		position: absolute;
-		top: 1.575rem;
-		right: 1.65rem;
-		background-color: transparent;
-		border: none;
-		margin-left: auto;
-		cursor: pointer;
-		@include transition();
+  .closeBtn {
+    position: absolute;
+    top: 1.575rem;
+    right: 1.65rem;
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    @include transition();
 
-		&:hover,
-		&:focus {
-			filter: brightness(70%);
-		}
+    &:hover,
+    &:focus {
+      filter: brightness(70%);
+    }
 
-		img {
-			width: 1.75rem;
-		}
-	}
+    img {
+      width: 1.75rem;
+    }
+  }
 
-	.menus {
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-		align-items: center;
-		justify-content: center;
-		padding: 0 1rem;
+  .menus {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
 
-		div {
-			font-weight: lighter;
-			font-size: 2rem;
-			color: $light;
-			text-align: center;
-			padding-bottom: 0.5rem;
-			cursor: pointer;
+    div {
+      font-weight: lighter;
+      font-size: 2rem;
+      color: $light;
+      text-align: center;
+      padding-bottom: 0.5rem;
+      cursor: pointer;
 
-			&,
-			a {
-				color: $light;
-				@include transition();
-			}
+      &,
+      a {
+        color: $light;
+        @include transition();
+      }
 
-			&:not(:last-child) {
-				margin-bottom: 3.5rem;
-			}
+      &:not(:last-child) {
+        margin-bottom: 3.5rem;
+      }
 
-			&:hover,
-			&:focus {
-				&,
-				a {
-					color: $dark-450;
-				}
-			}
+      &:hover,
+      &:focus {
+        &,
+        a {
+          color: $dark-450;
+        }
+      }
 
-			&.active {
-				border-bottom: 1px solid $light;
-			}
-		}
-	}
+      &.active {
+        border-bottom: 1px solid $light;
+      }
+    }
+  }
 }

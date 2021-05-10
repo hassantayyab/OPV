@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router'
 import '../styles/main.scss'
 // GSAP global setup
+import dynamic from 'next/dynamic'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useEffect, useState } from 'react'
 import smoothscroll from 'smoothscroll-polyfill'
+import { useProgress } from '@react-three/drei'
 import Splash from '../components/utils/splash'
 
 if (typeof window !== `undefined`) {
@@ -13,22 +15,27 @@ if (typeof window !== `undefined`) {
   smoothscroll.polyfill()
 }
 
-function MyApp({ Component, pageProps }) {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (loading) {
-      // TODO: Temporary. Needs to be replaced with actual implementation.
-      setTimeout(() => {
-        setLoading(false)
-      }, 2000)
-    }
+let LCanvas = null
+if (process.env.NODE_ENV === 'production') {
+  LCanvas = dynamic(() => import('../components/canvas'), {
+    ssr: false,
   })
+} else {
+  LCanvas = require('../components/canvas').default
+}
+
+function MyApp({ Component, pageProps }) {
+  const { progress } = useProgress()
+  const router = useRouter()
+  const isHomePage = router.route === '/'
 
   return (
     <>
-      {loading && <Splash />}
       <Component {...pageProps} />
+      {progress !== 100 && <Splash />}
+      <div className={`canvas-wrapper ${isHomePage && 'visible'}`}>
+        <LCanvas />
+      </div>
     </>
   )
 }

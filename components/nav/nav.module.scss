@@ -1,139 +1,141 @@
 .wrapper {
-	min-height: 4.615rem;
-	height: 10vh;
+  min-height: 4.615rem;
+  height: 10vh;
 
-	&.dark {
-		background-color: $dark-500;
-	}
+  &.dark {
+    background-color: $dark-500;
+  }
 
-	&.extraDark {
-		background-color: $dark-700;
-	}
+  &.extraDark {
+    background-color: $dark-700;
+  }
 
-	padding-top: 1rem;
+  padding-top: 1rem;
 }
 
 .nav {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 
-	.title {
-		display: flex;
-		align-items: center;
-		margin-bottom: 1rem;
-		cursor: pointer;
+  .title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
 
-		img {
-			width: 2.5rem;
-		}
+    img {
+      width: 2.5rem;
+    }
 
-		span {
-			margin-left: 1.25rem;
-			color: $dark-900;
+    span {
+      margin-left: 1.25rem;
+      color: $dark-900;
 
-			@include device(sm) {
-				margin-left: 0.5rem;
-			}
+      @include device(sm) {
+        margin-left: 0.5rem;
+      }
 
-			@include device(xs) {
-				display: none;
-			}
-		}
+      @include device(xs) {
+        display: none;
+      }
+    }
 
-		&.dark,
-		&.extraDark {
-			img {
-				filter: invert(1);
-			}
+    &.dark,
+    &.extraDark {
+      img {
+        filter: invert(1);
+      }
 
-			span {
-				color: $light;
-			}
-		}
-	}
+      span {
+        color: $light;
+      }
+    }
+  }
 
-	.menus {
-		margin-bottom: 0.9rem;
+  .menus {
+    margin-bottom: 0.9rem;
 
-		div {
-			display: inline;
-			padding-bottom: 1rem;
-			color: $dark;
-			cursor: pointer;
+    div {
+      display: inline;
+      padding-bottom: 1rem;
+      color: $dark;
+      cursor: pointer;
 
-			&,
-			a {
-				color: $dark;
-				@include transition();
-			}
+      &,
+      a {
+        color: $dark;
+        @include transition();
+      }
 
-			&:not(:last-child) {
-				margin-right: 1.5rem;
-			}
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
 
-			&:hover,
-			&:focus {
-				&,
-				a {
-					color: $dark-450;
-				}
-			}
+      &:hover,
+      &:focus {
+        &,
+        a {
+          color: $dark-450;
+        }
+      }
 
-			&.active {
-				border-bottom: 1px solid $dark-900;
-			}
-		}
+      &.active {
+        border-bottom: 1px solid $dark-900;
+      }
+    }
 
-		&.dark,
-		&.extraDark {
-			div {
-				&,
-				a {
-					color: $light;
-				}
+    &.dark,
+    &.extraDark {
+      div {
+        &,
+        a {
+          color: $light;
+        }
 
-				&:hover,
-				&:focus {
-					&,
-					a {
-						color: $secondary;
-					}
-				}
+        &:hover,
+        &:focus {
+          &,
+          a {
+            color: $secondary;
+          }
+        }
 
-				&.active {
-					border-bottom: 1px solid $light;
-				}
-			}
-		}
+        &.active {
+          border-bottom: 1px solid $light;
+        }
+      }
+    }
 
-		@include device(sm) {
-			display: none;
-		}
-	}
+    @include device(sm) {
+      display: none;
+    }
+  }
 }
 
 .separator {
-	width: 100%;
-	height: 1px;
-	background: linear-gradient(
-		90deg,
-		rgba(130, 130, 130, 0) 0%,
-		rgba(130, 130, 130, 1) 100%
-	);
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(130, 130, 130, 0) 0%,
+    rgba(130, 130, 130, 1) 100%
+  );
 
-	@include device(sm) {
-		display: none;
-	}
+  @include device(sm) {
+    display: none;
+  }
 }
 
 .toggler {
-	display: none;
-	margin-left: 2rem;
-	cursor: pointer;
+  display: none;
+  margin-left: 2rem;
+  cursor: pointer;
 
-	@include device(sm) {
-		display: inline-block;
-		margin-bottom: 1rem;
-	}
+  @include device(sm) {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
 }
