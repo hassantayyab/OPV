@@ -1,13 +1,12 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Container from '../container'
 import styles from './nav.module.scss'
 import Hamburger from '../utils/hamburger'
 import SideMenu from './side-menu'
+import Menus from './menus'
 
 const Nav = ({ theme = 'light' }) => {
-  const router = useRouter()
   const websiteName = 'Open Process Ventures'
   const [open, setOpen] = useState(false)
 
@@ -23,7 +22,7 @@ const Nav = ({ theme = 'light' }) => {
   }
 
   return (
-    <>
+    <nav>
       <div className={`${styles.wrapper} ${getThemeClass()}`}>
         <Container>
           <nav className={`${styles.nav} ${getThemeClass()}`}>
@@ -35,27 +34,7 @@ const Nav = ({ theme = 'light' }) => {
             </Link>
 
             <div className={`${styles.menus} ${getThemeClass()}`}>
-              <span
-                className={`${
-                  router.pathname === '/about' ? styles.active : ''
-                }`}
-              >
-                <Link href="/about">About</Link>
-              </span>
-              <span
-                className={`${
-                  router.pathname === '/portfolio' ? styles.active : ''
-                }`}
-              >
-                <Link href="/portfolio">Portfolio</Link>
-              </span>
-              <span
-                className={`${
-                  router.pathname === '/contact' ? styles.active : ''
-                }`}
-              >
-                <Link href="/contact">Start a Conversation</Link>
-              </span>
+              <Menus styles={styles} />
             </div>
 
             <div
@@ -73,7 +52,7 @@ const Nav = ({ theme = 'light' }) => {
         </Container>
       </div>
       {open && <SideMenu open={open} openChange={() => setOpen(false)} />}
-    </>
+    </nav>
   )
 }
 

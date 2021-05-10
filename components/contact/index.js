@@ -69,8 +69,8 @@ const Contact = () => {
                         onClick={() => setSelected('investment')}
                         onKeyPress={() => setSelected('investment')}
                       >
-                        Investment
                         <FormInput
+                          label="Investment"
                           name="investment"
                           type="radio"
                           value="investment"
@@ -85,8 +85,8 @@ const Contact = () => {
                         onClick={() => setSelected('partnerships')}
                         onKeyPress={() => setSelected('partnerships')}
                       >
-                        Partnerships
                         <FormInput
+                          label="Partnerships"
                           name="partnerships"
                           type="radio"
                           value="partnerships"
@@ -101,8 +101,12 @@ const Contact = () => {
                         onClick={() => setSelected('other')}
                         onKeyPress={() => setSelected('other')}
                       >
-                        Other
-                        <FormInput name="other" type="radio" value="other" />
+                        <FormInput
+                          label="Other"
+                          name="other"
+                          type="radio"
+                          value="other"
+                        />
                       </div>
                     </div>
 
@@ -121,7 +125,6 @@ const Contact = () => {
 
                     <div className={styles.secRow}>
                       <div className={styles.input}>
-                        Message
                         <FormInput
                           name="message"
                           label="Message"

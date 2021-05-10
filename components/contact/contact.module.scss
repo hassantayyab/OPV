@@ -24,6 +24,25 @@
 				.input {
 					position: relative;
 					font-weight: lighter;
+					color: $secondary;
+				}
+
+				input,
+				textarea {
+					background: transparent;
+					font-weight: lighter;
+					caret-color: $light;
+					color: $light;
+					@include transition();
+
+					&:focus {
+						border-color: $dark-450;
+					}
+				}
+
+				input {
+					border: none;
+					border-bottom: 1px solid $light;
 				}
 
 				.selection {
@@ -37,14 +56,13 @@
 						margin-right: 2rem;
 						font-weight: lighter;
 						color: $secondary;
+						cursor: pointer;
 					}
 
 					.input {
-						position: relative;
 						display: inline;
 						font-size: 1.25rem;
 						margin-right: 1.25rem;
-						cursor: pointer;
 						@include transition();
 
 						&:hover {
@@ -52,7 +70,11 @@
 						}
 
 						&.active {
-							font-weight: bolder;
+							color: $light;
+						}
+
+						label {
+							cursor: pointer;
 						}
 
 						@include device(sm) {
@@ -74,25 +96,6 @@
 							width: 100%;
 						}
 					}
-				}
-
-				input,
-				textarea {
-					background: transparent;
-					font-weight: lighter;
-					caret-color: $light;
-					color: $light;
-					@include transition();
-
-					&:focus {
-						border-color: $dark-450;
-					}
-				}
-
-				input {
-					border: none;
-					border-bottom: 1px solid $light;
-					padding-bottom: 1.25rem;
 				}
 
 				.firstRow {
@@ -126,10 +129,6 @@
 
 				.secRow {
 					margin: 2.5rem 0;
-
-					.input {
-						color: $secondary;
-					}
 
 					textarea {
 						border: 1px solid $light;

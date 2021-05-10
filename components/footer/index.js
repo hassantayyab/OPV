@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Container from '../../container'
-import Button from '../button'
+import Container from '../container'
+import Button from '../utils/button'
 import styles from './footer.module.scss'
 
 const Footer = ({ children }) => (

@@ -9,10 +9,12 @@ const FormInput = ({
   ...rest
 }) => (
   <>
+    <label htmlFor={name} id={`${name}-label`}>
+      {label}
+    </label>
     <Field
       type={type}
       name={name}
-      placeholder={label}
       aria-labelledby={`${name}-label`}
       {...rest}
     />
