@@ -4,7 +4,7 @@ import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
 import { Schema, submitForm } from '../utils/form-utils'
-import { slideRight, slideUp } from '../animations'
+import { slideLeft, slideUp } from '../animations'
 
 const Contact = () => {
   const [submit, setSubmit] = useState({
@@ -35,7 +35,7 @@ const Contact = () => {
 
   useEffect(() => {
     slideUp(headingRef.current)
-    slideRight(sideSectionRef.current)
+    slideLeft(sideSectionRef.current)
   }, [])
 
   return (

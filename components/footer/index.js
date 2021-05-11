@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { staggerLines } from '../animations'
+import { staggerLines, zoomIn } from '../animations'
 import Container from '../container'
 import Button from '../utils/button'
 import styles from './footer.module.scss'
@@ -8,9 +8,13 @@ import styles from './footer.module.scss'
 const Footer = ({ children }) => {
   const s = useRef()
   const els = useRef([])
+  const dekstopBtnRef = useRef()
+  const mobileBtnRef = useRef()
 
   useEffect(() => {
     staggerLines(s.current, els.current)
+    zoomIn(dekstopBtnRef.current, { scrollTrigger: dekstopBtnRef.current })
+    zoomIn(mobileBtnRef.current, { scrollTrigger: mobileBtnRef.current })
   }, [])
 
   return (
@@ -21,7 +25,7 @@ const Footer = ({ children }) => {
         <section>
           <div className={styles.leftCol}>
             <h5>Start a conversation</h5>
-            <div className={styles.mBtn}>
+            <div className={styles.mBtn} ref={mobileBtnRef}>
               <Button href="/contact">
                 <span>Contact</span>
                 <img src="/arrow-right.svg" alt="arrow" />
@@ -42,7 +46,7 @@ const Footer = ({ children }) => {
               </Link>
             </div>
           </div>
-          <div className={styles.dBtn}>
+          <div className={styles.dBtn} ref={dekstopBtnRef}>
             <Button href="/contact">
               <span>Contact</span>
               <img src="/arrow-right.svg" alt="arrow" />

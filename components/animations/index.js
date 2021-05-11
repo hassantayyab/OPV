@@ -26,6 +26,25 @@ export const introText = (elements) => {
   })
 }
 
+export const rotating = (elements, opts) => {
+  gsap.from(elements, {
+    duration: 2,
+    x: -50,
+    rotate: -360,
+    ease: 'power4.out',
+    ...opts,
+  })
+}
+
+export const fadeIn = (elements, opts) => {
+  gsap.from(elements, {
+    duration: 1.2,
+    opacity: 0,
+    ease: 'easInOut',
+    ...opts,
+  })
+}
+
 export const slideUp = (element, opts) => {
   gsap.from(element, {
     scrollTrigger: { trigger: element },
@@ -37,10 +56,10 @@ export const slideUp = (element, opts) => {
   })
 }
 
-export const slideRight = (element, opts) => {
+export const slideLeft = (element, opts) => {
   gsap.from(element, {
     scrollTrigger: { trigger: element },
-    duration: 1,
+    duration: 1.2,
     xPercent: 100,
     opacity: 0,
     ease: 'easeInOut',
