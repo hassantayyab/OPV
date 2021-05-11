@@ -1,108 +1,109 @@
 .sideMenu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 100%;
-	overflow-x: hidden;
-	background-color: $dark-700;
-	color: $light;
-	z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: $dark-700;
+  color: $light;
+  z-index: 2;
 
-	display: flex;
-	flex-flow: column;
-	align-items: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 
-	.header {
-		padding-top: 1rem;
-		display: flex;
-		justify-content: space-between;
+  .header {
+    border: 1px solid red;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
 
-		.title {
-			display: flex;
-			align-items: center;
-			cursor: pointer;
+    .title {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
 
-			img {
-				width: 2.5rem;
-				filter: invert(1);
-			}
+      img {
+        width: 2.5rem;
+        filter: invert(1);
+      }
 
-			span {
-				margin-left: 1.25rem;
-				color: $light;
+      span {
+        margin-left: 1.25rem;
+        color: $light;
 
-				@include device(sm) {
-					margin-left: 0.5rem;
-				}
+        @include device(sm) {
+          margin-left: 0.5rem;
+        }
 
-				@include device(xs) {
-					display: none;
-				}
-			}
-		}
-	}
+        @include device(xs) {
+          display: none;
+        }
+      }
+    }
+  }
 
-	.closeBtn {
-		position: absolute;
-		top: 1.575rem;
-		right: 1.65rem;
-		background-color: transparent;
-		border: none;
-		margin-left: auto;
-		cursor: pointer;
-		@include transition();
+  .closeBtn {
+    position: absolute;
+    top: 1.575rem;
+    right: 1.65rem;
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    @include transition();
 
-		&:hover,
-		&:focus {
-			filter: brightness(70%);
-		}
+    &:hover,
+    &:focus {
+      filter: brightness(70%);
+    }
 
-		img {
-			width: 1.75rem;
-		}
-	}
+    img {
+      width: 1.75rem;
+    }
+  }
 
-	.menus {
-		display: flex;
-		flex-flow: column;
-		align-items: center;
-		justify-content: center;
-		position: fixed;
-		height: 100%;
-		width: 100%;
-		left: 0;
-		top: 0;
+  .menus {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
 
-		div {
-			font-weight: lighter;
-			font-size: 2rem;
-			color: $light;
-			text-align: center;
-			padding-bottom: 0.5rem;
-			cursor: pointer;
+    div {
+      font-weight: lighter;
+      font-size: 2rem;
+      color: $light;
+      text-align: center;
+      padding-bottom: 0.5rem;
+      cursor: pointer;
 
-			&,
-			a {
-				color: $light;
-				@include transition();
-			}
+      &,
+      a {
+        color: $light;
+        @include transition();
+      }
 
-			&:not(:last-child) {
-				margin-bottom: 3.5rem;
-			}
+      &:not(:last-child) {
+        margin-bottom: 3.5rem;
+      }
 
-			&:hover,
-			&:focus {
-				&,
-				a {
-					color: $dark-450;
-				}
-			}
+      &:hover,
+      &:focus {
+        &,
+        a {
+          color: $dark-450;
+        }
+      }
 
-			&.active {
-				border-bottom: 1px solid $light;
-			}
-		}
-	}
+      &.active {
+        border-bottom: 1px solid $light;
+      }
+    }
+  }
 }
