@@ -4,7 +4,7 @@ import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
 import { Schema, submitForm } from '../utils/form-utils'
-import { slideLeft, slideUp } from '../animations'
+import { slideUp } from '../animations'
 
 const Contact = () => {
   const [submit, setSubmit] = useState({
@@ -31,11 +31,9 @@ const Contact = () => {
   }
 
   const headingRef = useRef()
-  const sideSectionRef = useRef()
 
   useEffect(() => {
     slideUp(headingRef.current)
-    slideLeft(sideSectionRef.current)
   }, [])
 
   return (
@@ -156,7 +154,7 @@ const Contact = () => {
               </Formik>
             </div>
 
-            <aside className={styles.rightSec} ref={sideSectionRef}>
+            <aside className={styles.rightSec}>
               <span>Location</span>
               <div className={styles.address}>
                 <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}

@@ -56,17 +56,6 @@ export const slideUp = (element, opts) => {
   })
 }
 
-export const slideLeft = (element, opts) => {
-  gsap.from(element, {
-    scrollTrigger: { trigger: element },
-    duration: 1.2,
-    xPercent: 100,
-    opacity: 0,
-    ease: 'easeInOut',
-    ...opts,
-  })
-}
-
 export const zoomIn = (element, opts) => {
   gsap.from(element, {
     duration: 1.2,
