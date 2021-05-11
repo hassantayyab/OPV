@@ -1,16 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { staggerLines } from '../../animations'
 import styles from './member.module.scss'
 
 const Member = ({ data }) => {
   const [expanded, setexpanded] = useState(false)
 
+  const containerRef = useRef(null)
+  const els = useRef([])
+
+  useEffect(() => {
+    staggerLines(containerRef.current, els.current)
+  }, [])
+
   return (
     <div id={styles.member}>
-      <div className={styles.wrapper}>
-        <div className={styles.designation}>
+      <div className={styles.wrapper} ref={containerRef}>
+        <div className={styles.designation} ref={(e) => els.current.push(e)}>
           <div>{data.designation}</div>
         </div>
-        <div className={styles.description}>
+        <div className={styles.description} ref={(e) => els.current.push(e)}>
           <h4>{data.name}</h4>
           <p className={`${expanded ? '' : styles.expanded}`}>
             {data.description}
@@ -26,7 +34,7 @@ const Member = ({ data }) => {
             <img src="/twitter.svg" alt="social profile link" />
           </div>
         </div>
-        <div className={styles.image}>
+        <div className={styles.image} ref={(e) => els.current.push(e)}>
           <img src={data.image} alt="member" />
         </div>
       </div>

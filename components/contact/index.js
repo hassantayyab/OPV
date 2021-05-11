@@ -1,9 +1,10 @@
 import { Form, Formik } from 'formik'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
 import { Schema, submitForm } from '../utils/form-utils'
+import { slideRight, slideUp } from '../animations'
 
 const Contact = () => {
   const [submit, setSubmit] = useState({
@@ -29,11 +30,19 @@ const Contact = () => {
     }
   }
 
+  const headingRef = useRef()
+  const sideSectionRef = useRef()
+
+  useEffect(() => {
+    slideUp(headingRef.current)
+    slideRight(sideSectionRef.current)
+  }, [])
+
   return (
     <div className={styles.contact}>
       <Container>
         <div className={styles.wrapper}>
-          <h4>In good company.</h4>
+          <h4 ref={headingRef}>In good company.</h4>
 
           <div className={styles.row}>
             <div className={styles.leftSec}>
@@ -147,7 +156,7 @@ const Contact = () => {
               </Formik>
             </div>
 
-            <div className={styles.rightSec}>
+            <aside className={styles.rightSec} ref={sideSectionRef}>
               <span>Location</span>
               <div className={styles.address}>
                 <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
@@ -158,7 +167,7 @@ const Contact = () => {
                 <img src="/twitter-filled.svg" alt="twitter social link" />
                 <img src="/linkedin.svg" alt="linkedin social link" />
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </Container>
