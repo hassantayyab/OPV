@@ -1,15 +1,15 @@
-@import "./normalize.scss";
-@import "./typography.scss";
+@import './normalize.scss';
+@import './typography.scss';
 
 .canvas-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	visibility: hidden;
 
-  &.visible {
-    visibility: visible;
-  }
+	&.visible {
+		visibility: visible;
+	}
 }
