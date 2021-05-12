@@ -6,15 +6,11 @@
 
 	h3 {
 		font-size: 2.8125rem;
-		width: 70%;
+		width: 100%;
 		margin-bottom: 9rem;
 
 		> div {
 			line-height: 1.2;
-		}
-
-		@include device(lg) {
-			width: 100%;
 		}
 
 		@include device(md) {

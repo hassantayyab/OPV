@@ -5,14 +5,22 @@ import Profiles from '../components/about/profiles'
 import { staggerLines } from '../components/animations'
 import Footer from '../components/footer'
 import Nav from '../components/nav'
+import { useReady } from '../context'
 
 const About = () => {
   const containerRef = useRef()
   const els = useRef([])
+  const { isReady } = useReady()
 
   useEffect(() => {
-    staggerLines(containerRef.current, els.current)
-  }, [])
+    if (isReady) {
+      staggerLines(containerRef.current, els.current)
+    }
+  }, [isReady])
+
+  if (!isReady) {
+    return null
+  }
 
   return (
     <>
@@ -22,13 +30,19 @@ const About = () => {
       <Main />
       <div ref={containerRef}>
         <Footer>
-          <div ref={(e) => els.current.push(e)}>
-            Whether it’s regarding an investement,
+          <div className="aLine">
+            <div ref={(e) => els.current.push(e)}>
+              Whether it’s regarding an investement,
+            </div>
           </div>
-          <div ref={(e) => els.current.push(e)}>
-            collaboration or new talent,
+          <div className="aLine">
+            <div ref={(e) => els.current.push(e)}>
+              collaboration or new talent,
+            </div>
           </div>
-          <div ref={(e) => els.current.push(e)}>we’d love to hear.</div>
+          <div className="aLine">
+            <div ref={(e) => els.current.push(e)}>we’d love to hear.</div>
+          </div>
         </Footer>
       </div>
     </>

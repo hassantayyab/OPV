@@ -4,7 +4,8 @@ import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
 import { Schema, submitForm } from '../utils/form-utils'
-import { slideUp } from '../animations'
+import { staggerLines } from '../animations'
+import { useReady } from '../../context'
 
 const Contact = () => {
   const [submit, setSubmit] = useState({
@@ -14,6 +15,7 @@ const Contact = () => {
   })
 
   const [selected, setSelected] = useState('other')
+  const { isReady } = useReady()
 
   const handleSubmit = async (values, setSubmitting, resetForm) => {
     try {
@@ -33,14 +35,22 @@ const Contact = () => {
   const headingRef = useRef()
 
   useEffect(() => {
-    slideUp(headingRef.current)
-  }, [])
+    if (isReady) {
+      staggerLines(headingRef.current, headingRef.current)
+    }
+  }, [isReady])
+
+  if (!isReady) {
+    return null
+  }
 
   return (
     <div className={styles.contact}>
       <Container>
         <div className={styles.wrapper}>
-          <h4 ref={headingRef}>In good company.</h4>
+          <h4 className="aLine">
+            <div ref={headingRef}>In good company.</div>
+          </h4>
 
           <div className={styles.row}>
             <div className={styles.leftSec}>

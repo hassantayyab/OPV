@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
+import { useReady } from '../../context'
 import { staggerLines, zoomIn } from '../animations'
 import Container from '../container'
 import Button from '../utils/button'
@@ -10,12 +11,19 @@ const Footer = ({ children }) => {
   const els = useRef([])
   const dekstopBtnRef = useRef()
   const mobileBtnRef = useRef()
+  const { isReady } = useReady()
 
   useEffect(() => {
-    staggerLines(s.current, els.current)
-    zoomIn(dekstopBtnRef.current, { scrollTrigger: dekstopBtnRef.current })
-    zoomIn(mobileBtnRef.current, { scrollTrigger: mobileBtnRef.current })
-  }, [])
+    if (isReady) {
+      staggerLines(s.current, els.current)
+      zoomIn(dekstopBtnRef.current, { scrollTrigger: dekstopBtnRef.current })
+      zoomIn(mobileBtnRef.current, { scrollTrigger: mobileBtnRef.current })
+    }
+  }, [isReady])
+
+  if (!isReady) {
+    return null
+  }
 
   return (
     <footer className={styles.footer}>

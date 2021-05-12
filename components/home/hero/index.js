@@ -35,6 +35,10 @@ const Hero = ({ scrollRef }) => {
     }
   }, [isReady])
 
+  if (!isReady) {
+    return null
+  }
+
   return (
     <div className={styles.hero}>
       <Container>

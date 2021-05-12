@@ -5,12 +5,26 @@ const DELAY = 0.5
 // THIS ANIMATION NEEDS TO BE REMOVED AND
 // SHOULD ONY BE USED AS A REFERENCE
 export const introText = (elements) => {
-  const opts = {
-    duration: 1.2,
+  const fromOpts = {
     scale: 0.2,
     opacity: 0,
+  }
+
+  const toOpts = {
+    duration: 1.2,
+    scale: 1,
+    opacity: 1,
+    xPercent: 0,
     ease: 'sine',
   }
+
+  const t1 = gsap.timeline()
+  const t2 = gsap.timeline()
+  const t3 = gsap.timeline()
+
+  t1.set(elements[0], { xPercent: -100, ...fromOpts })
+  t2.set(elements[1], { xPercent: 100, ...fromOpts })
+  t3.set(elements[2], { xPercent: -100, ...fromOpts })
 
   // This animation has an issue of showing
   // the elements in their inititial state before
@@ -19,21 +33,18 @@ export const introText = (elements) => {
   // (1) Apply the init state in CSS e.g. if an element goes from opacity: 0 -> 1, use opacity: 0 in its CSS [BEST SOLUTION]
   // (2) Use gsap.set() to set the init state and then use gsap.to() to run the animation
   const animate = () => {
-    gsap.from(elements[0], {
-      ...opts,
+    t1.to(elements[0], {
       delay: 0,
-      xPercent: -100,
+      ...toOpts,
     })
-    gsap.from(elements[1], {
-      ...opts,
+    t2.to(elements[1], {
       delay: 0.1,
-      xPercent: 100,
+      ...toOpts,
     })
-    gsap.from(elements[2], {
-      ...opts,
+    t3.to(elements[2], {
       delay: 0.5,
-      xPercent: -100,
       duration: 1,
+      ...toOpts,
     })
   }
   // Always apply a delayed call for best results
@@ -88,7 +99,7 @@ export const staggerLines = (container, elements, scrollOpts, opts) => {
   gsap.from(elements, {
     scrollTrigger: { trigger: container, ...scrollOpts },
     duration: 1.2,
-    y: 100,
+    y: 50,
     opacity: 0,
     ease: 'power4.inOut',
     stagger: {
