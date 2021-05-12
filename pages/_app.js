@@ -5,14 +5,16 @@ import '../styles/main.scss'
 import dynamic from 'next/dynamic'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SplitText } from 'gsap/SplitText'
 import smoothscroll from 'smoothscroll-polyfill'
 
 import { ReadyProvider } from '../context'
 import Splash from '../components/utils/splash'
 
 if (typeof window !== `undefined`) {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger, SplitText)
   gsap.core.globals('ScrollTrigger', ScrollTrigger)
+  gsap.core.globals('ScrollTrigger', SplitText)
   smoothscroll.polyfill()
 }
 
