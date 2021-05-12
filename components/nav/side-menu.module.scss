@@ -14,7 +14,6 @@
   align-items: center;
 
   .header {
-    border: 1px solid red;
     padding-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -48,6 +47,7 @@
     position: absolute;
     top: 1.575rem;
     right: 1.65rem;
+    z-index: 4;
     background-color: transparent;
     border: none;
     margin-left: auto;

@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { useReady } from '../../../context'
 import { introText, zoomIn } from '../../animations'
 import Container from '../../container'
 import styles from './hero.module.scss'
@@ -20,10 +21,16 @@ const Hero = ({ scrollRef }) => {
   const buttonRef = useRef()
   const els = useRef([])
 
-  useEffect(() => {
+  // Use the `useReady()` hook to check if the
+  //  app is ready so you can start the animations.
+  const { isReady } = useReady()
+  // We can avoid using useEffect since we know the
+  // app will be loaded by this point. However, best
+  // practices can be further researched for this.
+  if (isReady) {
     introText(els.current)
     zoomIn(buttonRef.current, { delay: 1 })
-  }, [])
+  }
 
   return (
     <div className={styles.hero}>
