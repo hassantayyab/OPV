@@ -17,6 +17,11 @@ const Contact = () => {
   const handleSubmit = async (values, setSubmitting, resetForm) => {
     try {
       await submitForm(values, setSubmitting, resetForm)
+      setSubmit({
+        sent: true,
+        error: false,
+        message: 'Thank you for getting in touch!',
+      })
       resetForm()
     } catch (error) {
       setSubmit({
@@ -134,14 +139,19 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    {/* TODO: Needs to be properly set */}
-                    {submit.sent && (
-                      <small error={submit.error}>{submit.message}</small>
-                    )}
-
-                    <button type="submit" disabled={isSubmitting}>
-                      Send
-                    </button>
+                    <section>
+                      <button type="submit" disabled={isSubmitting}>
+                        Send
+                      </button>
+                      {submit.sent && submit.error && (
+                        <small className={styles.error}>{submit.message}</small>
+                      )}
+                      {submit.sent && !submit.error && (
+                        <small className={styles.success}>
+                          {submit.message}
+                        </small>
+                      )}
+                    </section>
                   </Form>
                 )}
               </Formik>
@@ -153,7 +163,7 @@ const Contact = () => {
                 <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
                 <div>SW4 7fj</div>
               </div>
-              <span>Find us at</span>
+              <span>Find us on</span>
               <div className={styles.socials}>
                 <a
                   href="https://www.linkedin.com"
