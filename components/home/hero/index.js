@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useReady } from '../../../context'
 import { introText, zoomIn } from '../../animations'
 import Container from '../../container'
@@ -27,10 +27,13 @@ const Hero = ({ scrollRef }) => {
   // We can avoid using useEffect since we know the
   // app will be loaded by this point. However, best
   // practices can be further researched for this.
-  if (isReady) {
-    introText(els.current)
-    zoomIn(buttonRef.current, { delay: 1 })
-  }
+  // EDIT: it may need useEffect in some cases (not sure why yet!)
+  useEffect(() => {
+    if (isReady) {
+      introText(els.current)
+      zoomIn(buttonRef.current, { delay: 1 })
+    }
+  }, [isReady])
 
   return (
     <div className={styles.hero}>

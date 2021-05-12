@@ -1,6 +1,6 @@
 import { useFrame } from '@react-three/fiber'
 import { useCallback, useEffect, useMemo } from 'react'
-import { useCubeTexture } from '@react-three/drei'
+import { useCubeTexture, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 
 import { vertUniforms, vertMain } from './vert'
@@ -98,23 +98,28 @@ const Blob = () => {
 
   const oBC = useCallback(onBeforeCompile, [customUniforms])
 
-  const envMap = useCubeTexture(
-    ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
-    { path: '/cube/' }
-  )
-  envMap.encoding = THREE.sRGBEncoding
-
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime()
     customUniforms.uTime.value = elapsedTime
   })
 
+  const bumpMap = useTexture('/textures/bump.jpeg')
+
+  const envMap = useCubeTexture(
+    ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
+    { path: '/textures/cube3/' }
+  )
+  envMap.encoding = THREE.sRGBEncoding
+
   return (
     <mesh>
       <sphereGeometry args={[2, 512, 512]} />
       <meshPhysicalMaterial
+        onBeforeCompile={oBC}
+        bumpMap={bumpMap}
+        bumpScale={0.01}
         envMap={envMap}
-        envMapIntensity={2.0}
+        envMapIntensity={1.0}
         color="#000000"
         roughness={0.0}
         metalness={0.0}
@@ -122,8 +127,7 @@ const Blob = () => {
         transparent
         clearcoat={1.0}
         clearcoatRoughness={0.0}
-        transmission={0.4}
-        onBeforeCompile={oBC}
+        transmission={1.0}
       />
     </mesh>
   )

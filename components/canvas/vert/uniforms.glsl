@@ -9,6 +9,6 @@ uniform float uSmallWavesSpeed;
 uniform float uSmallIterations;
 
 varying vec3 vPosition;
-varying vec2 vUv;
+// varying vec2 vUv;
 
 #pragma glslify: cnoise4 = require(glsl-noise/classic/4d)

@@ -14,7 +14,7 @@ const LCanvas = () => (
     camera={{ fov: 75, position: [0, 0, 5] }}
     gl={{}}
   >
-    {/* <OrbitControls enablePan enableZoom enableRotate /> */}
+    <OrbitControls enablePan enableZoom enableRotate />
     <Preload all />
     <Suspense fallback={null}>
       <Blob />
