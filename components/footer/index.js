@@ -23,7 +23,7 @@ const Footer = ({ children }) => (
               hello@openprocessventures.com
             </Link>
             <Link href="/terms-and-conditions">Ts & Cs</Link>
-            <Link href="/privacy-policy">PrivacyPolicy</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
           </div>
         </div>
         <div className={styles.dBtn}>

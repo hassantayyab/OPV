@@ -155,8 +155,13 @@ const Contact = () => {
               </div>
               <span>Find us at</span>
               <div className={styles.socials}>
-                <img src="/twitter-filled.svg" alt="twitter social link" />
-                <img src="/linkedin.svg" alt="linkedin social link" />
+                <a
+                  href="https://www.linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/linkedin.svg" alt="linkedin social link" />
+                </a>
               </div>
             </div>
           </div>

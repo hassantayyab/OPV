@@ -1,0 +1,49 @@
+.text {
+	background-color: $dark-700;
+	color: $light;
+	min-height: 40rem;
+	padding: 4rem 0;
+	font-weight: lighter;
+
+	h1 {
+		font-size: 3.625rem;
+		margin-bottom: 3rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+		font-weight: normal;
+		margin-bottom: 1rem;
+		margin-top: 3rem;
+	}
+
+	p {
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	a {
+		text-decoration: underline;
+		color: $secondary;
+		@include transition();
+
+		&:hover,
+		&:focus {
+			color: $dark-450;
+		}
+	}
+
+	ul {
+		list-style: disc;
+
+		li {
+			margin-bottom: 0.75rem;
+		}
+	}
+
+	@include device(sm) {
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}
