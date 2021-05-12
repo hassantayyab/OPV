@@ -23,7 +23,9 @@ const Member = ({ data }) => {
                 className={`${expanded ? styles.expanded : ''}`}
               />
             </button>
-            <img src="/twitter.svg" alt="social profile link" />
+            <a href={data.profile} target="_blank" rel="noreferrer">
+              <img src="/twitter.svg" alt="social profile link" />
+            </a>
           </div>
         </div>
         <div className={styles.image}>
