@@ -1,29 +1,80 @@
 import { useFrame } from '@react-three/fiber'
-import { useCallback, memo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { useCubeTexture } from '@react-three/drei'
 import * as THREE from 'three'
 
 import { vertUniforms, vertMain } from './vert'
 import { fragUniforms, fragCommon, fragMain } from './frag'
 
-const Blob = memo(() => {
-  const envMap = useCubeTexture(
-    ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
-    { path: '/cube/' }
+let dat = null
+if (typeof window !== `undefined`) {
+  dat = require('dat.gui')
+}
+
+const Blob = () => {
+  const customUniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uBigWavesElevation: { value: 0.25 },
+      uBigWavesFrequency: { value: new THREE.Vector2(4, 1) },
+      uBigWavesSpeed: { value: 1.5 },
+
+      uSmallWavesElevation: { value: 0.0 },
+      uSmallWavesFrequency: { value: 0.0 },
+      uSmallWavesSpeed: { value: 0.0 },
+    }),
+    []
   )
-  envMap.encoding = THREE.sRGBEncoding
 
-  const customUniforms = {
-    uTime: { value: 0 },
-    uBigWavesElevation: { value: 0.2 },
-    uBigWavesFrequency: { value: new THREE.Vector2(4, 1.5) },
-    uBigWavesSpeed: { value: 0.75 },
+  useEffect(() => {
+    const gui = new dat.GUI()
+    const addGUI = () => {
+      gui
+        .add(customUniforms.uBigWavesElevation, 'value')
+        .min(0)
+        .max(1)
+        .step(0.001)
+        .name('uBigWavesElevation')
+      gui
+        .add(customUniforms.uBigWavesFrequency.value, 'x')
+        .min(0)
+        .max(10)
+        .step(0.001)
+        .name('uBigWavesFrequencyX')
+      gui
+        .add(customUniforms.uBigWavesFrequency.value, 'y')
+        .min(0)
+        .max(10)
+        .step(0.001)
+        .name('uBigWavesFrequencyY')
+      gui
+        .add(customUniforms.uBigWavesSpeed, 'value')
+        .min(0)
+        .max(4)
+        .step(0.001)
+        .name('uBigWavesSpeed')
 
-    uSmallWavesElevation: { value: 0.0 },
-    uSmallWavesFrequency: { value: 3 },
-    uSmallWavesSpeed: { value: 0.2 },
-    uSmallIterations: { value: 1 },
-  }
+      gui
+        .add(customUniforms.uSmallWavesElevation, 'value')
+        .min(0)
+        .max(1)
+        .step(0.001)
+        .name('uSmallWavesElevation')
+      gui
+        .add(customUniforms.uSmallWavesFrequency, 'value')
+        .min(0)
+        .max(100)
+        .step(0.001)
+        .name('uSmallWavesFrequency')
+      gui
+        .add(customUniforms.uSmallWavesSpeed, 'value')
+        .min(0)
+        .max(4)
+        .step(0.001)
+        .name('uSmallWavesSpeed')
+    }
+    addGUI()
+  }, [customUniforms])
 
   const onBeforeCompile = (shader) => {
     for (const property in customUniforms) {
@@ -45,7 +96,13 @@ const Blob = memo(() => {
     )
   }
 
-  const oBC = useCallback(onBeforeCompile)
+  const oBC = useCallback(onBeforeCompile, [customUniforms])
+
+  const envMap = useCubeTexture(
+    ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
+    { path: '/cube/' }
+  )
+  envMap.encoding = THREE.sRGBEncoding
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime()
@@ -70,6 +127,6 @@ const Blob = memo(() => {
       />
     </mesh>
   )
-})
+}
 
 export default Blob

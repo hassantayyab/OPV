@@ -14,7 +14,7 @@ import Splash from '../components/utils/splash'
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(ScrollTrigger, SplitText)
   gsap.core.globals('ScrollTrigger', ScrollTrigger)
-  gsap.core.globals('ScrollTrigger', SplitText)
+  gsap.core.globals('SplitText', SplitText)
   smoothscroll.polyfill()
 }
 
