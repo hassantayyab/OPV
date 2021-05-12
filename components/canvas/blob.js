@@ -107,7 +107,7 @@ const Blob = () => {
 
   const envMap = useCubeTexture(
     ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
-    { path: '/textures/cube3/' }
+    { path: '/textures/cube/' }
   )
   envMap.encoding = THREE.sRGBEncoding
 
