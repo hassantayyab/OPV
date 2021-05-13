@@ -1,8 +1,8 @@
 import { useFrame } from '@react-three/fiber'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useCubeTexture, useTexture } from '@react-three/drei'
-import * as THREE from 'three'
 
+import { sRGBEncoding, Vector2 } from 'three'
 import { vertUniforms, vertMain } from './vert'
 import { fragUniforms, fragCommon, fragMain } from './frag'
 
@@ -16,9 +16,8 @@ const Blob = () => {
     () => ({
       uTime: { value: 0 },
       uBigWavesElevation: { value: 0.25 },
-      uBigWavesFrequency: { value: new THREE.Vector2(4, 1) },
+      uBigWavesFrequency: { value: new Vector2(4, 1) },
       uBigWavesSpeed: { value: 1.5 },
-
       uSmallWavesElevation: { value: 0.0 },
       uSmallWavesFrequency: { value: 0.0 },
       uSmallWavesSpeed: { value: 0.0 },
@@ -104,12 +103,11 @@ const Blob = () => {
   })
 
   const bumpMap = useTexture('/textures/bump.jpeg')
-
   const envMap = useCubeTexture(
     ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
     { path: '/textures/cube/' }
   )
-  envMap.encoding = THREE.sRGBEncoding
+  envMap.encoding = sRGBEncoding
 
   return (
     <mesh>
@@ -120,7 +118,7 @@ const Blob = () => {
         bumpScale={0.01}
         envMap={envMap}
         envMapIntensity={1.0}
-        color="#000000"
+        color="black"
         roughness={0.0}
         metalness={0.0}
         opacity={1.0}
