@@ -36,13 +36,9 @@ const Contact = () => {
 
   useEffect(() => {
     if (isReady) {
-      staggerLines(headingRef.current, headingRef.current)
+      staggerLines(headingRef.current)
     }
   }, [isReady])
-
-  if (!isReady) {
-    return null
-  }
 
   return (
     <div className={styles.contact}>

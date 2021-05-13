@@ -53,6 +53,7 @@ export const introText = (elements) => {
   gsap.delayedCall(DELAY, animate)
 }
 
+// NOT USED
 export const rotating = (elements, opts) => {
   gsap.from(elements, {
     duration: 2,
@@ -63,6 +64,7 @@ export const rotating = (elements, opts) => {
   })
 }
 
+// NOT USED
 export const fadeIn = (elements, opts) => {
   gsap.from(elements, {
     duration: 1.2,
@@ -72,6 +74,7 @@ export const fadeIn = (elements, opts) => {
   })
 }
 
+// NOT USED
 export const slideUp = (element, opts) => {
   const animate = () =>
     gsap.from(element, {
@@ -95,16 +98,18 @@ export const zoomIn = (element, opts) => {
   })
 }
 
-export const staggerLines = (container, elements, scrollOpts, opts) => {
+export const staggerLines = (elements, opts) => {
   gsap.from(elements, {
-    scrollTrigger: { trigger: container, ...scrollOpts },
-    duration: 1.2,
-    y: 50,
-    opacity: 0,
-    ease: 'power4.inOut',
-    stagger: {
-      amount: 0.2,
+    scrollTrigger: {
+      trigger: elements.length
+        ? elements[0].parentElement
+        : elements.parentElement,
     },
+    duration: 0.7,
+    yPercent: 100,
+    opacity: 0,
+    ease: 'power2',
+    stagger: 0.1,
     ...opts,
   })
 }

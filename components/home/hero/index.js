@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useReady } from '../../../context'
-import { introText, zoomIn } from '../../animations'
+import { zoomIn } from '../../animations'
 import Container from '../../container'
 import styles from './hero.module.scss'
 
@@ -19,7 +19,6 @@ const handleScroll = (ref) => {
 
 const Hero = ({ scrollRef }) => {
   const buttonRef = useRef()
-  const els = useRef([])
 
   // Use the `useReady()` hook to check if the
   //  app is ready so you can start the animations.
@@ -30,22 +29,17 @@ const Hero = ({ scrollRef }) => {
   // EDIT: it may need useEffect in some cases (not sure why yet!)
   useEffect(() => {
     if (isReady) {
-      introText(els.current)
-      zoomIn(buttonRef.current, { delay: 1 })
+      zoomIn(buttonRef.current)
     }
   }, [isReady])
-
-  if (!isReady) {
-    return null
-  }
 
   return (
     <div className={styles.hero}>
       <Container>
         <h1>
-          <div ref={(e) => els.current.push(e)}>Confidence</div>
-          <div ref={(e) => els.current.push(e)}>Through</div>
-          <div ref={(e) => els.current.push(e)}>Clarity</div>
+          <div>Confidence</div>
+          <div>Through</div>
+          <div>Clarity</div>
         </h1>
         <button
           type="button"

@@ -1,20 +1,20 @@
-import { useRouter } from 'next/router'
+import { useEffect, useRef } from 'react'
 import '../styles/main.scss'
 
+import { SwitchTransition, Transition } from 'react-transition-group'
 // GSAP global setup
 import dynamic from 'next/dynamic'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SplitText } from 'gsap/SplitText'
 import smoothscroll from 'smoothscroll-polyfill'
 
 import { ReadyProvider } from '../context'
 import Splash from '../components/utils/splash'
+import { FixTimeoutTransition } from '../components/utils/fixTimeoutTransition'
 
 if (typeof window !== `undefined`) {
-  gsap.registerPlugin(ScrollTrigger, SplitText)
+  gsap.registerPlugin(ScrollTrigger)
   gsap.core.globals('ScrollTrigger', ScrollTrigger)
-  gsap.core.globals('SplitText', SplitText)
   smoothscroll.polyfill()
 }
 
@@ -27,16 +27,60 @@ if (process.env.NODE_ENV === 'production') {
   LCanvas = require('../components/canvas').default
 }
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter()
+const TRANSITION_DURATION = 700
+
+function MyApp({ Component, pageProps, router }) {
+  const overlayRef = useRef()
+  const firstRender = useRef(true)
+
+  useEffect(() => {
+    // Run on route change only and not on refresh
+    const tl = gsap.timeline()
+    function animate() {
+      tl.to(overlayRef.current, {
+        duration: TRANSITION_DURATION / 1000,
+        scaleX: 1.0,
+        transformOrigin: '0 0',
+        ease: 'slow',
+      }).to(overlayRef.current, {
+        duration: TRANSITION_DURATION / 1000,
+        scaleX: 0,
+        transformOrigin: '100% 0',
+        ease: 'slow',
+      })
+    }
+
+    if (!firstRender.current) {
+      animate()
+    } else {
+      firstRender.current = false
+    }
+
+    return () => tl.kill()
+  }, [router.route])
 
   return (
     <ReadyProvider>
-      <Component {...pageProps} />
+      <FixTimeoutTransition />
       <Splash />
       <div className={`canvas-wrapper ${router.route === '/' && 'visible'}`}>
         <LCanvas />
       </div>
+
+      <div className="transition-overlay" ref={overlayRef} />
+
+      <SwitchTransition>
+        <Transition
+          key={router.route}
+          timeout={TRANSITION_DURATION}
+          mountOnEnter
+          unmountOnExit
+        >
+          <div>
+            <Component {...pageProps} />
+          </div>
+        </Transition>
+      </SwitchTransition>
     </ReadyProvider>
   )
 }

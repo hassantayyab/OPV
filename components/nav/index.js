@@ -1,23 +1,14 @@
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Container from '../container'
 import styles from './nav.module.scss'
 import Hamburger from '../utils/hamburger'
 import SideMenu from './side-menu'
 import Menus from './menus'
-import { fadeIn, rotating } from '../animations'
 
 const Nav = ({ theme = 'light' }) => {
   const websiteName = 'Open Process Ventures'
   const [open, setOpen] = useState(false)
-
-  const logoRef = useRef()
-  const textRef = useRef()
-
-  useEffect(() => {
-    rotating(logoRef.current)
-    fadeIn(textRef.current, { delay: 0.4 })
-  }, [])
 
   const getThemeClass = () => {
     if (theme === 'dark') {
@@ -37,8 +28,8 @@ const Nav = ({ theme = 'light' }) => {
           <nav className={`${styles.nav} ${getThemeClass()}`}>
             <Link href="/">
               <div className={`${styles.title} ${getThemeClass()}`}>
-                <img src="/logo.svg" alt="logo" ref={logoRef} />
-                <span ref={textRef}>{websiteName}</span>
+                <img src="/logo.svg" alt="logo" />
+                <span>{websiteName}</span>
               </div>
             </Link>
 

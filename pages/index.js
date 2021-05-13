@@ -12,13 +12,9 @@ const Home = () => {
 
   useEffect(() => {
     if (isReady) {
-      staggerLines(els.current, els.current)
+      staggerLines(els.current)
     }
   }, [isReady])
-
-  if (!isReady) {
-    return null
-  }
 
   return (
     <>
@@ -34,17 +30,17 @@ const Home = () => {
         <Footer>
           <div>
             <div className="aLine">
-              <div ref={(e) => els.current.push(e)}>
+              <div ref={(e) => (els.current[0] = e)}>
                 Open Process Ventures is a Web3
               </div>
             </div>
             <div className="aLine">
-              <div ref={(e) => els.current.push(e)}>
+              <div ref={(e) => (els.current[1] = e)}>
                 specialised investment firm and strategic
               </div>
             </div>
             <div className="aLine">
-              <div ref={(e) => els.current.push(e)}>consultancy.</div>
+              <div ref={(e) => (els.current[2] = e)}>consultancy.</div>
             </div>
           </div>
         </Footer>

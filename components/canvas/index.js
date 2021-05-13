@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Preload, OrbitControls, Text, Reflector } from '@react-three/drei'
+import { Preload, OrbitControls, Text } from '@react-three/drei'
 import { Suspense } from 'react'
 import * as THREE from 'three'
 import Blob from './blob'

@@ -9,7 +9,7 @@ function ReadyProvider({ children }) {
 
   const { progress } = useProgress()
   useEffect(() => {
-    if (progress === 100) setReady(true)
+    if (progress === 100) setTimeout(() => setReady(true), 1000)
   }, [progress])
 
   //   const router = useRouter()

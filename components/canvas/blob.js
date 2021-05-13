@@ -27,6 +27,7 @@ const Blob = () => {
 
   useEffect(() => {
     const gui = new dat.GUI()
+    gui.hide()
     const addGUI = () => {
       gui
         .add(customUniforms.uBigWavesElevation, 'value')
