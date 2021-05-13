@@ -3,14 +3,22 @@ import { useEffect, useRef } from 'react'
 import Nav from '../components/nav/index.js'
 import Hero from '../components/home/hero'
 import Footer from '../components/footer'
-import { slideUp } from '../components/animations'
+import { staggerLines } from '../components/animations'
+import { useReady } from '../context/index.js'
 
 const Home = () => {
-  const el = useRef()
+  const els = useRef([])
+  const { isReady } = useReady()
 
   useEffect(() => {
-    slideUp(el.current)
-  }, [])
+    if (isReady) {
+      staggerLines(els.current, els.current)
+    }
+  }, [isReady])
+
+  if (!isReady) {
+    return null
+  }
 
   return (
     <>
@@ -24,9 +32,20 @@ const Home = () => {
       <Hero scrollRef="#footer" />
       <div id="footer">
         <Footer>
-          <div ref={el}>
-            Open Process Ventures is a Web3 specialised investment firm and
-            strategic consultancy.
+          <div>
+            <div className="aLine">
+              <div ref={(e) => els.current.push(e)}>
+                Open Process Ventures is a Web3
+              </div>
+            </div>
+            <div className="aLine">
+              <div ref={(e) => els.current.push(e)}>
+                specialised investment firm and strategic
+              </div>
+            </div>
+            <div className="aLine">
+              <div ref={(e) => els.current.push(e)}>consultancy.</div>
+            </div>
           </div>
         </Footer>
       </div>

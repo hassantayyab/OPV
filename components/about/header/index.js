@@ -1,28 +1,47 @@
 import { useEffect, useRef } from 'react'
+import { useReady } from '../../../context'
 import { staggerLines } from '../../animations'
 import Container from '../../container'
 import styles from './header.module.scss'
 
 const Header = () => {
-  const s1 = useRef()
   const els1 = useRef([])
-
-  const s2 = useRef()
   const els2 = useRef([])
 
+  const { isReady } = useReady()
+
   useEffect(() => {
-    staggerLines(s1.current, els1.current)
-    staggerLines(s2.current, els2.current, { start: 'top 95%' })
-  }, [])
+    if (isReady) {
+      staggerLines(els1.current, els1.current)
+      staggerLines(els2.current, els2.current, { start: 'top 95%' })
+    }
+  }, [isReady])
+
+  if (!isReady) {
+    return null
+  }
 
   return (
     <div className={styles.header}>
       <Container>
-        <section ref={s1}>
-          <h6 ref={(e) => els1.current.push(e)}>About</h6>
-          <h2 ref={(e) => els1.current.push(e)}>
-            A process that’s open, and a team that’s agile – to light the way
-            for Web3 trailblazers.
+        <section>
+          <h6 className="aLine">
+            <div ref={(e) => els1.current.push(e)}>About</div>
+          </h6>
+          <h2>
+            <div className="aLine">
+              <div ref={(e) => els1.current.push(e)}>
+                A process that’s open, and a team
+              </div>
+            </div>
+            <div className="aLine">
+              <div ref={(e) => els1.current.push(e)}>
+                that’s agile – to light the way for
+              </div>
+            </div>
+            <div className="aLine">
+              <div ref={(e) => els1.current.push(e)}>Web3 trailblazers.</div>
+            </div>
           </h2>
         </section>
 
@@ -31,7 +50,7 @@ const Header = () => {
             <div>Web3 Specialists</div>
           </div>
           <div className={styles.rightSec}>
-            <p ref={s2}>
+            <p>
               <span ref={(e) => els2.current.push(e)}>
                 We are innovation enablers.
               </span>
