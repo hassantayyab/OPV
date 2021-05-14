@@ -4,13 +4,10 @@
 	min-height: 40rem;
 	height: 90vh;
 	padding: 4rem 0;
+	overflow: hidden;
 
 	.wrapper {
 		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
 		h4 {
 			font-size: 3.625rem;
 		}
@@ -146,41 +143,21 @@
 					}
 				}
 
-				section {
-					position: relative;
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					align-items: center;
+				button {
+					padding: 0.75rem 2rem;
+					background-color: transparent;
+					color: $light;
+					border: 1px solid $light;
+					border-radius: 6rem;
+					cursor: pointer;
+					font-size: 1.2rem;
+					font-weight: lighter;
+					@include transition();
 
-					button {
-						padding: 0.75rem 2rem;
-						background-color: transparent;
-						color: $light;
-						border: 1px solid $light;
-						border-radius: 6rem;
-						cursor: pointer;
-						font-size: 1.2rem;
-						font-weight: lighter;
-						@include transition();
-
-						&:hover,
-						&:focus {
-							border-color: $dark-450;
-							color: $dark-450;
-						}
-					}
-
-					small {
-						position: absolute;
-						right: 0;
-						display: inline-block;
-						font-size: 1rem;
-						font-weight: lighter;
-
-						&.error {
-							color: $error;
-						}
+					&:hover,
+					&:focus {
+						border-color: $dark-450;
+						color: $dark-450;
 					}
 				}
 
@@ -190,16 +167,6 @@
 
 				@include device(sm) {
 					flex-basis: 100%;
-
-					section {
-						flex-direction: column;
-						align-items: flex-start;
-
-						small {
-							left: 0;
-							bottom: -2.25rem;
-						}
-					}
 				}
 			}
 

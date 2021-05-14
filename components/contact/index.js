@@ -1,9 +1,11 @@
 import { Form, Formik } from 'formik'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
 import { Schema, submitForm } from '../utils/form-utils'
+import { staggerLines } from '../animations'
+import { useReady } from '../../context'
 
 const Contact = () => {
   const [submit, setSubmit] = useState({
@@ -13,6 +15,7 @@ const Contact = () => {
   })
 
   const [selected, setSelected] = useState('other')
+  const { isReady } = useReady()
 
   const handleSubmit = async (values, setSubmitting, resetForm) => {
     try {
@@ -34,11 +37,21 @@ const Contact = () => {
     }
   }
 
+  const headingRef = useRef()
+
+  useEffect(() => {
+    if (isReady) {
+      staggerLines(headingRef.current)
+    }
+  }, [isReady])
+
   return (
     <div className={styles.contact}>
       <Container>
         <div className={styles.wrapper}>
-          <h4>In good company.</h4>
+          <h4 className="aLine">
+            <div ref={headingRef}>In good company.</div>
+          </h4>
 
           <div className={styles.row}>
             <div className={styles.leftSec}>
@@ -157,7 +170,7 @@ const Contact = () => {
               </Formik>
             </div>
 
-            <div className={styles.rightSec}>
+            <aside className={styles.rightSec}>
               <span>Location</span>
               <div className={styles.address}>
                 <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
@@ -173,7 +186,7 @@ const Contact = () => {
                   <img src="/linkedin.svg" alt="linkedin social link" />
                 </a>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </Container>

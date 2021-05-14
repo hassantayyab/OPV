@@ -13,4 +13,4 @@ transformed = newPosition;
 transformed.z += waves;
 
 vPosition = transformed;
-vUv = uv;
+// vUv = uv;
