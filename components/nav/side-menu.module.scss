@@ -1,136 +1,137 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  .header {
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    flex: 0 1 auto;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 
-    .title {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
+	.header {
+		padding-top: 1rem;
+		display: flex;
+		justify-content: space-between;
+		flex: 0 1 auto;
 
-      img {
-        width: 2.5rem;
-        filter: invert(1);
-      }
+		.title {
+			display: flex;
+			align-items: center;
+			cursor: pointer;
 
-      span {
-        margin-left: 1.25rem;
-        color: $light;
+			img {
+				width: 2.5rem;
+				filter: invert(1);
+			}
 
-        @include device(sm) {
-          margin-left: 0.5rem;
-        }
+			span {
+				margin-left: 1.25rem;
+				color: $light;
 
-        @include device(xs) {
-          display: none;
-        }
-      }
-    }
-  }
+				@include device(sm) {
+					margin-left: 0.5rem;
+				}
 
-  .closeBtn {
-    position: absolute;
-    top: 1.575rem;
-    right: 1.65rem;
-    z-index: 4;
-    background-color: transparent;
-    border: none;
-    margin-left: auto;
-    cursor: pointer;
-    @include transition();
+				@include device(xs) {
+					display: none;
+				}
+			}
+		}
+	}
 
-    &:hover,
-    &:focus {
-      filter: brightness(70%);
-    }
+	.closeBtn {
+		position: absolute;
+		top: 1.575rem;
+		right: 1.65rem;
+		z-index: 4;
+		background-color: transparent;
+		border: none;
+		margin-left: auto;
+		cursor: pointer;
+		@include transition();
 
-    img {
-      width: 1.75rem;
-    }
-  }
+		&:hover,
+		&:focus {
+			filter: brightness(70%);
+		}
 
-  .menus {
-    min-height: 30rem;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-end;
-    flex: 1 1 auto;
-    padding-bottom: 2rem;
+		img {
+			width: 1.75rem;
+		}
+	}
 
-    div {
-      display: inline-block;
-      max-width: max-content;
-      font-weight: lighter;
-      font-size: 2rem;
-      color: $light;
-      padding-bottom: 0.5rem;
-      cursor: pointer;
+	.menus {
+		min-height: 30rem;
+		display: flex;
+		flex-flow: column;
+		justify-content: flex-end;
+		flex: 1 1 auto;
+		padding-bottom: 2rem;
 
-      &,
-      a {
-        color: $light;
-      }
+		> div {
+			display: inline-block;
+			max-width: max-content;
+			font-weight: lighter;
+			font-size: 2rem;
+			color: $light;
+			padding-bottom: 0.25rem;
+			cursor: pointer;
 
-      &:not(:last-child) {
-        margin-bottom: 1rem;
-      }
+			&,
+			a {
+				color: $light;
+			}
 
-      &:hover,
-      &:focus {
-        &,
-        a {
-          color: $dark-450;
-        }
-      }
+			&:not(:last-child) {
+				margin-bottom: 1.5rem;
+			}
 
-      &.active {
-        border-bottom: 1px solid $light;
-      }
-    }
-  }
+			&:hover,
+			&:focus {
+				&,
+				a {
+					color: $dark-450;
+				}
+			}
 
-  .footer {
-    flex: 0 1 auto;
-    padding: 4rem 0;
-    display: flex;
+			&.active {
+				border-bottom: 1px solid $light;
+			}
+		}
+	}
 
-    section {
-      &:first-child {
-        width: 55%;
-        margin-right: 2.5rem;
-      }
-    }
+	.footer {
+		flex: 0 1 auto;
+		padding: 4rem 0;
+		display: flex;
 
-    .heading {
-      margin-bottom: 1rem;
-      font-weight: lighter;
-      color: $secondary;
-    }
+		section {
+			&:first-child {
+				width: 55%;
+				margin-right: 2.5rem;
+			}
+		}
 
-    .address {
-      font-weight: lighter;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
+		.heading {
+			margin-bottom: 1rem;
+			font-weight: lighter;
+			color: $secondary;
+		}
 
-    .socials {
-      display: flex;
-      align-items: center;
+		.address {
+			font-weight: lighter;
+			line-height: 1.6;
+			margin-bottom: 2rem;
+		}
 
-      img {
-        display: inline-block;
-        width: 1.5rem;
-        margin-top: 0.25rem;
+		.socials {
+			display: flex;
+			align-items: center;
 
-        &:first-child {
-          margin-right: 1rem;
-        }
-      }
-    }
-  }
+			img {
+				display: inline-block;
+				width: 1.5rem;
+				margin-top: 0.25rem;
+
+				&:first-child {
+					margin-right: 1rem;
+				}
+			}
+		}
+	}
 }

@@ -20,7 +20,7 @@ const SideMenu = ({ open, openChange }) => {
       <div className={styles.wrapper} ref={menuRef}>
         <div className={styles.header} />
         <div className={styles.menus}>
-          <Menus styles={styles.menus} openChange={openChange} open={open} />
+          <Menus styles={styles} openChange={openChange} open={open} />
         </div>
 
         <footer className={styles.footer}>
