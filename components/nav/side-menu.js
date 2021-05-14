@@ -1,17 +1,20 @@
 import { useEffect, useRef } from 'react'
+import { LatheGeometry } from 'three'
 import styles from './side-menu.module.scss'
 import Menus from './menus'
 import Container from '../container'
-import { slideLeftFadeIn, fadeOut } from '../animations'
+import { slideLeftFadeIn, fadeOut, fadeIn } from '../animations'
 
 const SideMenu = ({ open, openChange }) => {
   let menuRef = useRef()
+  let footerRef = useRef()
 
   useEffect(() => {
     if (open) {
       slideLeftFadeIn(menuRef, { delay: 0.3 })
+      fadeIn(footerRef, { delay: 0.3 })
     } else {
-      fadeOut(menuRef)
+      fadeOut([menuRef, footerRef])
     }
   }, [open])
 
@@ -23,7 +26,7 @@ const SideMenu = ({ open, openChange }) => {
           <Menus styles={styles.menus} openChange={openChange} />
         </div>
 
-        <footer className={styles.footer}>
+        <footer className={styles.footer} ref={(e) => (footerRef = e)}>
           <section>
             <div className={styles.heading}>Location</div>
             <div className={styles.address}>

@@ -64,9 +64,9 @@ export const rotating = (elements, opts) => {
   })
 }
 
-export const slideLeftFadeIn = (element, opts) => {
+export const slideLeftFadeIn = (elements, opts) => {
   gsap.fromTo(
-    element,
+    elements,
     {
       opacity: 0,
       x: 50,
@@ -81,9 +81,24 @@ export const slideLeftFadeIn = (element, opts) => {
   )
 }
 
-export const fadeOut = (element, opts) => {
+export const fadeIn = (elements, opts) => {
   gsap.fromTo(
-    element,
+    elements,
+    {
+      opacity: 0,
+    },
+    {
+      duration: 0.5,
+      opacity: 1,
+      ease: 'easInOut',
+      ...opts,
+    }
+  )
+}
+
+export const fadeOut = (elements, opts) => {
+  gsap.fromTo(
+    elements,
     {
       opacity: 1,
     },
