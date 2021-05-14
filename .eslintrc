@@ -3,6 +3,7 @@
   "rules": {
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/display-name": "off",
     "guard-for-in": "off",
     "no-restricted-syntax": "off",
     "global-require": "off",

@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Preload, OrbitControls } from '@react-three/drei'
+import { Preload, OrbitControls, Text } from '@react-three/drei'
 import { Suspense } from 'react'
 import * as THREE from 'three'
 import Blob from './blob'
@@ -18,6 +18,15 @@ const LCanvas = () => (
     <Preload all />
     <Suspense fallback={null}>
       <Blob />
+      {/* <Text
+        color="red" // default
+        anchorX="center" // default
+        anchorY="middle" // default
+        fontSize={2}
+        position={[0, 0, -5]}
+      >
+        hello world!
+      </Text> */}
     </Suspense>
   </Canvas>
 )

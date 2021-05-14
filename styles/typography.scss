@@ -1,8 +1,7 @@
 @font-face {
-  font-family: 'Beausite Classic Web';
-  src: url('/public/fonts/BeausiteClassicWeb-Light.woff2') format('woff2'),
-    url('/public/fonts/BeausiteClassicWeb-Light.woff') format('woff'),
-    url('/yarn.lock') format('truetype');
+  font-family: "Beausite Classic Web";
+  src: url("/fonts/BeausiteClassicWeb-Light.woff2") format("woff2"),
+    url("/fonts/BeausiteClassicWeb-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;

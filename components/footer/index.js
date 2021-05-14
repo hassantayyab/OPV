@@ -20,10 +20,14 @@ const Footer = ({ children }) => (
           <div className={styles.separator} />
           <div className={styles.links}>
             <Link href="mailto:hello@openprocessventures.com">
-              hello@openprocessventures.com
+              <a>hello@openprocessventures.com</a>
             </Link>
-            <Link href="/terms-and-conditions">Ts & Cs</Link>
-            <Link href="/privacy-policy">PrivacyPolicy</Link>
+            <Link href="/terms-and-conditions">
+              <a>Ts & Cs</a>
+            </Link>
+            <Link href="/privacy-policy">
+              <a>Privacy Policy</a>
+            </Link>
           </div>
         </div>
         <div className={styles.dBtn}>
