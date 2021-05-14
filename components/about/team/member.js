@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { staggerLines } from '../../animations'
 import styles from './member.module.scss'
 
 const Member = ({ data }) => {
   const [expanded, setexpanded] = useState(false)
-  const [height, setHeight] = useState({
-    maxHeight: '8.4rem',
-  })
   const textRef = useRef(null)
   const els = useRef([])
 
@@ -16,9 +15,14 @@ const Member = ({ data }) => {
 
   useEffect(() => {
     if (!expanded) {
-      setHeight('8.4rem')
+      gsap.to(textRef.current, { duration: 0.5, height: 0 })
     } else {
-      setHeight(`${textRef.current.scrollHeight}px`)
+      gsap.set(textRef.current, { height: 'auto' })
+      gsap.from(textRef.current, {
+        duration: 0.5,
+        height: 0,
+        onComplete: ScrollTrigger.refresh,
+      })
     }
   }, [expanded])
 
@@ -30,8 +34,15 @@ const Member = ({ data }) => {
         </div>
         <div className={styles.description} ref={(e) => (els.current[1] = e)}>
           <h4>{data.name}</h4>
-          <div ref={textRef} id="expandable" style={{ maxHeight: `${height}` }}>
-            <div dangerouslySetInnerHTML={{ __html: data.description }} />
+          <div className={styles.content}>
+            <div
+              dangerouslySetInnerHTML={{ __html: data.description.default }}
+            />
+            <div
+              dangerouslySetInnerHTML={{ __html: data.description.hidden }}
+              ref={textRef}
+              className={styles.hidden}
+            />
           </div>
           <div className={styles.actions}>
             <button type="button" onClick={() => setexpanded(!expanded)}>

@@ -1,4 +1,5 @@
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 
 const DELAY = 0.5
 
@@ -119,17 +120,19 @@ export const zoomIn = (element, opts) => {
 }
 
 export const staggerLines = (elements, opts) => {
-  gsap.from(elements, {
-    scrollTrigger: {
-      trigger: elements.length
-        ? elements[0].parentElement
-        : elements.parentElement,
-    },
-    duration: 0.7,
-    yPercent: 100,
-    opacity: 0,
-    ease: 'power2',
-    stagger: 0.1,
-    ...opts,
+  gsap.set(elements, { yPercent: 100, opacity: 0, ...opts })
+
+  ScrollTrigger.batch(elements, {
+    interval: 0.1, // time window (in seconds) for batching to occur.
+    onEnter: (batch) =>
+      gsap.to(batch, {
+        duration: 0.7,
+        y: 0,
+        yPercent: 0,
+        opacity: 1,
+        ease: 'power2',
+        stagger: 0.1,
+        overwrite: true,
+      }),
   })
 }
