@@ -47,6 +47,7 @@ function MyApp({ Component, pageProps, router }) {
         scaleX: 0,
         transformOrigin: '100% 0',
         ease: 'slow',
+        delay: 0.1,
       })
     }
 
