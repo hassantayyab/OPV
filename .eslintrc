@@ -14,7 +14,11 @@
         "trailingComma": "es5",
         "singleQuote": true,
         "printWidth": 80,
-        "semi": false
+        "semi": false,
+        "tabWidth": 2,
+        "useTabs": false,
+        "htmlWhitespaceSensitivity": "css",
+        "cssEnable": ["css", "scss", "sass"]
       }
     ]
   }
