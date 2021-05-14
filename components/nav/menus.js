@@ -22,7 +22,7 @@ export const menus = [
   },
 ]
 
-const Menus = ({ styles, openChange, open }) => {
+const Menus = ({ styles, openChange, open, linkClick }) => {
   const router = useRouter()
 
   const linksRef = useRef([])
@@ -43,7 +43,13 @@ const Menus = ({ styles, openChange, open }) => {
           onClick={openChange}
           onKeyPress={openChange}
         >
-          <div ref={(e) => (linksRef.current[i] = e)}>
+          <div
+            role="button"
+            tabIndex="0"
+            ref={(e) => (linksRef.current[i] = e)}
+            onClick={(e) => linkClick && linkClick(e)}
+            onKeyPress={(e) => linkClick && linkClick(e)}
+          >
             <Link href={m.link}>{m.title}</Link>
           </div>
         </div>

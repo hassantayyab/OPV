@@ -6,18 +6,17 @@ import Hamburger from '../utils/hamburger'
 import SideMenu from './side-menu'
 import Menus from './menus'
 import { resetIndicator, updateIndicator } from './helper-functions'
+import { useReady } from '../../context'
 
 const Nav = ({ theme = 'light' }) => {
   const websiteName = 'Open Process Ventures'
   const [open, setOpen] = useState(false)
+  const { activeLinkOffsets, setActiveLinkOffset } = useReady()
+
   const [indicator, setIndicator] = useState({
     left: 0,
     width: 0,
   })
-  // const [hoveredIndicator, setHoveredIndicator] = useState({
-  //   left: 0,
-  //   width: 0,
-  // })
   const navRef = useRef()
 
   const handleMouseOver = (evt) => {
@@ -25,10 +24,6 @@ const Nav = ({ theme = 'light' }) => {
 
     if (link) {
       updateIndicator(link.offsetLeft, link.offsetWidth, navRef)
-      // setHoveredIndicator({
-      //   left: link.offsetLeft,
-      //   width: link.offsetWidth,
-      // })
     }
   }
 
@@ -36,15 +31,15 @@ const Nav = ({ theme = 'light' }) => {
     resetIndicator(indicator.left, indicator.width, navRef)
   }
 
-  // TODO: Needs to be used for updating indicator starting position.
-  // const handleClick = () => {
-  //   if (hoveredIndicator.left && hoveredIndicator.width) {
-  //     setIndicator({
-  //       left: hoveredIndicator.left,
-  //       width: hoveredIndicator.width,
-  //     })
-  //   }
-  // }
+  const handleClick = (e) => {
+    const link = e.target.closest('a')
+    if (link) {
+      setActiveLinkOffset({
+        left: link.offsetLeft,
+        width: link.offsetWidth,
+      })
+    }
+  }
 
   const getThemeClass = () => {
     if (theme === 'dark') {
@@ -63,10 +58,15 @@ const Nav = ({ theme = 'light' }) => {
     } else {
       document.body.classList.remove('fixed-position')
     }
-  }, [open])
+
+    if (activeLinkOffsets) {
+      setIndicator(activeLinkOffsets)
+      resetIndicator(activeLinkOffsets.left, activeLinkOffsets.width, navRef)
+    }
+  }, [open, activeLinkOffsets])
 
   return (
-    <nav>
+    <nav className={styles.container}>
       <div className={`${styles.wrapper} ${getThemeClass()}`}>
         <Container>
           <nav
@@ -94,10 +94,7 @@ const Nav = ({ theme = 'light' }) => {
 
             <div className={`${styles.menus} ${getThemeClass()}`}>
               <div className={styles.indicator} />
-              <Menus
-                styles={styles}
-                // openChange={handleClick}
-              />
+              <Menus styles={styles} linkClick={handleClick} />
             </div>
 
             <div

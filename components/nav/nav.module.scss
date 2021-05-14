@@ -1,6 +1,5 @@
 .wrapper {
 	min-height: 4.615rem;
-	// height: 10vh;
 	overflow: hidden;
 
 	&.dark {
@@ -66,7 +65,7 @@
 		.indicator {
 			position: absolute;
 			left: var(--indicator-left);
-			bottom: -16px;
+			bottom: -1rem;
 			width: var(--indicator-width);
 			height: 1px;
 			background-color: $dark-900;
@@ -77,7 +76,6 @@
 			display: inline;
 			padding-bottom: 1rem;
 			color: $dark;
-			cursor: pointer;
 
 			&,
 			a {
@@ -96,10 +94,6 @@
 					color: $dark-450;
 				}
 			}
-
-			&.active {
-				border-bottom: 1px solid $dark-900;
-			}
 		}
 
 		&.dark,
@@ -116,10 +110,6 @@
 					a {
 						color: $secondary;
 					}
-				}
-
-				&.active {
-					border-bottom: 1px solid $light;
 				}
 			}
 
