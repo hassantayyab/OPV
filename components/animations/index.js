@@ -64,28 +64,36 @@ export const rotating = (elements, opts) => {
   })
 }
 
-// NOT USED
-export const fadeIn = (elements, opts) => {
-  gsap.from(elements, {
-    duration: 1.2,
-    opacity: 0,
-    ease: 'easInOut',
-    ...opts,
-  })
+export const slideLeftFadeIn = (element, opts) => {
+  gsap.fromTo(
+    element,
+    {
+      opacity: 0,
+      x: 50,
+    },
+    {
+      duration: 0.5,
+      opacity: 1,
+      x: 0,
+      ease: 'easInOut',
+      ...opts,
+    }
+  )
 }
 
-// NOT USED
-export const slideUp = (element, opts) => {
-  const animate = () =>
-    gsap.from(element, {
-      scrollTrigger: { trigger: element },
-      duration: 1.2,
-      y: 50,
+export const fadeOut = (element, opts) => {
+  gsap.fromTo(
+    element,
+    {
+      opacity: 1,
+    },
+    {
+      duration: 0.5,
       opacity: 0,
-      ease: 'power4.inOut',
+      ease: 'easInOut',
       ...opts,
-    })
-  gsap.delayedCall(DELAY, animate)
+    }
+  )
 }
 
 export const zoomIn = (element, opts) => {

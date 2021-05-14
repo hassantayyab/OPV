@@ -1,46 +1,52 @@
-import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import styles from './side-menu.module.scss'
 import Menus from './menus'
 import Container from '../container'
+import { slideLeftFadeIn, fadeOut } from '../animations'
 
-const SideMenu = ({ open, openChange }) => (
-  // Add animations
-  <nav className={`${styles.sideMenu} ${open ? styles.active : ''}`}>
+const SideMenu = ({ open, openChange }) => {
+  let menuRef = useRef()
+
+  useEffect(() => {
+    if (open) {
+      slideLeftFadeIn(menuRef, { delay: 0.3 })
+    } else {
+      fadeOut(menuRef)
+    }
+  }, [open])
+
+  return (
     <Container>
-      <div className={styles.header}>
-        <Link href="/">
-          <div className={styles.title}>
-            <img src="/logo.svg" alt="logo" />
-            <span>Open Process Ventures</span>
-          </div>
-        </Link>
-        <button type="button" className={styles.closeBtn} onClick={openChange}>
-          <img src="/cancel.svg" alt="click to close" />
-        </button>
-      </div>
-      <div className={styles.menus}>
-        <Menus styles={styles} openChange={openChange} />
-      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.header} />
+        <div className={styles.menus} ref={(e) => (menuRef = e)}>
+          <Menus styles={styles.menus} openChange={openChange} />
+        </div>
 
-      <footer className={styles.footer}>
-        <section>
-          <div className={styles.heading}>Location</div>
-          <div className={styles.address}>
-            <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
-            <div>SW4 7fj</div>
-          </div>
-        </section>
-        <section>
-          <div className={styles.heading}>Find us on</div>
-          <div className={styles.socials}>
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-              <img src="/linkedin.svg" alt="linkedin social link" />
-            </a>
-          </div>
-        </section>
-      </footer>
+        <footer className={styles.footer}>
+          <section>
+            <div className={styles.heading}>Location</div>
+            <div className={styles.address}>
+              <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
+              <div>SW4 7fj</div>
+            </div>
+          </section>
+          <section>
+            <div className={styles.heading}>Find us on</div>
+            <div className={styles.socials}>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src="/linkedin.svg" alt="linkedin social link" />
+              </a>
+            </div>
+          </section>
+        </footer>
+      </div>
     </Container>
-  </nav>
-)
+  )
+}
 
 export default SideMenu

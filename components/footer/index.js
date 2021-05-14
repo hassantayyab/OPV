@@ -28,8 +28,6 @@ const Footer = ({ children }) => (
             <Link href="/privacy-policy">
               <a>Privacy Policy</a>
             </Link>
-            <Link href="/terms-and-conditions">Ts & Cs</Link>
-            <Link href="/privacy-policy">Privacy Policy</Link>
           </div>
         </div>
         <div className={styles.dBtn}>

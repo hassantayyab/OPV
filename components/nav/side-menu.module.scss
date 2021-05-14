@@ -1,21 +1,13 @@
-.sideMenu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 100%;
-	overflow-x: hidden;
-	background-color: $primary;
-	color: $light;
-	z-index: 2;
-
+.wrapper {
 	display: flex;
-	flex-flow: column;
+	flex-direction: column;
+	height: 100vh;
 
 	.header {
 		padding-top: 1rem;
 		display: flex;
 		justify-content: space-between;
+		flex: 0 1 auto;
 
 		.title {
 			display: flex;
@@ -66,8 +58,9 @@
 	.menus {
 		display: flex;
 		flex-flow: column;
-		justify-content: center;
-		padding-top: 50%;
+		justify-content: flex-end;
+		flex: 1 1 auto;
+		padding-bottom: 2rem;
 
 		div {
 			display: inline-block;
@@ -81,7 +74,6 @@
 			&,
 			a {
 				color: $light;
-				@include transition();
 			}
 
 			&:not(:last-child) {
@@ -103,12 +95,9 @@
 	}
 
 	.footer {
+		flex: 0 1 auto;
 		padding: 4rem 0;
 		display: flex;
-		position: absolute;
-		left: 8%;
-		right: 8%;
-		bottom: 0;
 
 		section {
 			&:first-child {
@@ -136,6 +125,7 @@
 			img {
 				display: inline-block;
 				width: 1.5rem;
+				margin-top: 0.25rem;
 
 				&:first-child {
 					margin-right: 1rem;

@@ -27,7 +27,15 @@ const Nav = ({ theme = 'light' }) => {
         <Container>
           <nav className={`${styles.nav} ${getThemeClass()}`}>
             <Link href="/">
-              <div className={`${styles.title} ${getThemeClass()}`}>
+              <div
+                role="button"
+                tabIndex="0"
+                className={`${styles.title} ${getThemeClass()} ${
+                  open ? styles.active : styles.inActive
+                }`}
+                onClick={() => setOpen(false)}
+                onKeyPress={() => setOpen(false)}
+              >
                 <img src="/logo.svg" alt="logo" />
                 <span>{websiteName}</span>
               </div>
@@ -41,17 +49,23 @@ const Nav = ({ theme = 'light' }) => {
               role="button"
               tabIndex="0"
               className={styles.toggler}
-              onClick={() => setOpen(true)}
-              onKeyDown={() => setOpen(true)}
-              onKeyPress={() => setOpen(true)}
+              onClick={() => setOpen(!open)}
+              onKeyDown={() => setOpen(!open)}
+              onKeyPress={() => setOpen(!open)}
             >
-              <Hamburger color={theme} />
+              <Hamburger open={open} color={theme} />
             </div>
           </nav>
           <div className={`${styles.separator} ${getThemeClass()}`} />
         </Container>
       </div>
-      {open && <SideMenu open={open} openChange={() => setOpen(false)} />}
+      <div
+        className={`${styles.sideMenu} ${
+          open ? styles.active : styles.inActive
+        }`}
+      >
+        <SideMenu open={open} openChange={() => setOpen(false)} />
+      </div>
     </nav>
   )
 }

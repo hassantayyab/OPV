@@ -16,7 +16,7 @@
 
 .nav {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
@@ -29,11 +29,13 @@
 
 		img {
 			width: 2.5rem;
+			@include transition(all, 0.5s);
 		}
 
 		span {
 			margin-left: 1.25rem;
 			color: $dark-900;
+			@include transition(all, 0.5s);
 
 			@include device(sm) {
 				margin-left: 0.5rem;
@@ -44,6 +46,7 @@
 			}
 		}
 
+		&.active,
 		&.dark,
 		&.extraDark {
 			img {
@@ -138,5 +141,33 @@
 	@include device(sm) {
 		display: inline-block;
 		margin-bottom: 1rem;
+	}
+}
+
+.sideMenu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	width: 100%;
+	overflow-x: hidden;
+	background-color: $primary;
+	color: $light;
+	z-index: 1;
+
+	@include transition(transform, 0.5s);
+
+	&.active {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	&.inActive {
+		transform: translateX(100%);
+	}
+
+	section {
+		display: flex;
+		flex-flow: column;
 	}
 }
