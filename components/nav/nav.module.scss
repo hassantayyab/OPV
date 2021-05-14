@@ -1,6 +1,6 @@
 .wrapper {
 	min-height: 4.615rem;
-	height: 10vh;
+	// height: 10vh;
 	overflow: hidden;
 
 	&.dark {
@@ -20,6 +20,8 @@
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
+	--indicator-left: 0;
+	--indicator-width: 0;
 
 	.title {
 		display: flex;
@@ -60,6 +62,16 @@
 
 	.menus {
 		margin-bottom: 0.9rem;
+
+		.indicator {
+			position: absolute;
+			left: var(--indicator-left);
+			bottom: -16px;
+			width: var(--indicator-width);
+			height: 1px;
+			background-color: $dark-900;
+			transition: 0.5s 0.05s;
+		}
 
 		div {
 			display: inline;
@@ -109,6 +121,10 @@
 				&.active {
 					border-bottom: 1px solid $light;
 				}
+			}
+
+			.indicator {
+				background-color: $light;
 			}
 		}
 
