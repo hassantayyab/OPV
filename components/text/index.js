@@ -3,7 +3,7 @@ import styles from './text.module.scss'
 
 const Text = ({ children }) => (
   <div className={styles.text}>
-    <Container>{children}</Container>
+    <Container small>{children}</Container>
   </div>
 )
 

@@ -1,11 +1,23 @@
 .container {
-	padding: 0 4rem;
-	margin: 0 auto;
-	max-width: $limit;
-	width: 100%;
-	height: 100%;
+  padding: 0 4rem;
+  margin: 0 auto;
+  max-width: $limit;
+  width: 100%;
+  height: 100%;
 
-	@include device(md) {
-		padding: 0 1.25rem;
-	}
+  @include device(md) {
+    padding: 0 1.25rem;
+  }
+}
+
+.containerSmall {
+  padding: 0 4rem;
+  margin: 0 auto;
+  max-width: $limit-small;
+  width: 100%;
+  height: 100%;
+
+  @include device(md) {
+    padding: 0 1.25rem;
+  }
 }

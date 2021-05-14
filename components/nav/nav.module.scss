@@ -171,15 +171,14 @@
 	color: $light;
 	z-index: 1;
 
-	@include transition(transform, 0.5s);
+	@include transition(opacity, 0.3s);
 
 	&.active {
 		opacity: 1;
-		transform: translateX(0);
 	}
 
 	&.inActive {
-		transform: translateX(100%);
+		opacity: 0;
 	}
 
 	section {

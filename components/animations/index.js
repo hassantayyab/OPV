@@ -75,7 +75,6 @@ export const slideLeftFadeIn = (elements, opts) => {
       duration: 0.5,
       opacity: 1,
       x: 0,
-      ease: 'easInOut',
       ...opts,
     }
   )
@@ -90,7 +89,6 @@ export const fadeIn = (elements, opts) => {
     {
       duration: 0.5,
       opacity: 1,
-      ease: 'easInOut',
       ...opts,
     }
   )
@@ -105,7 +103,6 @@ export const fadeOut = (elements, opts) => {
     {
       duration: 0.5,
       opacity: 0,
-      ease: 'easInOut',
       ...opts,
     }
   )

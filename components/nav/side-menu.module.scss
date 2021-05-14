@@ -1,136 +1,136 @@
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
-	.header {
-		padding-top: 1rem;
-		display: flex;
-		justify-content: space-between;
-		flex: 0 1 auto;
+  .header {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 1 auto;
 
-		.title {
-			display: flex;
-			align-items: center;
-			cursor: pointer;
+    .title {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
 
-			img {
-				width: 2.5rem;
-				filter: invert(1);
-			}
+      img {
+        width: 2.5rem;
+        filter: invert(1);
+      }
 
-			span {
-				margin-left: 1.25rem;
-				color: $light;
+      span {
+        margin-left: 1.25rem;
+        color: $light;
 
-				@include device(sm) {
-					margin-left: 0.5rem;
-				}
+        @include device(sm) {
+          margin-left: 0.5rem;
+        }
 
-				@include device(xs) {
-					display: none;
-				}
-			}
-		}
-	}
+        @include device(xs) {
+          display: none;
+        }
+      }
+    }
+  }
 
-	.closeBtn {
-		position: absolute;
-		top: 1.575rem;
-		right: 1.65rem;
-		z-index: 4;
-		background-color: transparent;
-		border: none;
-		margin-left: auto;
-		cursor: pointer;
-		@include transition();
+  .closeBtn {
+    position: absolute;
+    top: 1.575rem;
+    right: 1.65rem;
+    z-index: 4;
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    @include transition();
 
-		&:hover,
-		&:focus {
-			filter: brightness(70%);
-		}
+    &:hover,
+    &:focus {
+      filter: brightness(70%);
+    }
 
-		img {
-			width: 1.75rem;
-		}
-	}
+    img {
+      width: 1.75rem;
+    }
+  }
 
-	.menus {
-		display: flex;
-		flex-flow: column;
-		justify-content: flex-end;
-		flex: 1 1 auto;
-		padding-bottom: 2rem;
+  .menus {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    padding-bottom: 2rem;
 
-		div {
-			display: inline-block;
-			max-width: max-content;
-			font-weight: lighter;
-			font-size: 2rem;
-			color: $light;
-			padding-bottom: 0.5rem;
-			cursor: pointer;
+    div {
+      display: inline-block;
+      max-width: max-content;
+      font-weight: lighter;
+      font-size: 2rem;
+      color: $light;
+      padding-bottom: 0.5rem;
+      cursor: pointer;
 
-			&,
-			a {
-				color: $light;
-			}
+      &,
+      a {
+        color: $light;
+      }
 
-			&:not(:last-child) {
-				margin-bottom: 1rem;
-			}
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
 
-			&:hover,
-			&:focus {
-				&,
-				a {
-					color: $dark-450;
-				}
-			}
+      &:hover,
+      &:focus {
+        &,
+        a {
+          color: $dark-450;
+        }
+      }
 
-			&.active {
-				border-bottom: 1px solid $light;
-			}
-		}
-	}
+      &.active {
+        border-bottom: 1px solid $light;
+      }
+    }
+  }
 
-	.footer {
-		flex: 0 1 auto;
-		padding: 4rem 0;
-		display: flex;
+  .footer {
+    flex: 0 1 auto;
+    padding: 4rem 0;
+    display: flex;
 
-		section {
-			&:first-child {
-				width: 55%;
-				margin-right: 2.5rem;
-			}
-		}
+    section {
+      &:first-child {
+        width: 55%;
+        margin-right: 2.5rem;
+      }
+    }
 
-		.heading {
-			margin-bottom: 1rem;
-			font-weight: lighter;
-			color: $secondary;
-		}
+    .heading {
+      margin-bottom: 1rem;
+      font-weight: lighter;
+      color: $secondary;
+    }
 
-		.address {
-			font-weight: lighter;
-			line-height: 1.6;
-			margin-bottom: 2rem;
-		}
+    .address {
+      font-weight: lighter;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
 
-		.socials {
-			display: flex;
-			align-items: center;
+    .socials {
+      display: flex;
+      align-items: center;
 
-			img {
-				display: inline-block;
-				width: 1.5rem;
-				margin-top: 0.25rem;
+      img {
+        display: inline-block;
+        width: 1.5rem;
+        margin-top: 0.25rem;
 
-				&:first-child {
-					margin-right: 1rem;
-				}
-			}
-		}
-	}
+        &:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
 }
