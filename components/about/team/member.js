@@ -4,12 +4,23 @@ import styles from './member.module.scss'
 
 const Member = ({ data }) => {
   const [expanded, setexpanded] = useState(false)
-
+  const [height, setHeight] = useState({
+    maxHeight: '8.4rem',
+  })
+  const textRef = useRef(null)
   const els = useRef([])
 
   useEffect(() => {
     staggerLines(els.current, { yPercent: 0, y: 20 })
   }, [])
+
+  useEffect(() => {
+    if (!expanded) {
+      setHeight('8.4rem')
+    } else {
+      setHeight(`${textRef.current.scrollHeight}px`)
+    }
+  }, [expanded])
 
   return (
     <div id={styles.member}>
@@ -19,9 +30,9 @@ const Member = ({ data }) => {
         </div>
         <div className={styles.description} ref={(e) => (els.current[1] = e)}>
           <h4>{data.name}</h4>
-          <p className={`${expanded ? '' : styles.expanded}`}>
-            {data.description}
-          </p>
+          <div ref={textRef} id="expandable" style={{ maxHeight: `${height}` }}>
+            <div dangerouslySetInnerHTML={{ __html: data.description }} />
+          </div>
           <div className={styles.actions}>
             <button type="button" onClick={() => setexpanded(!expanded)}>
               <img

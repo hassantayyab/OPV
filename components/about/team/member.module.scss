@@ -29,17 +29,12 @@
 				color: $dark-900;
 			}
 
-			p {
+			div {
 				font-weight: lighter;
 				line-height: 1.5;
 				color: $dark-500;
-
-				&.expanded {
-					display: -webkit-box;
-					-webkit-line-clamp: 6;
-					-webkit-box-orient: vertical;
-					overflow: hidden;
-				}
+				overflow: hidden;
+				@include transition(all, 0.5s);
 			}
 
 			.actions {

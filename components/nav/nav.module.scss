@@ -46,7 +46,6 @@
 			}
 		}
 
-		&.active,
 		&.dark,
 		&.extraDark {
 			img {
@@ -115,6 +114,23 @@
 
 		@include device(sm) {
 			display: none;
+		}
+	}
+
+	&.active {
+		position: fixed;
+		padding: 0 1.25rem;
+		left: 0;
+		width: 100%;
+
+		.title {
+			img {
+				filter: invert(1);
+			}
+
+			span {
+				color: $light;
+			}
 		}
 	}
 }

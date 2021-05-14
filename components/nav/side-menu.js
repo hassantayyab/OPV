@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { LatheGeometry } from 'three'
 import styles from './side-menu.module.scss'
 import Menus from './menus'
 import Container from '../container'
@@ -23,7 +22,7 @@ const SideMenu = ({ open, openChange }) => {
       <div className={styles.wrapper}>
         <div className={styles.header} />
         <div className={styles.menus} ref={(e) => (menuRef = e)}>
-          <Menus styles={styles.menus} openChange={openChange} />
+          <Menus styles={styles} openChange={openChange} />
         </div>
 
         <footer className={styles.footer} ref={(e) => (footerRef = e)}>

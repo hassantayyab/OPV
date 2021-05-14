@@ -164,6 +164,9 @@ const Contact = () => {
                           {submit.message}
                         </small>
                       )}
+                      <small className={styles.success}>
+                        Thank you for getting in touch!
+                      </small>
                     </section>
                   </Form>
                 )}

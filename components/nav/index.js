@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Container from '../container'
 import styles from './nav.module.scss'
 import Hamburger from '../utils/hamburger'
@@ -21,18 +21,28 @@ const Nav = ({ theme = 'light' }) => {
     return ''
   }
 
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add('fixed-position')
+    } else {
+      document.body.classList.remove('fixed-position')
+    }
+  }, [open])
+
   return (
     <nav>
       <div className={`${styles.wrapper} ${getThemeClass()}`}>
         <Container>
-          <nav className={`${styles.nav} ${getThemeClass()}`}>
+          <nav
+            className={`${styles.nav} ${getThemeClass()} ${
+              open ? styles.active : styles.inActive
+            }`}
+          >
             <Link href="/">
               <div
                 role="button"
                 tabIndex="0"
-                className={`${styles.title} ${getThemeClass()} ${
-                  open ? styles.active : styles.inActive
-                }`}
+                className={`${styles.title} ${getThemeClass()}`}
                 onClick={() => setOpen(false)}
                 onKeyPress={() => setOpen(false)}
               >
