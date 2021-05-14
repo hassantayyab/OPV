@@ -187,13 +187,15 @@
 	color: $light;
 	z-index: 1;
 
-	@include transition(opacity, 0.3s);
+	@include transition(all, 0.3s);
 
 	&.active {
+		visibility: visible;
 		opacity: 1;
 	}
 
 	&.inActive {
+		visibility: hidden;
 		opacity: 0;
 	}
 

@@ -57,7 +57,10 @@ function MyApp({ Component, pageProps, router }) {
       firstRender.current = false
     }
 
-    return () => tl.kill()
+    return () => {
+      tl.kill()
+      ScrollTrigger.getAll().forEach((t) => t.kill())
+    }
   }, [router.route])
 
   return (
