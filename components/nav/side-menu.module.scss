@@ -56,7 +56,6 @@
 	}
 
 	.menus {
-		min-height: 30rem;
 		display: flex;
 		flex-flow: column;
 		justify-content: flex-end;
@@ -91,6 +90,16 @@
 
 			&.active {
 				border-bottom: 1px solid $light;
+			}
+		}
+
+		@media (max-width: 321px) {
+			padding-bottom: 0;
+
+			> div {
+				&:not(:last-child) {
+					margin-bottom: 0.75rem;
+				}
 			}
 		}
 	}
@@ -131,6 +140,14 @@
 				&:first-child {
 					margin-right: 1rem;
 				}
+			}
+		}
+
+		@media (max-width: 321px) {
+			padding: 1rem 0;
+
+			.heading {
+				margin-bottom: 0.5rem;
 			}
 		}
 	}
