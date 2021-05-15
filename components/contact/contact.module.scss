@@ -1,227 +1,254 @@
 .contact {
-  background-color: $dark-700;
-  color: $light;
-  min-height: 40rem;
-  height: 90vh;
-  padding: 4rem 0;
-  overflow: hidden;
+	background-color: $primary;
+	color: $light;
+	min-height: 40rem;
+	height: 100%;
 
-  .wrapper {
-    height: 100%;
-    h4 {
-      font-size: 3.625rem;
-    }
+	.wrapper {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 
-    .row {
-      display: flex;
+		h4 {
+			font-size: 3.625rem;
+		}
 
-      .leftSec {
-        flex-basis: 60%;
+		.row {
+			display: flex;
 
-        .input {
-          position: relative;
-          font-weight: lighter;
-          color: $secondary;
-        }
+			.leftSec {
+				flex-basis: 60%;
 
-        input,
-        textarea {
-          background: transparent;
-          font-weight: lighter;
-          caret-color: $light;
-          color: $light;
-          @include transition();
+				.input {
+					position: relative;
+					font-weight: lighter;
+					color: $secondary;
+				}
 
-          &:focus {
-            border-color: $dark-450;
-          }
-        }
+				input,
+				textarea {
+					background: transparent;
+					font-weight: lighter;
+					caret-color: $light;
+					color: $light;
+					@include transition();
 
-        input {
-          border: none;
-          border-bottom: 1px solid $light;
-        }
+					&:focus {
+						border-color: $dark-450;
+					}
+				}
 
-        .selection {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          margin-top: 2.75rem;
-          margin-bottom: 2.5rem;
+				input {
+					border: none;
+					border-bottom: 1px solid $light;
+				}
 
-          span {
-            margin-right: 2rem;
-            font-weight: lighter;
-            color: $secondary;
-            cursor: pointer;
-          }
+				.selection {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					margin-top: 2.75rem;
+					margin-bottom: 2.5rem;
 
-          .input {
-            display: inline;
-            font-size: 1.25rem;
-            margin-right: 1.25rem;
-            @include transition();
+					span {
+						margin-right: 2rem;
+						font-weight: lighter;
+						color: $secondary;
+						cursor: pointer;
+					}
 
-            &:not(.active) {
-              opacity: 0.6;
-            }
+					.input {
+						display: inline;
+						font-size: 1.25rem;
+						margin-right: 1.25rem;
+						@include transition();
 
-            &:hover {
-              color: $secondary;
-            }
+						&:not(.active) {
+							opacity: 0.6;
+						}
 
-            &.active {
-              color: $light;
-            }
+						&:hover {
+							color: $secondary;
+						}
 
-            label {
-              cursor: pointer;
-            }
+						&.active {
+							color: $light;
+						}
 
-            @include device(sm) {
-              margin-right: 0.5rem;
-              margin-bottom: 0.5rem;
-            }
-          }
+						label {
+							cursor: pointer;
+						}
 
-          input {
-            visibility: hidden;
-          }
+						@include device(sm) {
+							margin-right: 0.5rem;
+							margin-bottom: 0.5rem;
+						}
+					}
 
-          @include device(md) {
-            margin-bottom: 2.5rem;
+					input {
+						visibility: hidden;
+					}
 
-            span {
-              margin-right: 0;
-              margin-bottom: 1.25rem;
-              width: 100%;
-            }
-          }
-        }
+					@include device(md) {
+						margin-bottom: 2.5rem;
 
-        .firstRow {
-          display: flex;
-          justify-content: space-between;
+						span {
+							margin-right: 0;
+							margin-bottom: 1.25rem;
+							width: 100%;
+						}
+					}
+				}
 
-          .input {
-            flex-basis: 47%;
-          }
+				.firstRow {
+					display: flex;
+					justify-content: space-between;
 
-          input {
-            width: 100%;
+					.input {
+						flex-basis: 47%;
+					}
 
-            &::placeholder {
-              color: $secondary;
-            }
-          }
+					input {
+						width: 100%;
 
-          @include device(sm) {
-            flex-direction: column;
+						&::placeholder {
+							color: $secondary;
+						}
+					}
 
-            .input {
-              flex-basis: 100%;
+					@include device(sm) {
+						flex-direction: column;
 
-              &:first-child {
-                margin-bottom: 3.5rem;
-              }
-            }
-          }
-        }
+						.input {
+							flex-basis: 100%;
 
-        .secRow {
-          margin: 2.5rem 0;
+							&:first-child {
+								margin-bottom: 3.5rem;
+							}
+						}
+					}
+				}
 
-          textarea {
-            border: 1px solid $light;
-            margin-top: 1rem;
-            padding: 0.5rem;
-            width: 100%;
-          }
+				.secRow {
+					margin: 2.5rem 0;
 
-          @include device(sm) {
-            margin: 3.5rem 0;
-          }
-        }
+					textarea {
+						border: 1px solid $light;
+						margin-top: 1rem;
+						padding: 0.5rem;
+						width: 100%;
+					}
 
-        button {
-          padding: 0.75rem 2rem;
-          background-color: transparent;
-          color: $light;
-          border: 1px solid $light;
-          border-radius: 6rem;
-          cursor: pointer;
-          font-size: 1.2rem;
-          font-weight: lighter;
-          @include transition();
+					@include device(sm) {
+						margin: 3.5rem 0;
+					}
+				}
 
-          &:hover,
-          &:focus {
-            border-color: $dark-450;
-            color: $dark-450;
-          }
-        }
+				section {
+					position: relative;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					align-items: center;
 
-        @include device(md) {
-          flex-basis: 65%;
-        }
+					button {
+						padding: 0.75rem 2rem;
+						background-color: transparent;
+						color: $light;
+						border: 1px solid $light;
+						border-radius: 6rem;
+						cursor: pointer;
+						font-size: 1.2rem;
+						font-weight: lighter;
+						@include transition();
 
-        @include device(sm) {
-          flex-basis: 100%;
-        }
-      }
+						&:hover,
+						&:focus {
+							border-color: $dark-450;
+							color: $dark-450;
+						}
+					}
 
-      .rightSec {
-        flex-basis: 20%;
-        margin-left: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+					small {
+						position: absolute;
+						right: 0;
+						display: inline-block;
+						font-size: 1rem;
+						font-weight: lighter;
+					}
 
-        > span {
-          margin-bottom: 1rem;
-          font-weight: lighter;
-          color: $secondary;
-        }
+					@include device(sm) {
+						flex-direction: column;
+						align-items: flex-start;
 
-        .address {
-          font-weight: lighter;
-          line-height: 1.6;
-          margin-bottom: 2rem;
-        }
+						small {
+							left: 0;
+							bottom: -2.25rem;
+						}
+					}
+				}
 
-        .socials {
-          display: flex;
-          align-items: center;
+				@include device(md) {
+					flex-basis: 65%;
+				}
 
-          img {
-            display: inline-block;
-            width: 1.5rem;
+				@include device(sm) {
+					flex-basis: 100%;
+				}
+			}
 
-            &:first-child {
-              margin-right: 1rem;
-            }
-          }
-        }
+			.rightSec {
+				flex-basis: 20%;
+				margin-left: auto;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 
-        @include device(lg) {
-          flex-basis: 25%;
-        }
+				> span {
+					margin-bottom: 1rem;
+					font-weight: lighter;
+					color: $secondary;
+				}
 
-        @include device(sm) {
-          display: none;
-        }
-      }
-    }
-  }
+				.address {
+					font-weight: lighter;
+					line-height: 1.6;
+					margin-bottom: 2rem;
+				}
 
-  @include device(sm) {
-    height: unset;
-    min-height: 90vh;
+				.socials {
+					display: flex;
+					align-items: center;
 
-    .wrapper {
-      h4 {
-        font-size: 3rem;
-      }
-    }
-  }
+					img {
+						display: inline-block;
+						width: 1.5rem;
+
+						&:first-child {
+							margin-right: 1rem;
+						}
+					}
+				}
+
+				@include device(lg) {
+					flex-basis: 25%;
+				}
+
+				@include device(sm) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include device(sm) {
+		.wrapper {
+			padding: 4rem 0;
+
+			h4 {
+				font-size: 3rem;
+			}
+		}
+	}
 }

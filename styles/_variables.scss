@@ -1,15 +1,21 @@
 // Colors
 $primary: #2c3234;
-$secondary: #c5c5c5;
+$secondary: rgba(255, 255, 255, 0.6);
 $light: #ffffff;
-$dark-400: #ffffffb3;
-$dark-450: #818e92;
+$dark-300: #898989;
+$dark-400: rgba(255, 255, 255, 0.5);
+$dark-450: rgba(255, 255, 255, 0.7);
+$dark-475: #818e92;
 $dark-500: #555e62;
+$dark-550: #4b4b4b;
 $dark-600: #424a4d;
 $dark: #353f42;
 $dark-700: #2c3234;
-$dark-800: #414141;
+$dark-800: #1d1d1d;
+$dark-850: rgb(0, 0, 0, 0.5);
 $dark-900: #000000;
+$error: #ff3f54;
 
 // Widths
 $limit: 90rem;
+$limit-small: 60rem;

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import Head from 'next/head'
 import Header from '../components/about/header'
 import Main from '../components/about/team'
 import Profiles from '../components/about/profiles'
@@ -19,6 +20,9 @@ const About = () => {
 
   return (
     <>
+      <Head>
+        <title>About Us</title>
+      </Head>
       <Nav theme="dark" />
       <Header />
       <Profiles />

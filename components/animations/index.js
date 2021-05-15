@@ -1,4 +1,5 @@
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 
 const DELAY = 0.5
 
@@ -64,28 +65,48 @@ export const rotating = (elements, opts) => {
   })
 }
 
-// NOT USED
-export const fadeIn = (elements, opts) => {
-  gsap.from(elements, {
-    duration: 1.2,
-    opacity: 0,
-    ease: 'easInOut',
-    ...opts,
-  })
+export const slideLeftFadeIn = (elements, opts) => {
+  gsap.fromTo(
+    elements,
+    {
+      opacity: 0,
+      x: 50,
+    },
+    {
+      duration: 0.5,
+      opacity: 1,
+      x: 0,
+      ...opts,
+    }
+  )
 }
 
-// NOT USED
-export const slideUp = (element, opts) => {
-  const animate = () =>
-    gsap.from(element, {
-      scrollTrigger: { trigger: element },
-      duration: 1.2,
-      y: 50,
+export const fadeIn = (elements, opts) => {
+  gsap.fromTo(
+    elements,
+    {
       opacity: 0,
-      ease: 'power4.inOut',
+    },
+    {
+      duration: 0.5,
+      opacity: 1,
       ...opts,
-    })
-  gsap.delayedCall(DELAY, animate)
+    }
+  )
+}
+
+export const fadeOut = (elements, opts) => {
+  gsap.fromTo(
+    elements,
+    {
+      opacity: 1,
+    },
+    {
+      duration: 0.5,
+      opacity: 0,
+      ...opts,
+    }
+  )
 }
 
 export const zoomIn = (element, opts) => {
@@ -99,17 +120,19 @@ export const zoomIn = (element, opts) => {
 }
 
 export const staggerLines = (elements, opts) => {
-  gsap.from(elements, {
-    scrollTrigger: {
-      trigger: elements.length
-        ? elements[0].parentElement
-        : elements.parentElement,
-    },
-    duration: 0.7,
-    yPercent: 100,
-    opacity: 0,
-    ease: 'power2',
-    stagger: 0.1,
-    ...opts,
+  gsap.set(elements, { yPercent: 100, opacity: 0, ...opts })
+
+  ScrollTrigger.batch(elements, {
+    interval: 0.1, // time window (in seconds) for batching to occur.
+    onEnter: (batch) =>
+      gsap.to(batch, {
+        duration: 0.7,
+        y: 0,
+        yPercent: 0,
+        opacity: 1,
+        ease: 'power2',
+        stagger: 0.1,
+        overwrite: true,
+      }),
   })
 }

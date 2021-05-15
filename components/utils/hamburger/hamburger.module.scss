@@ -1,23 +1,90 @@
 .hamburger {
-	div {
-		width: 2.75rem;
+	position: relative;
+	z-index: 1;
+	width: 2.125rem;
+	height: 1.75rem;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	-webkit-transition: 0.5s ease-in-out;
+	-moz-transition: 0.5s ease-in-out;
+	-o-transition: 0.5s ease-in-out;
+	transition: 0.5s ease-in-out;
+	cursor: pointer;
+
+	span {
+		position: absolute;
+		left: 0;
+		display: block;
+		width: 100%;
 		height: 1px;
 		background-color: $dark-900;
-		margin: 0.55rem 0;
-		@include transition();
+		opacity: 1;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: 0.25s ease-in-out;
+		-moz-transition: 0.25s ease-in-out;
+		-o-transition: 0.25s ease-in-out;
+		transition: 0.25s ease-in-out;
+
+		&.open {
+			background-color: $light;
+		}
+
+		&:nth-child(1) {
+			top: 0;
+			-webkit-transform-origin: left center;
+			-moz-transform-origin: left center;
+			-o-transform-origin: left center;
+			transform-origin: left center;
+		}
+
+		&:nth-child(2) {
+			top: 0.625rem;
+			-webkit-transform-origin: left center;
+			-moz-transform-origin: left center;
+			-o-transform-origin: left center;
+			transform-origin: left center;
+		}
+
+		&:nth-child(3) {
+			top: 1.25rem;
+			-webkit-transform-origin: left center;
+			-moz-transform-origin: left center;
+			-o-transform-origin: left center;
+			transform-origin: left center;
+		}
+		&.open:nth-child(1) {
+			-webkit-transform: rotate(45deg);
+			-moz-transform: rotate(45deg);
+			-o-transform: rotate(45deg);
+			transform: rotate(45deg);
+			top: -0.125rem;
+			left: 0.3125rem;
+		}
+
+		&.open:nth-child(2) {
+			width: 0%;
+			opacity: 0;
+		}
+
+		&.open:nth-child(3) {
+			-webkit-transform: rotate(-45deg);
+			-moz-transform: rotate(-45deg);
+			-o-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			top: 1.375rem;
+			left: 0.3125rem;
+		}
 	}
 
 	&.dark,
 	&.extraDark {
-		div {
+		span {
 			background-color: $light;
-		}
-	}
-
-	&:hover,
-	&:focus {
-		div {
-			background-color: $dark-450;
 		}
 	}
 }

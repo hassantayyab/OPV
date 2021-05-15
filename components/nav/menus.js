@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect, useRef } from 'react'
+import { staggerLines } from '../animations'
 
 export const menus = [
+  {
+    link: '/',
+    title: 'Home',
+  },
   {
     link: '/about',
     title: 'About',
@@ -16,21 +22,37 @@ export const menus = [
   },
 ]
 
-const Menus = ({ styles, openChange }) => {
+const Menus = ({ styles, openChange, open, linkClick }) => {
   const router = useRouter()
+
+  const linksRef = useRef([])
+  useEffect(() => {
+    if (open) {
+      staggerLines(linksRef.current)
+    }
+  }, [open])
 
   return (
     <>
       {menus.map((m, i) => (
         <div
+          key={i}
           role="button"
           tabIndex="0"
-          key={i}
-          className={`${router.pathname === m.link ? styles.active : ''}`}
+          id={`${router.pathname === m.link ? 'active' : ''}`}
+          className={`${router.pathname === m.link ? styles.active : ''} aLine`}
           onClick={openChange}
           onKeyPress={openChange}
         >
-          <Link href={m.link}>{m.title}</Link>
+          <div
+            role="button"
+            tabIndex="0"
+            ref={(e) => (linksRef.current[i] = e)}
+            onClick={(e) => linkClick && linkClick(e)}
+            onKeyPress={(e) => linkClick && linkClick(e)}
+          >
+            <Link href={m.link}>{m.title}</Link>
+          </div>
         </div>
       ))}
     </>

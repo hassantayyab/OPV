@@ -47,6 +47,7 @@ function MyApp({ Component, pageProps, router }) {
         scaleX: 0,
         transformOrigin: '100% 0',
         ease: 'slow',
+        delay: 0.1,
       })
     }
 
@@ -56,7 +57,10 @@ function MyApp({ Component, pageProps, router }) {
       firstRender.current = false
     }
 
-    return () => tl.kill()
+    return () => {
+      tl.kill()
+      ScrollTrigger.getAll().forEach((t) => t.kill())
+    }
   }, [router.route])
 
   return (

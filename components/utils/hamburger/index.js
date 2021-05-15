@@ -1,6 +1,6 @@
 import styles from './hamburger.module.scss'
 
-const Hamburger = ({ color = 'light' }) => {
+const Hamburger = ({ open, color = 'light' }) => {
   const getColorClass = () => {
     if (color === 'dark') {
       return styles.dark
@@ -13,10 +13,10 @@ const Hamburger = ({ color = 'light' }) => {
   }
 
   return (
-    <div className={`${styles.hamburger} ${getColorClass()}`}>
-      <div />
-      <div />
-      <div />
+    <div className={`${styles.hamburger}  ${getColorClass()}`}>
+      <span className={`${open ? styles.open : ''}`} />
+      <span className={`${open ? styles.open : ''}`} />
+      <span className={`${open ? styles.open : ''}`} />
     </div>
   )
 }

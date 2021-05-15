@@ -38,10 +38,10 @@
 			}
 
 			.separator {
-				height: 1px;
+				height: 0.0625rem;
 				background: linear-gradient(
 					90deg,
-					rgba(197, 197, 197, 1) 13%,
+					rgba(197, 197, 197, 0.1) 0%,
 					rgba(197, 197, 197, 1) 100%
 				);
 				margin: 1rem 0;
@@ -55,11 +55,12 @@
 
 				a {
 					font-size: 0.875rem;
+					color: $dark-450;
 					@include transition(color);
 
 					&:hover,
 					&:focus {
-						color: $dark-450;
+						color: $light;
 					}
 				}
 

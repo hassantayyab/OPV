@@ -1,7 +1,7 @@
 .hero {
 	min-height: 38rem;
-	height: 90vh;
 	overflow: hidden;
+	height: 100%;
 
 	h1 {
 		display: flex;
@@ -11,6 +11,7 @@
 		font-weight: lighter;
 		height: 100%;
 		line-height: 1.2;
+		color: $dark-800;
 
 		@include device(md) {
 			font-size: 6.5rem;
@@ -48,8 +49,6 @@
 	}
 
 	button {
-		position: relative;
-		z-index: 1;
 		display: block;
 		margin: auto;
 		border: none;

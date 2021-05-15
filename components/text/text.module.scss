@@ -1,0 +1,61 @@
+.text {
+	background-color: $primary;
+	color: $light;
+	min-height: 40rem;
+	padding: 4rem 0;
+	font-weight: lighter;
+
+	h1 {
+		font-size: 3.625rem;
+		margin-bottom: 3rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+		font-weight: normal;
+		margin-bottom: 1rem;
+		margin-top: 3rem;
+	}
+
+	h3 {
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+		margin-top: 1.25rem;
+		font-size: 1.25rem;
+	}
+
+	h4 {
+		font-size: 1.125rem;
+		font-weight: normal;
+	}
+
+	p {
+		line-height: 1.7;
+		margin-bottom: 1.25rem;
+	}
+
+	a {
+		text-decoration: underline;
+		color: $secondary;
+		@include transition();
+
+		&:hover,
+		&:focus {
+			color: $dark-450;
+		}
+	}
+
+	ul {
+		list-style: disc;
+
+		li {
+			margin-bottom: 0.75rem;
+		}
+	}
+
+	@include device(sm) {
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}

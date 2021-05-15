@@ -1,27 +1,52 @@
-import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import styles from './side-menu.module.scss'
 import Menus from './menus'
 import Container from '../container'
+import { fadeOut, fadeIn } from '../animations'
 
-const SideMenu = ({ open, openChange }) => (
-  <nav className={`${styles.sideMenu} ${open ? styles.active : ''}`}>
+const SideMenu = ({ open, openChange }) => {
+  const menuRef = useRef()
+
+  useEffect(() => {
+    if (open) {
+      fadeIn(menuRef.current, { delay: 0.3 })
+    } else {
+      fadeOut(menuRef.current)
+    }
+  }, [open])
+
+  return (
     <Container>
-      <div className={styles.header}>
-        <Link href="/">
-          <div className={styles.title}>
-            <img src="/logo.svg" alt="logo" />
-            <span>Open Process Ventures</span>
-          </div>
-        </Link>
-        <button type="button" className={styles.closeBtn} onClick={openChange}>
-          <img src="/cancel.svg" alt="click to close" />
-        </button>
-      </div>
-      <div className={styles.menus}>
-        <Menus styles={styles} openChange={openChange} />
+      <div className={styles.wrapper} ref={menuRef}>
+        <div className={styles.header} />
+        <div className={styles.menus}>
+          <Menus styles={styles} openChange={openChange} open={open} />
+        </div>
+
+        <footer className={styles.footer}>
+          <section>
+            <div className={styles.heading}>Location</div>
+            <div className={styles.address}>
+              <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
+              <div>SW4 7fj</div>
+            </div>
+          </section>
+          <section>
+            <div className={styles.heading}>Find us on</div>
+            <div className={styles.socials}>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src="/linkedin.svg" alt="linkedin social link" />
+              </a>
+            </div>
+          </section>
+        </footer>
       </div>
     </Container>
-  </nav>
-)
+  )
+}
 
 export default SideMenu

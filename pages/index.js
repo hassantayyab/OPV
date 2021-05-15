@@ -24,8 +24,11 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Nav />
-      <Hero scrollRef="#footer" />
+      <div className="fit-content-vetically">
+        <Nav />
+        <Hero scrollRef="#footer" />
+      </div>
+
       <div id="footer">
         <Footer>
           <div>

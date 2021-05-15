@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useProgress } from '@react-three/drei'
 // import { useRouter } from 'next/router'
 
-const ReadyContext = React.createContext()
+const ReadyContext = React.createContext({})
 
 function ReadyProvider({ children }) {
   const [isReady, setReady] = useState(false)
