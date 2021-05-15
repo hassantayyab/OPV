@@ -50,7 +50,7 @@ const Nav = ({ theme = 'light' }) => {
     const link = e.target.closest('a')
     if (link) {
       // Following needs to be uncommented/removed after deciding the suitable behavior
-      // updateDefaultInidcator(link)
+      updateDefaultInidcator(link)
     }
   }
 
@@ -89,6 +89,7 @@ const Nav = ({ theme = 'light' }) => {
         }
       }, 100)
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
