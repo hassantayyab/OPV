@@ -60,13 +60,14 @@
 	}
 
 	.menus {
+		position: relative;
 		margin-bottom: 0.9rem;
 
 		.indicator {
 			position: absolute;
 			left: var(--indicator-left);
-			bottom: -1rem;
 			width: var(--indicator-width);
+			bottom: -1.9rem;
 			height: 1px;
 			background-color: $dark-900;
 			transition: 0.5s 0.05s;
@@ -83,7 +84,7 @@
 				@include transition();
 			}
 
-			&:not(:last-child) {
+			&:not(:last-child):not(.indicator) {
 				margin-right: 1.5rem;
 			}
 

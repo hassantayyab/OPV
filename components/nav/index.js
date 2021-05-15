@@ -23,12 +23,15 @@ const Nav = ({ theme = 'light' }) => {
     const link = evt.target.closest('a')
 
     if (link) {
-      updateIndicator(link.offsetLeft, link.offsetWidth, navRef)
+      updateIndicator(
+        { left: link.offsetLeft, width: link.offsetWidth },
+        navRef
+      )
     }
   }
 
   const handleMouseLeave = () => {
-    resetIndicator(indicator.left, indicator.width, navRef)
+    resetIndicator(indicator, navRef)
   }
 
   const handleClick = (e) => {
@@ -61,7 +64,7 @@ const Nav = ({ theme = 'light' }) => {
 
     if (activeLinkOffsets) {
       setIndicator(activeLinkOffsets)
-      resetIndicator(activeLinkOffsets.left, activeLinkOffsets.width, navRef)
+      resetIndicator(activeLinkOffsets, navRef)
     }
   }, [open, activeLinkOffsets])
 
