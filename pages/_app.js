@@ -1,7 +1,5 @@
-import { useEffect, useRef } from 'react'
 import '../styles/main.scss'
 
-import { SwitchTransition, Transition } from 'react-transition-group'
 // GSAP global setup
 import dynamic from 'next/dynamic'
 import { gsap } from 'gsap'
@@ -10,7 +8,7 @@ import smoothscroll from 'smoothscroll-polyfill'
 
 import { ReadyProvider } from '../context'
 import Splash from '../components/utils/splash'
-import { FixTimeoutTransition } from '../components/utils/fixTimeoutTransition'
+import PageTransition from '../components/utils/pageTransition'
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(ScrollTrigger)
@@ -27,64 +25,16 @@ if (process.env.NODE_ENV === 'production') {
   LCanvas = require('../components/canvas').default
 }
 
-const TRANSITION_DURATION = 700
-
 function MyApp({ Component, pageProps, router }) {
-  const overlayRef = useRef()
-  const firstRender = useRef(true)
-
-  useEffect(() => {
-    // Run on route change only and not on refresh
-    const tl = gsap.timeline()
-    function animate() {
-      tl.to(overlayRef.current, {
-        duration: TRANSITION_DURATION / 1000,
-        scaleX: 1.0,
-        transformOrigin: '0 0',
-        ease: 'slow',
-      }).to(overlayRef.current, {
-        duration: TRANSITION_DURATION / 1000,
-        scaleX: 0,
-        transformOrigin: '100% 0',
-        ease: 'slow',
-        delay: 0.1,
-      })
-    }
-
-    if (!firstRender.current) {
-      animate()
-    } else {
-      firstRender.current = false
-    }
-
-    return () => {
-      tl.kill()
-      ScrollTrigger.getAll().forEach((t) => t.kill())
-    }
-  }, [router.route])
-
   return (
     <ReadyProvider>
-      <FixTimeoutTransition />
       <Splash />
       <div className={`canvas-wrapper ${router.route === '/' && 'visible'}`}>
         <LCanvas />
       </div>
-
-      <div className="transition-overlay" ref={overlayRef} />
-
-      <SwitchTransition>
-        <Transition
-          key={router.route}
-          timeout={TRANSITION_DURATION}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div>
-            <Component {...pageProps} />
-          </div>
-        </Transition>
-      </SwitchTransition>
+      <PageTransition router={router}>
+        <Component {...pageProps} />
+      </PageTransition>
     </ReadyProvider>
   )
 }

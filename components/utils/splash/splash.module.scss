@@ -33,3 +33,13 @@
 		filter: invert(1);
 	}
 }
+
+.progressBar {
+  position: absolute;
+  width: 0;
+  height: 0.1rem;
+  background-color: $light;
+  top: 0;
+  left: 0;
+  transition: width 1s;
+}
