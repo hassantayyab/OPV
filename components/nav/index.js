@@ -8,7 +8,6 @@ import Menus from './menus'
 import { resetIndicator, updateIndicator } from './helper-functions'
 
 const Nav = ({ theme = 'light' }) => {
-  const websiteName = 'Open Process Ventures'
   const [open, setOpen] = useState(false)
   const [activeLinkOffsets, setActiveLinkOffset] = useState({
     left: 0,
@@ -17,18 +16,20 @@ const Nav = ({ theme = 'light' }) => {
 
   const navRef = useRef()
 
-  const updateDefaultInidcator = (link) => {
-    setActiveLinkOffset({
-      left: link.offsetLeft,
-      width: link.offsetWidth,
-    })
-    resetIndicator(
-      {
+  const updateDefaultInidcator = (link, delay = 100) => {
+    setTimeout(() => {
+      setActiveLinkOffset({
         left: link.offsetLeft,
         width: link.offsetWidth,
-      },
-      navRef
-    )
+      })
+      resetIndicator(
+        {
+          left: link.offsetLeft,
+          width: link.offsetWidth,
+        },
+        navRef
+      )
+    }, delay)
   }
 
   const handleMouseOver = (evt) => {
@@ -49,7 +50,6 @@ const Nav = ({ theme = 'light' }) => {
   const handleClick = (e) => {
     const link = e.target.closest('a')
     if (link) {
-      // Following needs to be uncommented/removed after deciding the suitable behavior
       updateDefaultInidcator(link)
     }
   }
@@ -75,22 +75,31 @@ const Nav = ({ theme = 'light' }) => {
 
   useEffect(() => {
     if (navRef) {
-      // Used setTimeout of 100ms to fix small position issue. I am
-      // assuming this is probably due to small elements movement
-      // due to either transition or animation. Therefore, we need
-      // to wait for its completion before getting the values.
-      setTimeout(() => {
-        const activeLink = Array.from(
-          navRef.current.childNodes[1].childNodes
-        ).find((e) => e.id === 'active')?.childNodes[0].childNodes[0]
+      let activeLink = Array.from(navRef.current.childNodes[1].childNodes).find(
+        (e) => e.id === 'active'
+      )?.childNodes[0].childNodes[0]
+
+      if (activeLink) {
+        updateDefaultInidcator(activeLink)
+      }
+
+      // Update hover indicator on window resize
+      const handleResize = () => {
+        activeLink = Array.from(
+          navRef.current?.childNodes[1]?.childNodes
+        )?.find((e) => e.id === 'active')?.childNodes[0]?.childNodes[0]
 
         if (activeLink) {
-          updateDefaultInidcator(activeLink)
+          updateDefaultInidcator(activeLink, 400)
         }
-      }, 100)
-    }
+      }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
   }, [])
 
   return (
@@ -116,7 +125,7 @@ const Nav = ({ theme = 'light' }) => {
                 onKeyPress={() => setOpen(false)}
               >
                 <img src="/logo.svg" alt="logo" />
-                <span>{websiteName}</span>
+                <img src="/logo-text.svg" alt="logo" />
               </div>
             </Link>
 

@@ -18,7 +18,7 @@ const Splash = () => {
       <div className={styles.splash}>
         <div className={styles.progressBar} style={{ width: `${progress}%` }} />
         <img src="/logo.svg" alt="Splash loader" />
-        <h3>Open Process Ventures</h3>
+        <img src="/logo-text.svg" alt="logo" />
       </div>
     </CSSTransition>
   )
