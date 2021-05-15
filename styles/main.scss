@@ -1,64 +1,82 @@
-@import './normalize.scss';
-@import './typography.scss';
+@import "./normalize.scss";
+@import "./typography.scss";
 
 .canvas-wrapper {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity 0.5s, visibility 0.5s;
-	transition-delay: 0.5s;
-	&.visible {
-		opacity: 1;
-		visibility: visible;
-	}
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+  transition-delay: 0.5s;
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .aLine {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .transition-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background-color: $dark;
-	z-index: 9;
-	transform: scaleX(0);
-	transform-origin: 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $dark;
+  z-index: 9;
+  transform: scaleX(0);
+  transform-origin: 0 0;
 }
 
+// Animations
 .fade-enter {
-	opacity: 0;
+  opacity: 0;
 }
 .fade-enter-active {
-	opacity: 1;
-	transition: opacity 200ms;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 .fade-exit {
-	opacity: 1;
+  opacity: 1;
 }
 .fade-exit-active {
-	opacity: 0;
-	transition: opacity 200ms;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s;
+  transition-delay: 2s;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 2s;
 }
 
 .dg {
-	z-index: 10000 !important;
+  z-index: 10000 !important;
 }
 
 .fixed-position {
-	position: fixed;
+  position: fixed;
 }
 
 .fit-content-vetically {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	min-height: 46rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 46rem;
 }
