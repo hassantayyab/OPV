@@ -11,6 +11,7 @@
 		font-weight: lighter;
 		height: 100%;
 		line-height: 1.2;
+		color: $dark-800;
 
 		@include device(md) {
 			font-size: 6.5rem;
