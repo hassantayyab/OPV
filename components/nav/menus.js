@@ -28,7 +28,7 @@ const Menus = ({ styles, openChange, open, linkClick }) => {
   const linksRef = useRef([])
   useEffect(() => {
     if (open) {
-      staggerLines(linksRef.current, { delay: 0.3, scrollTrigger: false })
+      staggerLines(linksRef.current)
     }
   }, [open])
 
