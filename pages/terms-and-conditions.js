@@ -1,8 +1,12 @@
+import Head from 'next/head'
 import Nav from '../components/nav'
 import Text from '../components/text'
 
 const PrivacyPolicy = () => (
   <>
+    <Head>
+      <title>Terms and Conditions</title>
+    </Head>
     <Nav theme="extra-dark" />
     <Text>
       <h1>Terms and Conditions</h1>

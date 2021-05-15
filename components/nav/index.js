@@ -82,9 +82,11 @@ const Nav = ({ theme = 'light' }) => {
       setTimeout(() => {
         const activeLink = Array.from(
           navRef.current.childNodes[1].childNodes
-        ).find((e) => e.id === 'active').childNodes[0].childNodes[0]
+        ).find((e) => e.id === 'active')?.childNodes[0].childNodes[0]
 
-        updateDefaultInidcator(activeLink)
+        if (activeLink) {
+          updateDefaultInidcator(activeLink)
+        }
       }, 100)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
