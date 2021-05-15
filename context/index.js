@@ -2,21 +2,10 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useProgress } from '@react-three/drei'
 // import { useRouter } from 'next/router'
 
-const ReadyContext = React.createContext({
-  isReady: false,
-  activeLinkOffsets: {
-    left: 0,
-    width: 0,
-  },
-  setActiveLinkOffset: () => {},
-})
+const ReadyContext = React.createContext({})
 
 function ReadyProvider({ children }) {
   const [isReady, setReady] = useState(false)
-  const [activeLinkOffsets, setActiveLinkOffset] = useState({
-    left: 0,
-    width: 0,
-  })
 
   const { progress } = useProgress()
   useEffect(() => {
@@ -35,7 +24,7 @@ function ReadyProvider({ children }) {
   //     }
   //   }, [router.events])
 
-  const value = { isReady, activeLinkOffsets, setActiveLinkOffset }
+  const value = { isReady }
 
   return <ReadyContext.Provider value={value}>{children}</ReadyContext.Provider>
 }

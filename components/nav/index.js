@@ -6,18 +6,30 @@ import Hamburger from '../utils/hamburger'
 import SideMenu from './side-menu'
 import Menus from './menus'
 import { resetIndicator, updateIndicator } from './helper-functions'
-import { useReady } from '../../context'
 
 const Nav = ({ theme = 'light' }) => {
   const websiteName = 'Open Process Ventures'
   const [open, setOpen] = useState(false)
-  const { activeLinkOffsets, setActiveLinkOffset } = useReady()
-
-  const [indicator, setIndicator] = useState({
+  const [activeLinkOffsets, setActiveLinkOffset] = useState({
     left: 0,
     width: 0,
   })
+
   const navRef = useRef()
+
+  const updateDefaultInidcator = (link) => {
+    setActiveLinkOffset({
+      left: link.offsetLeft,
+      width: link.offsetWidth,
+    })
+    resetIndicator(
+      {
+        left: link.offsetLeft,
+        width: link.offsetWidth,
+      },
+      navRef
+    )
+  }
 
   const handleMouseOver = (evt) => {
     const link = evt.target.closest('a')
@@ -31,16 +43,13 @@ const Nav = ({ theme = 'light' }) => {
   }
 
   const handleMouseLeave = () => {
-    resetIndicator(indicator, navRef)
+    resetIndicator(activeLinkOffsets, navRef)
   }
 
   const handleClick = (e) => {
     const link = e.target.closest('a')
     if (link) {
-      setActiveLinkOffset({
-        left: link.offsetLeft,
-        width: link.offsetWidth,
-      })
+      updateDefaultInidcator(link)
     }
   }
 
@@ -61,12 +70,24 @@ const Nav = ({ theme = 'light' }) => {
     } else {
       document.body.classList.remove('fixed-position')
     }
+  }, [open])
 
-    if (activeLinkOffsets) {
-      setIndicator(activeLinkOffsets)
-      resetIndicator(activeLinkOffsets, navRef)
+  useEffect(() => {
+    if (navRef) {
+      // Used setTimeout of 100ms to fix small position issue. I am
+      // assuming this is probably due to small elements movement
+      // due to either transition or animation. Therefore, we need
+      // to wait for its completion before getting the values.
+      setTimeout(() => {
+        const activeLink = Array.from(
+          navRef.current.childNodes[1].childNodes
+        ).find((e) => e.id === 'active').childNodes[0].childNodes[0]
+
+        updateDefaultInidcator(activeLink)
+      }, 100)
     }
-  }, [open, activeLinkOffsets])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <nav className={styles.container}>

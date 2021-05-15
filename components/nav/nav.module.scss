@@ -82,18 +82,15 @@
 			a {
 				color: $dark;
 				@include transition();
+
+				&:hover,
+				&:focus {
+					color: $dark-450;
+				}
 			}
 
 			&:not(:last-child):not(.indicator) {
 				margin-right: 1.5rem;
-			}
-
-			&:hover,
-			&:focus {
-				&,
-				a {
-					color: $dark-450;
-				}
 			}
 		}
 
@@ -103,12 +100,9 @@
 				&,
 				a {
 					color: $light;
-				}
 
-				&:hover,
-				&:focus {
-					&,
-					a {
+					&:hover,
+					&:focus {
 						color: $secondary;
 					}
 				}

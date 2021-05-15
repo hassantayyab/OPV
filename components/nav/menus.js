@@ -39,6 +39,7 @@ const Menus = ({ styles, openChange, open, linkClick }) => {
           key={i}
           role="button"
           tabIndex="0"
+          id={`${router.pathname === m.link ? 'active' : ''}`}
           className={`${router.pathname === m.link ? styles.active : ''} aLine`}
           onClick={openChange}
           onKeyPress={openChange}
