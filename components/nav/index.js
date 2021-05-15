@@ -49,7 +49,8 @@ const Nav = ({ theme = 'light' }) => {
   const handleClick = (e) => {
     const link = e.target.closest('a')
     if (link) {
-      updateDefaultInidcator(link)
+      // Following needs to be uncommented/removed after deciding the suitable behavior
+      // updateDefaultInidcator(link)
     }
   }
 
