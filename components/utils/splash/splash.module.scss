@@ -1,37 +1,37 @@
 .splash {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: $dark;
-	color: $light;
-	z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark;
+  color: $light;
+  z-index: 10;
 
-	img:first-child {
-		width: 8%;
+  img:first-child {
+    width: 8%;
 
-		@include device(sm) {
-			width: 16%;
-		}
-	}
+    @include device(sm) {
+      width: 16%;
+    }
+  }
 
-	img:last-child {
-		width: 45%;
-		margin-top: 2rem;
+  img:last-child {
+    width: 45%;
+    margin-top: 2rem;
 
-		@include device(sm) {
-			width: 75%;
-		}
-	}
+    @include device(sm) {
+      width: 75%;
+    }
+  }
 
-	img {
-		filter: invert(1);
-	}
+  img {
+    filter: invert(1);
+  }
 }
 
 .progressBar {
