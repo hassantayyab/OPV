@@ -3,11 +3,26 @@ import { useEffect, useRef, useState } from 'react'
 import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
-import { Schema, submitForm } from '../utils/form-utils'
+import { Schema, submitForm, trimmedFormValues } from '../utils/form-utils'
 import { staggerLines } from '../animations'
 import { useReady } from '../../context'
 
 const Contact = () => {
+  const options = [
+    {
+      label: 'Investment',
+      value: 'investment',
+    },
+    {
+      label: 'Partnerships',
+      value: 'partnerships',
+    },
+    {
+      label: 'Other',
+      value: 'other',
+    },
+  ]
+
   const [submit, setSubmit] = useState({
     sent: false,
     error: false,
@@ -19,13 +34,18 @@ const Contact = () => {
 
   const handleSubmit = async (values, setSubmitting, resetForm) => {
     try {
-      await submitForm(values, setSubmitting, resetForm)
+      await submitForm(
+        trimmedFormValues({ ...values }),
+        setSubmitting,
+        resetForm
+      )
       setSubmit({
         sent: true,
         error: false,
         message: 'Thank you for getting in touch!',
       })
       resetForm()
+      setSelected('other')
     } catch (error) {
       setSubmit({
         sent: true,
@@ -57,7 +77,7 @@ const Contact = () => {
             <div className={styles.leftSec}>
               <Formik
                 initialValues={{
-                  about: 'other',
+                  about: selected,
                   name: '',
                   email: '',
                   message: '',
@@ -76,56 +96,32 @@ const Contact = () => {
                   >
                     <input type="hidden" name="bot-field" />
                     <input type="hidden" name="form-name" value="contact" />
-                    <div className={styles.selection}>
+                    <div
+                      role="group"
+                      aria-labelledby="my-radio-group"
+                      className={styles.selection}
+                    >
                       <span>I'm enquiring about</span>
-                      <div
-                        role="button"
-                        tabIndex="0"
-                        className={`${styles.input} ${
-                          selected === 'investment' ? styles.active : ''
-                        }`}
-                        onClick={() => setSelected('investment')}
-                        onKeyPress={() => setSelected('investment')}
-                      >
-                        <FormInput
-                          label="Investment"
-                          name="investment"
-                          type="radio"
-                          value="investment"
-                        />
-                      </div>
-                      <div
-                        role="button"
-                        tabIndex="-1"
-                        className={`${styles.input} ${
-                          selected === 'partnerships' ? styles.active : ''
-                        }`}
-                        onClick={() => setSelected('partnerships')}
-                        onKeyPress={() => setSelected('partnerships')}
-                      >
-                        <FormInput
-                          label="Partnerships"
-                          name="partnerships"
-                          type="radio"
-                          value="partnerships"
-                        />
-                      </div>
-                      <div
-                        role="button"
-                        tabIndex="-2"
-                        className={`${styles.input} ${
-                          selected === 'other' ? styles.active : ''
-                        }`}
-                        onClick={() => setSelected('other')}
-                        onKeyPress={() => setSelected('other')}
-                      >
-                        <FormInput
-                          label="Other"
-                          name="other"
-                          type="radio"
-                          value="other"
-                        />
-                      </div>
+                      {options.map((e, i) => (
+                        <div
+                          role="button"
+                          key={i}
+                          tabIndex="0"
+                          className={`${styles.input} ${
+                            selected === e.value ? styles.active : ''
+                          }`}
+                          onClick={() => setSelected(e.value)}
+                          onKeyPress={() => setSelected(e.value)}
+                        >
+                          <FormInput
+                            id={e.value}
+                            label={e.label}
+                            name="about"
+                            type="radio"
+                            value={e.value}
+                          />
+                        </div>
+                      ))}
                     </div>
 
                     <div className={styles.firstRow}>

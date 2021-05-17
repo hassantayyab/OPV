@@ -7,6 +7,11 @@ import SideMenu from './side-menu'
 import Menus from './menus'
 import { resetIndicator, updateIndicator } from './helper-functions'
 
+const getActiveLink = (ref) =>
+  Array.from(ref.current?.childNodes[1]?.childNodes)?.find(
+    (e) => e.id === 'active'
+  )?.childNodes[0]?.childNodes[0]
+
 const Nav = ({ theme = 'light' }) => {
   const [open, setOpen] = useState(false)
   const [activeLinkOffsets, setActiveLinkOffset] = useState({
@@ -16,7 +21,7 @@ const Nav = ({ theme = 'light' }) => {
 
   const navRef = useRef()
 
-  const updateDefaultInidcator = (link, delay = 100) => {
+  const updateDefaultInidcator = (link, delay = 400) => {
     setTimeout(() => {
       setActiveLinkOffset({
         left: link.offsetLeft,
@@ -50,7 +55,7 @@ const Nav = ({ theme = 'light' }) => {
   const handleClick = (e) => {
     const link = e.target.closest('a')
     if (link) {
-      updateDefaultInidcator(link)
+      updateDefaultInidcator(link, 0)
     }
   }
 
@@ -75,22 +80,14 @@ const Nav = ({ theme = 'light' }) => {
 
   useEffect(() => {
     if (navRef) {
-      let activeLink = Array.from(navRef.current.childNodes[1].childNodes).find(
-        (e) => e.id === 'active'
-      )?.childNodes[0].childNodes[0]
-
-      if (activeLink) {
-        updateDefaultInidcator(activeLink)
+      if (getActiveLink(navRef)) {
+        updateDefaultInidcator(getActiveLink(navRef))
       }
 
       // Update hover indicator on window resize
       const handleResize = () => {
-        activeLink = Array.from(
-          navRef.current?.childNodes[1]?.childNodes
-        )?.find((e) => e.id === 'active')?.childNodes[0]?.childNodes[0]
-
-        if (activeLink) {
-          updateDefaultInidcator(activeLink, 400)
+        if (getActiveLink(navRef)) {
+          updateDefaultInidcator(getActiveLink(navRef))
         }
       }
 
