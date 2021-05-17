@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Header from '../components/about/header'
 import Main from '../components/about/team'
 import Profiles from '../components/about/profiles'
@@ -9,6 +10,7 @@ import Nav from '../components/nav'
 import { useReady } from '../context'
 
 const About = () => {
+  const router = useRouter()
   const els = useRef([])
   const { isReady } = useReady()
 
@@ -17,6 +19,18 @@ const About = () => {
       staggerLines(els.current)
     }
   }, [isReady])
+
+  useEffect(() => {
+    if (router) {
+      // Used setTimeout to wait for
+      // page transition to complete
+      setTimeout(() => {
+        router.push(router.asPath)
+      }, 400)
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
