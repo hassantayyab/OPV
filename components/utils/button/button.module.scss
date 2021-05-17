@@ -1,22 +1,40 @@
 .button {
-	padding: 0.75rem 2rem;
-	background-color: transparent;
-	color: $light;
-	border: 1px solid #939393;
-	border-radius: 6rem;
-	cursor: pointer;
-	@include transition();
+  $x: 15rem;
+  width: $x;
+  height: 0.3 * $x;
+  background-color: transparent;
+  color: $light;
+  border: none;
+  cursor: pointer;
+  @include transition();
 
-	img {
-		@include transition();
-	}
+  img {
+    @include transition();
+  }
 
-	&:hover,
-	&:focus {
-		color: #939393;
+  &:hover,
+  &:focus {
+    color: #939393;
+    img {
+      filter: invert(0.5);
+    }
+  }
 
-		img {
-			filter: invert(0.5);
-		}
-	}
+  position: relative;
+}
+
+.overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  path {
+    stroke: #939393;
+    stroke-width: 2;
+  }
+  .pathActive {
+    stroke: $light;
+  }
 }

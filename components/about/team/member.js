@@ -9,7 +9,15 @@ const Member = ({ data }) => {
   const textRef = useRef(null)
   const els = useRef([])
 
+  const circleRef = useRef()
+
   useEffect(() => {
+    const l = circleRef.current.getTotalLength()
+    gsap.set(circleRef.current, {
+      strokeDashoffset: l,
+      strokeDasharray: l,
+    })
+
     staggerLines(els.current, { yPercent: 0, y: 20 })
   }, [])
 
@@ -25,6 +33,23 @@ const Member = ({ data }) => {
       })
     }
   }, [expanded])
+
+  function handleMouseEnter() {
+    gsap.to(circleRef.current, {
+      strokeDashoffset: 0,
+      duration: 1.5,
+      ease: 'expo',
+    })
+  }
+
+  function handleMouseLeave() {
+    const l = circleRef.current.getTotalLength()
+    gsap.to(circleRef.current, {
+      strokeDashoffset: l,
+      duration: 1.5,
+      ease: 'expo',
+    })
+  }
 
   return (
     <div id={styles.member}>
@@ -45,12 +70,32 @@ const Member = ({ data }) => {
             />
           </div>
           <div className={styles.actions}>
-            <button type="button" onClick={() => setexpanded(!expanded)}>
-              <img
-                src="/arrow-down.svg"
-                alt="expand button"
-                className={`${expanded ? styles.expanded : ''}`}
-              />
+            <button
+              type="button"
+              onClick={() => setexpanded(!expanded)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="-2 -2 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M23.2781 12.2413L15.2412 20.2781L6.99998 12.0368"
+                  className={`${styles.arrow} ${
+                    expanded ? styles.expanded : ''
+                  }`}
+                />
+                <circle cx="15" cy="15" r="14.5" />
+                <path
+                  className={styles.circleActive}
+                  ref={circleRef}
+                  d="M0.5,15a14.5,14.5 0 1,0 29,0a14.5,14.5 0 1,0 -29,0"
+                />
+              </svg>
             </button>
             <a href={data.profile} target="_blank" rel="noreferrer">
               <img src="/twitter.svg" alt="social profile link" />

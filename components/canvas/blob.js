@@ -2,7 +2,8 @@ import { useFrame } from '@react-three/fiber'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useCubeTexture, useTexture } from '@react-three/drei'
 
-import { sRGBEncoding, Vector2 } from 'three'
+import * as THREE from 'three'
+import { gsap } from 'gsap'
 import { vertUniforms, vertMain } from './vert'
 import { fragUniforms, fragCommon, fragMain } from './frag'
 
@@ -16,15 +17,17 @@ const Blob = () => {
     () => ({
       uTime: { value: 0 },
       uBigWavesElevation: { value: 0.25 },
-      uBigWavesFrequency: { value: new Vector2(4, 1) },
+      uBigWavesFrequencyX: { value: 4.0 },
+      uBigWavesFrequencyY: { value: 1.0 },
       uBigWavesSpeed: { value: 1.5 },
       uSmallWavesElevation: { value: 0.0 },
-      uSmallWavesFrequency: { value: 0.0 },
-      uSmallWavesSpeed: { value: 0.0 },
+      uSmallWavesFrequency: { value: 1.0 },
+      uSmallWavesSpeed: { value: 1.5 },
     }),
     []
   )
 
+  // Add data.gui
   useEffect(() => {
     const gui = new dat.GUI()
     gui.hide()
@@ -36,13 +39,13 @@ const Blob = () => {
         .step(0.001)
         .name('uBigWavesElevation')
       gui
-        .add(customUniforms.uBigWavesFrequency.value, 'x')
+        .add(customUniforms.uBigWavesFrequencyX, 'value')
         .min(0)
         .max(10)
         .step(0.001)
         .name('uBigWavesFrequencyX')
       gui
-        .add(customUniforms.uBigWavesFrequency.value, 'y')
+        .add(customUniforms.uBigWavesFrequencyY, 'value')
         .min(0)
         .max(10)
         .step(0.001)
@@ -76,6 +79,7 @@ const Blob = () => {
     addGUI()
   }, [customUniforms])
 
+  // Configure shader
   const onBeforeCompile = (shader) => {
     for (const property in customUniforms) {
       shader.uniforms[property] = customUniforms[property]
@@ -95,23 +99,63 @@ const Blob = () => {
       fragMain
     )
   }
-
   const oBC = useCallback(onBeforeCompile, [customUniforms])
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, mouse, camera }) => {
     const elapsedTime = clock.getElapsedTime()
     customUniforms.uTime.value = elapsedTime
+
+    camera.position.x = THREE.MathUtils.lerp(
+      camera.position.x,
+      0 + mouse.x / 4,
+      0.08
+    )
+    camera.position.y = THREE.MathUtils.lerp(
+      camera.position.y,
+      0 + mouse.y / 4,
+      0.08
+    )
   })
 
+  function handlePointerOver() {
+    gsap.to(customUniforms.uSmallWavesElevation, {
+      value: 0.35,
+    })
+  }
+
+  function handlePointerOut() {
+    gsap.to(customUniforms.uSmallWavesElevation, {
+      value: 0.0,
+    })
+  }
+
+  let wobble = null
+  function handleClick() {
+    if (wobble) return
+    wobble = gsap.to(customUniforms.uBigWavesFrequencyY, {
+      value: 4.0,
+      repeat: 1,
+      yoyo: true,
+      yoyoEase: 'linear',
+      ease: 'slow(0.7, 0.7, false)',
+      onComplete: () => (wobble = null),
+    })
+  }
+
+  // Add textures
   const bumpMap = useTexture('/textures/bump.jpeg')
   const envMap = useCubeTexture(
     ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
     { path: '/textures/cube/' }
   )
-  envMap.encoding = sRGBEncoding
+  envMap.encoding = THREE.sRGBEncoding
 
   return (
-    <mesh>
+    <mesh
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+      onClick={handleClick}
+    >
       <sphereGeometry args={[2, 512, 512]} />
       <meshPhysicalMaterial
         onBeforeCompile={oBC}
@@ -126,7 +170,7 @@ const Blob = () => {
         transparent
         clearcoat={1.0}
         clearcoatRoughness={0.0}
-        transmission={1.0}
+        transmission={0.95}
       />
     </mesh>
   )

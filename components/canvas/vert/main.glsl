@@ -1,5 +1,7 @@
 #include <begin_vertex>
 
+vec2 uBigWavesFrequency = vec2(uBigWavesFrequencyX, uBigWavesFrequencyY);
+
 float waves = sin(position.x * uBigWavesFrequency.x + uTime * uBigWavesSpeed) *
             sin(position.y * uBigWavesFrequency.y + uTime * uBigWavesSpeed) *
             uBigWavesElevation;

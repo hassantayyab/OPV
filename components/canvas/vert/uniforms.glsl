@@ -1,6 +1,7 @@
 uniform float uTime;
 uniform float uBigWavesElevation;
-uniform vec2 uBigWavesFrequency;
+uniform float uBigWavesFrequencyX;
+uniform float uBigWavesFrequencyY;
 uniform float uBigWavesSpeed;
 
 uniform float uSmallWavesElevation;
