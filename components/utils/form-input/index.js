@@ -10,7 +10,8 @@ const FormInput = ({
   ...rest
 }) => (
   <>
-    <label htmlFor={`${id}-label`}>
+    {/* <label htmlFor={`${id}-label`}> */}
+    <label>
       {label}
       <Field
         id={`${id}-label`}
