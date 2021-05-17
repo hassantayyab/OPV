@@ -3,21 +3,23 @@ import styles from './form-input.module.scss'
 
 const FormInput = ({
   name,
+  id = name,
   type = 'text',
   className,
-  label = name,
+  label,
   ...rest
 }) => (
   <>
-    <label htmlFor={name} id={`${name}-label`}>
+    <label htmlFor={`${id}-label`}>
       {label}
+      <Field
+        id={`${id}-label`}
+        type={type}
+        name={name}
+        aria-labelledby={`${id}-label`}
+        {...rest}
+      />
     </label>
-    <Field
-      type={type}
-      name={name}
-      aria-labelledby={`${name}-label`}
-      {...rest}
-    />
     <div className={styles.error}>
       <ErrorMessage name={name} />
     </div>
