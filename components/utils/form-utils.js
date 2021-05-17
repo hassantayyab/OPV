@@ -11,13 +11,12 @@ function encode(data) {
 export const Schema = Yup.object().shape({
   about: Yup.string().required('One of the option is required'),
   name: Yup.string()
-    .strict()
-    .trim('Invalid name')
+    .trim()
     .min(3, 'Too Short')
     .max(50, 'Too Long')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  message: Yup.string().strict().trim('Invalid message').required('Required'),
+  message: Yup.string().trim().required('Required'),
 })
 
 export function submitForm(values) {
@@ -37,4 +36,14 @@ export function submitForm(values) {
         reject(new Error('failed'))
       })
   })
+}
+
+export function trimmedFormValues(values) {
+  return Object.entries(values).reduce(
+    (obj, [key, value]) => ({
+      ...obj,
+      [key]: value.trim(),
+    }),
+    {}
+  )
 }

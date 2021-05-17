@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import Container from '../container'
 import FormInput from '../utils/form-input'
 import styles from './contact.module.scss'
-import { Schema, submitForm } from '../utils/form-utils'
+import { Schema, submitForm, trimmedFormValues } from '../utils/form-utils'
 import { staggerLines } from '../animations'
 import { useReady } from '../../context'
 
@@ -34,7 +34,11 @@ const Contact = () => {
 
   const handleSubmit = async (values, setSubmitting, resetForm) => {
     try {
-      await submitForm(values, setSubmitting, resetForm)
+      await submitForm(
+        trimmedFormValues({ ...values }),
+        setSubmitting,
+        resetForm
+      )
       setSubmit({
         sent: true,
         error: false,
