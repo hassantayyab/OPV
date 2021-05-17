@@ -1,127 +1,127 @@
 .footer {
-	background-color: $primary;
-	color: $light;
-	padding: 5rem 0;
-	overflow: hidden;
+  background-color: $primary;
+  color: $light;
+  padding: 5rem 0;
+  overflow: hidden;
 
-	h3 {
-		font-size: 2.8125rem;
-		width: 100%;
-		margin-bottom: 9rem;
+  h3 {
+    font-size: 2.8125rem;
+    width: 100%;
+    margin-bottom: 9rem;
 
-		div {
-			line-height: 1.17;
-		}
+    div {
+      line-height: 1.17;
+    }
 
-		@include device(md) {
-			font-size: 1.875rem;
-			margin-bottom: 6rem;
-		}
-	}
+    @include device(md) {
+      font-size: 1.875rem;
+      margin-bottom: 6rem;
+    }
+  }
 
-	section {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
-		.leftCol {
-			flex-basis: 62%;
+    .leftCol {
+      flex-basis: 62%;
 
-			h5 {
-				font-size: 1.5625rem;
-			}
+      h5 {
+        font-size: 1.5625rem;
+      }
 
-			.mBtn {
-				display: none;
-				margin-top: 1rem;
-				margin-bottom: 4rem;
-			}
+      .mBtn {
+        display: none;
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+      }
 
-			.separator {
-				height: 0.0625rem;
-				background: linear-gradient(
-					90deg,
-					rgba(197, 197, 197, 0.1) 0%,
-					rgba(197, 197, 197, 1) 100%
-				);
-				margin: 1rem 0;
-			}
+      .separator {
+        height: 0.0625rem;
+        background: linear-gradient(
+          90deg,
+          rgba(197, 197, 197, 0.1) 0%,
+          rgba(197, 197, 197, 1) 100%
+        );
+        margin: 1rem 0;
+      }
 
-			.links {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				width: 75%;
+      .links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 75%;
 
-				a {
-					font-size: 0.875rem;
-					color: $dark-450;
-					@include transition(color);
+        a {
+          font-size: 0.875rem;
+          color: $dark-450;
+          @include transition(color);
 
-					&:hover,
-					&:focus {
-						color: $light;
-					}
-				}
+          &:hover,
+          &:focus {
+            color: $light;
+          }
+        }
 
-				@include device(md) {
-					width: 100%;
-				}
-			}
-		}
+        @include device(md) {
+          width: 100%;
+        }
+      }
+    }
 
-		.dBtn {
-			display: inline-block;
-		}
+    .dBtn {
+      display: inline-block;
+    }
 
-		button {
-			display: flex;
-			align-items: center;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 1.875rem;
+      }
 
-			span {
-				font-size: 1.875rem;
-			}
+      img {
+        width: 2.5rem;
+        margin-left: 2rem;
+      }
+    }
 
-			img {
-				width: 2.5rem;
-				margin-left: 2rem;
-			}
-		}
+    @include device(sm) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
 
-		@include device(sm) {
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-start;
+      .leftCol {
+        h5 {
+          font-size: 1.25rem;
+        }
 
-			.leftCol {
-				h5 {
-					font-size: 1.25rem;
-				}
+        .mBtn {
+          display: inline-block;
+        }
 
-				.mBtn {
-					display: inline-block;
-				}
+        .separator {
+          display: none;
+        }
 
-				.separator {
-					display: none;
-				}
+        .links {
+          width: 80%;
 
-				.links {
-					width: 80%;
+          a:first-child {
+            display: none;
+          }
+        }
+      }
 
-					a:first-child {
-						display: none;
-					}
-				}
-			}
+      .dBtn {
+        display: none;
+      }
+    }
+  }
 
-			.dBtn {
-				display: none;
-			}
-		}
-	}
-
-	@include device(md) {
-		padding: 2.5rem 0;
-	}
+  @include device(md) {
+    padding: 2.5rem 0;
+  }
 }

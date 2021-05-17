@@ -1,148 +1,161 @@
 #member {
-	display: inline-block;
+  display: inline-block;
 
-	.wrapper {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 
-		.designation {
-			flex-basis: 33%;
-			margin-right: 2rem;
-			border-top: 1px solid #b5b5b5;
+    .designation {
+      flex-basis: 33%;
+      margin-right: 2rem;
+      border-top: 1px solid #b5b5b5;
 
-			div {
-				color: $dark-300;
-				font-size: 1rem;
-				font-weight: lighter;
-				margin-top: 1.25rem;
-			}
-		}
+      div {
+        color: $dark-300;
+        font-size: 1rem;
+        font-weight: lighter;
+        margin-top: 1.25rem;
+      }
+    }
 
-		.description {
-			flex-basis: 33%;
-			margin-right: 2rem;
+    .description {
+      flex-basis: 33%;
+      margin-right: 2rem;
 
-			h4 {
-				margin-top: 1.25rem;
-				margin-bottom: 1.0625rem;
-				color: $dark-900;
-			}
+      h4 {
+        margin-top: 1.25rem;
+        margin-bottom: 1.0625rem;
+        color: $dark-900;
+      }
 
-			.content {
-				font-weight: lighter;
-				line-height: 1.5;
-				color: $dark-550;
+      .content {
+        font-weight: lighter;
+        line-height: 1.5;
+        color: $dark-550;
 
-				.hidden {
-					overflow: hidden;
-					height: 0;
-					p {
-						margin: 1rem 0;
-						&:last-child {
-							margin-bottom: 0;
-						}
-					}
-				}
-			}
+        .hidden {
+          overflow: hidden;
+          height: 0;
+          p {
+            margin: 1rem 0;
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
 
-			.actions {
-				display: flex;
-				align-items: center;
-				margin-top: 1.0625rem;
+      .actions {
+        display: flex;
+        align-items: center;
+        margin-top: 1.0625rem;
 
-				button {
-					background-color: transparent;
-					border: 1px solid $dark-300;
-					border-radius: 50%;
-					width: 1.5rem;
-					height: 1.5rem;
-					padding: 0;
-					margin-right: 1rem;
-					cursor: pointer;
+        button {
+          background-color: transparent;
+          border: none;
+          width: 1.5rem;
+          height: 1.5rem;
+          padding: 0;
+          margin-right: 1rem;
+          cursor: pointer;
+          display: block;
+          svg {
+            display: block;
+            width: 100%;
+            path.arrow {
+              stroke: $dark-300;
+              @include transition(transform, 0.4s, ease-out);
+              transform-origin: center center;
+              &.expanded {
+                transform: rotate(180deg);
+              }
+            }
+            circle {
+              stroke: $dark-300;
+            }
+            .circleActive {
+              stroke: $dark;
+              stroke-width: 1.5;
+              @include device(sm) {
+                display: none;
+              }
+            }
+          }
+        }
 
-					img {
-						width: 0.75rem;
-						@include transition(transform, 0.4s, ease-out);
+        img {
+          cursor: pointer;
+          width: 1.5rem;
 
-						&.expanded {
-							transform: rotate(180deg);
-						}
-					}
-				}
+          &.expanded {
+            margin-top: 0.375rem;
+          }
+        }
 
-				img {
-					cursor: pointer;
-					width: 1.5rem;
+        a {
+          img {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
 
-					&.expanded {
-						margin-top: 0.375rem;
-					}
-				}
+    .image {
+      img {
+        width: 13rem;
+      }
+    }
+  }
 
-				a {
-					img {
-						vertical-align: middle;
-					}
-				}
-			}
-		}
+  @include device(md) {
+    display: block;
 
-		.image {
-			img {
-				width: 13rem;
-			}
-		}
-	}
+    .wrapper {
+      flex-direction: column;
 
-	@include device(md) {
-		display: block;
+      .designation {
+        order: 2;
+        border-top: none;
+        margin-top: 1rem;
+      }
 
-		.wrapper {
-			flex-direction: column;
+      .description {
+        order: 3;
 
-			.designation {
-				order: 2;
-				border-top: none;
-				margin-top: 1rem;
-			}
+        h4 {
+          margin-top: 0.5625rem;
+          margin-bottom: 1.6875rem;
+        }
 
-			.description {
-				order: 3;
+        .actions {
+          margin-top: 1.6875rem;
 
-				h4 {
-					margin-top: 0.5625rem;
-					margin-bottom: 1.6875rem;
-				}
+          button {
+            width: 3rem;
+            height: 3rem;
+            margin-right: 1.5rem;
 
-				.actions {
-					margin-top: 1.6875rem;
+            img {
+              width: 1.5rem;
+              padding-bottom: 0.25rem;
 
-					button {
-						width: 3rem;
-						height: 3rem;
-						margin-right: 1.5rem;
+              &.expanded {
+                margin-top: 0.5rem;
+              }
+            }
+          }
 
-						img {
-							width: 1.5rem;
-							padding-bottom: 0.25rem;
+          img {
+            width: 3rem;
+          }
+        }
+      }
 
-							&.expanded {
-								margin-top: 0.5rem;
-							}
-						}
-					}
-
-					img {
-						width: 3rem;
-					}
-				}
-			}
-
-			.image {
-				order: 1;
-				margin: auto;
-			}
-		}
-	}
+      .image {
+        order: 1;
+        margin: auto;
+      }
+    }
+  }
 }
