@@ -82,12 +82,11 @@ const Member = ({ data }) => {
                 viewBox="-2 -2 34 34"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className={`${expanded ? styles.expanded : ''}`}
               >
                 <path
                   d="M23.2781 12.2413L15.2412 20.2781L6.99998 12.0368"
-                  className={`${styles.arrow} ${
-                    expanded ? styles.expanded : ''
-                  }`}
+                  className={styles.arrow}
                 />
                 <circle cx="15" cy="15" r="14.5" />
                 <path

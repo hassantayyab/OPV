@@ -171,6 +171,7 @@ const Blob = () => {
         clearcoat={1.0}
         clearcoatRoughness={0.0}
         transmission={0.95}
+        side={THREE.FrontSide}
       />
     </mesh>
   )
