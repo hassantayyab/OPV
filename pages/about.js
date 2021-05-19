@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Header from '../components/about/header'
 import Main from '../components/about/team'
@@ -8,6 +7,7 @@ import { staggerLines } from '../components/animations'
 import Footer from '../components/footer'
 import Nav from '../components/nav'
 import { useReady } from '../context'
+import Seo from '../components/utils/seo'
 
 const About = () => {
   const router = useRouter()
@@ -28,9 +28,7 @@ const About = () => {
 
   return (
     <>
-      <Head>
-        <title>About Us</title>
-      </Head>
+      <Seo title="About" />
       <Nav theme="dark" />
       <Header />
       <Profiles />

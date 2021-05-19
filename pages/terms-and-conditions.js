@@ -1,12 +1,10 @@
-import Head from 'next/head'
 import Nav from '../components/nav'
 import Text from '../components/text'
+import Seo from '../components/utils/seo'
 
-const PrivacyPolicy = () => (
+const Terms = () => (
   <>
-    <Head>
-      <title>Terms and Conditions</title>
-    </Head>
+    <Seo title="Terms & Conditions" />
     <Nav theme="extra-dark" />
     <Text>
       <h1>Terms and Conditions</h1>
@@ -259,4 +257,4 @@ const PrivacyPolicy = () => (
   </>
 )
 
-export default PrivacyPolicy
+export default Terms

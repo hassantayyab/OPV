@@ -1,12 +1,10 @@
-import Head from 'next/head'
 import Nav from '../components/nav'
 import Text from '../components/text'
+import Seo from '../components/utils/seo'
 
 const PrivacyPolicy = () => (
   <>
-    <Head>
-      <title>Privacy Policy</title>
-    </Head>
+    <Seo title="Privacy Policy" />
     <Nav theme="extra-dark" />
     <Text>
       <h1>Privacy Policy for open process ventures</h1>
