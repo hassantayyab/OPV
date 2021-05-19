@@ -1,9 +1,4 @@
-.wrapper {
-	position: relative;
-	z-index: $zi-4;
-	min-height: 4.615rem;
-	overflow: hidden;
-
+.container {
 	&.dark {
 		background-color: $dark-500;
 	}
@@ -11,7 +6,13 @@
 	&.extraDark {
 		background-color: $dark-700;
 	}
+}
 
+.wrapper {
+	position: relative;
+	z-index: $zi-4;
+	min-height: 4.615rem;
+	overflow: hidden;
 	padding-top: 1rem;
 }
 
@@ -51,10 +52,6 @@
 		&.extraDark {
 			img {
 				filter: invert(1);
-			}
-
-			span {
-				color: $light;
 			}
 		}
 	}
