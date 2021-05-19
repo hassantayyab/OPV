@@ -17,20 +17,14 @@ const About = () => {
   useEffect(() => {
     if (isReady) {
       staggerLines(els.current)
-    }
-  }, [isReady])
 
-  useEffect(() => {
-    if (router) {
-      // Used setTimeout to wait for
-      // page transition to complete
       setTimeout(() => {
         router.push(router.asPath)
       }, 400)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isReady])
 
   return (
     <>
