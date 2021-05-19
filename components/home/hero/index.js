@@ -36,11 +36,11 @@ const Hero = ({ scrollRef }) => {
   return (
     <div className={styles.hero}>
       <Container>
-        <h1>
+        {/* <h1>
           <div>Confidence</div>
           <div>Through</div>
           <div>Clarity</div>
-        </h1>
+        </h1> */}
         <button
           type="button"
           onClick={() => scrollRef && handleScroll(scrollRef)}
