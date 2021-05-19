@@ -1,130 +1,121 @@
-import { useFrame } from '@react-three/fiber'
-import { useCallback, useEffect, useMemo } from 'react'
-import { useCubeTexture, useTexture } from '@react-three/drei'
-
-import * as THREE from 'three'
+import { WebGLRenderTarget, LinearFilter, MathUtils, Color } from 'three'
+import React, { useMemo, useRef } from 'react'
+import { useThree, useFrame } from '@react-three/fiber'
+import { useAspect, useTexture } from '@react-three/drei'
 import { gsap } from 'gsap'
-import { vertUniforms, vertMain } from './vert'
-import { fragUniforms, fragCommon, fragMain } from './frag'
+import RefractionMaterial from './refractionMaterial'
+import BackfaceMaterial from './backfaceMaterial'
+import Slogan from './slogan'
 
-let dat = null
-if (typeof window !== `undefined`) {
-  dat = require('dat.gui')
+function Background() {
+  const texture = useTexture('./blob/blank.png')
+  const size = useAspect(5000, 3800)
+  return (
+    <mesh layers={1} scale={size}>
+      <planeGeometry />
+      <meshBasicMaterial
+        map={texture}
+        map-minFilter={LinearFilter}
+        depthTest={false}
+      />
+    </mesh>
+  )
 }
 
-const Blob = () => {
-  const customUniforms = useMemo(
-    () => ({
-      uTime: { value: 0 },
-      uBigWavesElevation: { value: 0.25 },
-      uBigWavesFrequencyX: { value: 4.0 },
-      uBigWavesFrequencyY: { value: 1.0 },
-      uBigWavesSpeed: { value: 1.5 },
-      uSmallWavesElevation: { value: 0.0 },
-      uSmallWavesFrequency: { value: 1.0 },
-      uSmallWavesSpeed: { value: 1.5 },
-    }),
-    []
-  )
+function Blob() {
+  const { size, gl, scene } = useThree()
+  const model = useRef()
 
-  // Add data.gui
-  useEffect(() => {
-    const gui = new dat.GUI()
-    gui.hide()
-    const addGUI = () => {
-      gui
-        .add(customUniforms.uBigWavesElevation, 'value')
-        .min(0)
-        .max(1)
-        .step(0.001)
-        .name('uBigWavesElevation')
-      gui
-        .add(customUniforms.uBigWavesFrequencyX, 'value')
-        .min(0)
-        .max(10)
-        .step(0.001)
-        .name('uBigWavesFrequencyX')
-      gui
-        .add(customUniforms.uBigWavesFrequencyY, 'value')
-        .min(0)
-        .max(10)
-        .step(0.001)
-        .name('uBigWavesFrequencyY')
-      gui
-        .add(customUniforms.uBigWavesSpeed, 'value')
-        .min(0)
-        .max(4)
-        .step(0.001)
-        .name('uBigWavesSpeed')
+  // Create Fbo's and materials
+  const [
+    envFbo,
+    backfaceFbo,
+    backfaceMaterial,
+    refractionMaterial,
+  ] = useMemo(() => {
+    const envFboMemo = new WebGLRenderTarget(size.width, size.height)
+    const backfaceFboMemo = new WebGLRenderTarget(size.width, size.height)
+    const backfaceMaterialMemo = new BackfaceMaterial({
+      uTime: 0,
+      uBigWavesElevation: 0.25,
+      uBigWavesFrequencyX: 4.0,
+      uBigWavesFrequencyY: 1.0,
+      uBigWavesSpeed: 1.5,
+      uSmallWavesElevation: 0.0,
+      uSmallWavesFrequency: 1.0,
+      uSmallWavesSpeed: 1.5,
+    })
+    const refractionMaterialMemo = new RefractionMaterial({
+      envMap: envFboMemo.texture,
+      backfaceMap: backfaceFboMemo.texture,
+      resolution: [size.width, size.height],
+      uTime: 0,
+      uBigWavesElevation: 0.25,
+      uBigWavesFrequencyX: 4.0,
+      uBigWavesFrequencyY: 1.0,
+      uBigWavesSpeed: 1.5,
+      uSmallWavesElevation: 0.0,
+      uSmallWavesFrequency: 1.0,
+      uSmallWavesSpeed: 1.5,
+    })
+    return [
+      envFboMemo,
+      backfaceFboMemo,
+      backfaceMaterialMemo,
+      refractionMaterialMemo,
+    ]
+  }, [size])
 
-      gui
-        .add(customUniforms.uSmallWavesElevation, 'value')
-        .min(0)
-        .max(1)
-        .step(0.001)
-        .name('uSmallWavesElevation')
-      gui
-        .add(customUniforms.uSmallWavesFrequency, 'value')
-        .min(0)
-        .max(100)
-        .step(0.001)
-        .name('uSmallWavesFrequency')
-      gui
-        .add(customUniforms.uSmallWavesSpeed, 'value')
-        .min(0)
-        .max(4)
-        .step(0.001)
-        .name('uSmallWavesSpeed')
-    }
-    addGUI()
-  }, [customUniforms])
+  // Render-loop
+  useFrame(({ camera }) => {
+    // Render env to fbo
+    gl.autoClear = false
+    camera.layers.set(1)
+    gl.setRenderTarget(envFbo)
+    gl.render(scene, camera)
+    // Render cube backfaces to fbo
+    // camera.layers.set(0)
+    // model.current.material = backfaceMaterial
+    // gl.setRenderTarget(backfaceFbo)
+    // gl.clearDepth()
+    // gl.render(scene, camera)
+    // Render env to screen
+    camera.layers.set(1)
+    gl.setRenderTarget(null)
+    gl.render(scene, camera)
+    gl.clearDepth()
+    // Render cube with refraction material to screen
+    camera.layers.set(0)
+    model.current.material = refractionMaterial
+    gl.render(scene, camera)
+  }, 1)
 
-  // Configure shader
-  const onBeforeCompile = (shader) => {
-    for (const property in customUniforms) {
-      shader.uniforms[property] = customUniforms[property]
-    }
-    shader.vertexShader = vertUniforms + shader.vertexShader
-    shader.vertexShader = shader.vertexShader.replace(
-      '#include <begin_vertex>',
-      vertMain
-    )
-    shader.fragmentShader = fragUniforms + shader.fragmentShader
-    shader.fragmentShader = shader.fragmentShader.replace(
-      '#include <common>',
-      fragCommon
-    )
-    shader.fragmentShader = shader.fragmentShader.replace(
-      'gl_FragColor = vec4( outgoingLight, diffuseColor.a )',
-      fragMain
-    )
-  }
-  const oBC = useCallback(onBeforeCompile, [customUniforms])
-
-  useFrame(({ clock, mouse, camera }) => {
+  useFrame(({ mouse, clock }) => {
     const elapsedTime = clock.getElapsedTime()
-    customUniforms.uTime.value = elapsedTime
 
-    camera.position.x = THREE.MathUtils.lerp(
-      camera.position.x,
+    refractionMaterial.uniforms.uTime.value = elapsedTime
+    // backfaceMaterial.uniforms.uTime.value = elapsedTime
+    model.current.position.x = MathUtils.lerp(
+      model.current.position.x,
       0 + mouse.x / 4,
       0.08
     )
-    camera.position.y = THREE.MathUtils.lerp(
-      camera.position.y,
+    model.current.position.y = MathUtils.lerp(
+      model.current.position.y,
       0 + mouse.y / 4,
       0.08
     )
   })
 
+  // Interactions
   function handlePointerOver() {
-    gsap.to(customUniforms.uSmallWavesElevation, {
+    gsap.to(refractionMaterial.uniforms.uSmallWavesElevation, {
       value: 0.35,
     })
   }
 
   function handlePointerOut() {
-    gsap.to(customUniforms.uSmallWavesElevation, {
+    gsap.to(refractionMaterial.uniforms.uSmallWavesElevation, {
       value: 0.0,
     })
   }
@@ -132,7 +123,7 @@ const Blob = () => {
   let wobble = null
   function handleClick() {
     if (wobble) return
-    wobble = gsap.to(customUniforms.uBigWavesFrequencyY, {
+    wobble = gsap.to(refractionMaterial.uniforms.uBigWavesFrequencyY, {
       value: 4.0,
       repeat: 1,
       yoyo: true,
@@ -142,39 +133,25 @@ const Blob = () => {
     })
   }
 
-  // Add textures
-  const bumpMap = useTexture('/textures/bump.jpeg')
-  const envMap = useCubeTexture(
-    ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
-    { path: '/textures/cube/' }
-  )
-  envMap.encoding = THREE.sRGBEncoding
-
   return (
     <mesh
+      ref={model}
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
       onClick={handleClick}
     >
-      <sphereGeometry args={[2, 512, 512]} />
-      <meshPhysicalMaterial
-        onBeforeCompile={oBC}
-        bumpMap={bumpMap}
-        bumpScale={0.01}
-        envMap={envMap}
-        envMapIntensity={1.0}
-        color="black"
-        roughness={0.0}
-        metalness={0.0}
-        opacity={1.0}
-        transparent
-        clearcoat={1.0}
-        clearcoatRoughness={0.0}
-        transmission={0.95}
-        side={THREE.FrontSide}
-      />
+      <sphereGeometry args={[1.9, 64, 64]} />
+      <meshStandardMaterial />
     </mesh>
   )
 }
 
-export default Blob
+export default function BlobScene() {
+  return (
+    <>
+      <Background />
+      <Slogan />
+      <Blob />
+    </>
+  )
+}
