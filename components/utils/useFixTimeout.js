@@ -3,13 +3,14 @@ import { useEffect } from 'react'
 export function useFixTimeout() {
   useEffect(() => {
     Array.from(
-      document.querySelectorAll('head > link[rel="stylesheet"][data-n-p]')
+      document.querySelectorAll('head > link[rel=stylesheet][data-n-p]')
     ).forEach((node) => {
       node.removeAttribute('data-n-p')
     })
     const mutationHandler = (mutations) => {
       mutations.forEach(({ target }) => {
         if (target.nodeName === 'STYLE') {
+          console.log(target)
           if (target.getAttribute('media') === 'x') {
             target.removeAttribute('media')
           }

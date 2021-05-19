@@ -14,7 +14,7 @@ function PageTransition({ router, children }) {
   const overlayRef = useRef()
   const firstRender = useRef(true)
 
-  useFixTimeout()
+  // useFixTimeout()
 
   useEffect(() => {
     // Run on route change only and not on refresh
