@@ -8,7 +8,7 @@ import BackfaceMaterial from './backfaceMaterial'
 import Slogan from './slogan'
 
 function Background() {
-  const texture = useTexture('./diamond/blank.png')
+  const texture = useTexture('./blob/blank.png')
   const size = useAspect(5000, 3800)
   return (
     <mesh layers={1} scale={size}>
