@@ -13,6 +13,7 @@
     letter-spacing: -0.28125rem;
     height: 100%;
     color: $dark-800;
+    visibility: hidden;
 
     @include device(md) {
       font-size: 6.5rem;
@@ -57,11 +58,9 @@
     border-radius: 50%;
     line-height: 0;
     cursor: pointer;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    z-index: 2;
+    margin-top: -4.5rem;
+    position: relative;
+    z-index: $zi-2;
 
     img {
       width: 2.5rem;

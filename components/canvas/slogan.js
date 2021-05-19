@@ -3,7 +3,6 @@ import { useThree } from '@react-three/fiber'
 
 export default function Slogan() {
   const { size } = useThree()
-  console.log(size.width)
 
   function normalize(val, min, max) {
     return (val - min) / (max - min)

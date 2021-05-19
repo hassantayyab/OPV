@@ -100,8 +100,12 @@ const Nav = ({ theme = 'light' }) => {
   }, [])
 
   return (
-    <nav className={styles.container}>
-      <div className={`${styles.wrapper} ${getThemeClass()}`}>
+    <nav
+      className={`${styles.container} ${getThemeClass()} ${
+        open ? styles.active : styles.inActive
+      }`}
+    >
+      <div className={`${styles.wrapper}`}>
         <Container>
           <nav
             ref={navRef}

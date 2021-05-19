@@ -97,7 +97,7 @@ const Member = ({ data }) => {
               </svg>
             </button>
             <a href={data.profile} target="_blank" rel="noreferrer">
-              <img src="/twitter.svg" alt="social profile link" />
+              <img src="/linkedin.svg" alt="social profile link" />
             </a>
           </div>
         </div>

@@ -3,10 +3,9 @@ import { useEffect } from 'react'
 export function useFixTimeout() {
   useEffect(() => {
     Array.from(
-      document.querySelectorAll('link[rel=stylesheet], style:not([media=x])')
+      document.querySelectorAll('head > link[rel=stylesheet][data-n-p]')
     ).forEach((node) => {
       node.removeAttribute('data-n-p')
-      node.removeAttribute('data-n-href')
     })
     const mutationHandler = (mutations) => {
       mutations.forEach(({ target }) => {

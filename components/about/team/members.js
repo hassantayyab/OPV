@@ -2,7 +2,7 @@ export const members = [
   {
     designation: 'Founder',
     name: 'Adam Hollingsworth',
-    profile: 'https://www.twitter.com',
+    profile: 'https://www.linkedin.com/in/adam-hollingsworth-1b3b3b1b4/',
     image: '/member-1.svg',
     description: {
       default:
@@ -14,7 +14,7 @@ export const members = [
   {
     designation: 'Partner',
     name: 'Maz Hussain',
-    profile: 'https://www.twitter.com',
+    profile: 'https://www.linkedin.com/in/mmqh/',
     image: '/member-2.svg',
     description: {
       default:
@@ -27,7 +27,7 @@ export const members = [
   {
     designation: 'Advisor',
     name: 'Jacob Kowalewski',
-    profile: 'https://www.twitter.com',
+    profile: 'https://www.linkedin.com/in/jacobkowalewski/',
     image: '/member-1.svg',
     description: {
       default:

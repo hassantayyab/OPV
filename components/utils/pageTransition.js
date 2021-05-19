@@ -3,9 +3,12 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SwitchTransition, Transition } from 'react-transition-group'
 import { useFixTimeout } from './useFixTimeout'
+// import { fixTimeoutTransition } from './fixTimeoutTransition'
 
 const DURATION = 500
 const DELAY = 300
+
+// fixTimeoutTransition(DURATION)
 
 function PageTransition({ router, children }) {
   const overlayRef = useRef()
