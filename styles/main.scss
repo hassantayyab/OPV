@@ -1,67 +1,67 @@
-@import './normalize.scss';
-@import './typography.scss';
+@import "./normalize.scss";
+@import "./typography.scss";
 
 .canvas-wrapper {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	min-height: $mh;
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity 0.5s, visibility 0.5s;
-	transition-delay: 0.5s;
-	z-index: $zi-1;
-	&.visible {
-		opacity: 1;
-		visibility: visible;
-	}
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: $mh;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+  transition-delay: 0.3s;
+  z-index: $zi-1;
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .aLine {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .transition-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background-color: $dark;
-	z-index: $zi-9;
-	transform: scaleX(0);
-	transform-origin: 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $dark;
+  z-index: $zi-9;
+  transform: scaleX(0);
+  transform-origin: 0 0;
 }
 
 // Animations
 .fade-enter {
-	opacity: 0;
+  opacity: 0;
 }
 .fade-enter-active {
-	opacity: 1;
-	transition: opacity 0.3s;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 .fade-exit {
-	opacity: 1;
+  opacity: 1;
 }
 .fade-exit-active {
-	opacity: 0;
-	transition: opacity 0.3s;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .dg {
-	z-index: $zi-10000;
+  z-index: $zi-10000;
 }
 
 .fixed-position {
-	position: fixed;
+  position: fixed;
 }
 
 .fit-content-vetically {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	min-height: $mh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: $mh;
 }
