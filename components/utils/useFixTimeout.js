@@ -10,7 +10,6 @@ export function useFixTimeout() {
     const mutationHandler = (mutations) => {
       mutations.forEach(({ target }) => {
         if (target.nodeName === 'STYLE') {
-          console.log(target)
           if (target.getAttribute('media') === 'x') {
             target.removeAttribute('media')
           }
