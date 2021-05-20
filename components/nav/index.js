@@ -7,6 +7,21 @@ import SideMenu from './side-menu'
 import Menus from './menus'
 import { resetIndicator, updateIndicator } from './helper-functions'
 
+export const menu = [
+  {
+    link: '/about',
+    title: 'About',
+  },
+  {
+    link: '/about#featured-profiles',
+    title: 'Portfolio',
+  },
+  {
+    link: '/contact',
+    title: 'Start a Conversation',
+  },
+]
+
 const getActiveLink = (ref) =>
   Array.from(ref.current?.childNodes[1]?.childNodes)?.find(
     (e) => e.id === 'active'
@@ -132,7 +147,7 @@ const Nav = ({ theme = 'light' }) => {
 
             <div className={`${styles.menus} ${getThemeClass()}`}>
               <div className={styles.indicator} />
-              <Menus styles={styles} linkClick={handleClick} />
+              <Menus styles={styles} linkClick={handleClick} menu={menu} />
             </div>
 
             <div

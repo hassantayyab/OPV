@@ -3,26 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import { staggerLines } from '../animations'
 
-export const menus = [
-  {
-    link: '/',
-    title: 'Home',
-  },
-  {
-    link: '/about',
-    title: 'About',
-  },
-  {
-    link: '/about#featured-profiles',
-    title: 'Portfolio',
-  },
-  {
-    link: '/contact',
-    title: 'Start a Conversation',
-  },
-]
-
-const Menus = ({ styles, openChange, open, linkClick }) => {
+const Menus = ({ styles, openChange, open, linkClick, menu }) => {
   const router = useRouter()
 
   const linksRef = useRef([])
@@ -34,7 +15,7 @@ const Menus = ({ styles, openChange, open, linkClick }) => {
 
   return (
     <>
-      {menus.map((m, i) => (
+      {menu.map((m, i) => (
         <div
           key={i}
           role="button"

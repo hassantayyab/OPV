@@ -2,7 +2,6 @@ import { Form, Formik } from 'formik'
 import { useEffect, useRef, useState } from 'react'
 import Container from '../container'
 import FormInput from '../utils/form-input'
-import styles from './contact.module.scss'
 import { Schema, submitForm, trimmedFormValues } from '../utils/form-utils'
 import { staggerLines } from '../animations'
 import { useReady } from '../../context'
@@ -66,15 +65,15 @@ const Contact = () => {
   }, [isReady])
 
   return (
-    <div className={styles.contact}>
+    <div className="contact">
       <Container>
-        <div className={styles.wrapper}>
+        <div className="wrapper">
           <h4 className="aLine">
             <div ref={headingRef}>In good company.</div>
           </h4>
 
-          <div className={styles.row}>
-            <div className={styles.leftSec}>
+          <div className="row">
+            <div className="leftSec">
               <Formik
                 initialValues={{
                   about: selected,
@@ -99,7 +98,7 @@ const Contact = () => {
                     <div
                       role="group"
                       aria-labelledby="my-radio-group"
-                      className={styles.selection}
+                      className="selection"
                     >
                       <span>I'm enquiring about</span>
                       {options.map((e, i) => (
@@ -107,8 +106,8 @@ const Contact = () => {
                           role="button"
                           key={i}
                           tabIndex="0"
-                          className={`${styles.input} ${
-                            selected === e.value ? styles.active : ''
+                          className={`input ${
+                            selected === e.value ? 'active' : ''
                           }`}
                           onClick={() => setSelected(e.value)}
                           onKeyPress={() => setSelected(e.value)}
@@ -124,21 +123,21 @@ const Contact = () => {
                       ))}
                     </div>
 
-                    <div className={styles.firstRow}>
-                      <div className={styles.input}>
+                    <div className="firstRow">
+                      <div className="input">
                         <FormInput
                           name="email"
                           label="Email Address"
                           type="email"
                         />
                       </div>
-                      <div className={styles.input}>
+                      <div className="input">
                         <FormInput name="name" label="Name" />
                       </div>
                     </div>
 
-                    <div className={styles.secRow}>
-                      <div className={styles.input}>
+                    <div className="secRow">
+                      <div className="input">
                         <FormInput
                           name="message"
                           label="Message"
@@ -153,12 +152,10 @@ const Contact = () => {
                         Send
                       </button>
                       {submit.sent && submit.error && (
-                        <small className={styles.error}>{submit.message}</small>
+                        <small className="error">{submit.message}</small>
                       )}
                       {submit.sent && !submit.error && (
-                        <small className={styles.success}>
-                          {submit.message}
-                        </small>
+                        <small className="success">{submit.message}</small>
                       )}
                     </section>
                   </Form>
@@ -166,14 +163,14 @@ const Contact = () => {
               </Formik>
             </div>
 
-            <aside className={styles.rightSec}>
+            <aside className="rightSec">
               <span>Location</span>
-              <div className={styles.address}>
+              <div className="address">
                 <div>21 Heathfield Gardens,</div> <div>Wandsworth, London,</div>{' '}
                 <div>SW4 7fj</div>
               </div>
               <span>Find us on</span>
-              <div className={styles.socials}>
+              <div className="socials">
                 <a
                   href="https://www.linkedin.com"
                   target="_blank"

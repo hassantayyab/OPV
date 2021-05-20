@@ -20,17 +20,17 @@
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
+	margin-bottom: 1rem;
 	--indicator-left: 0;
 	--indicator-width: 0;
 
 	.title {
 		display: flex;
 		align-items: center;
-		margin-bottom: 0.9rem;
 		cursor: pointer;
 
 		img:first-child {
-			width: 2.5rem;
+			width: 2.75rem;
 			@include transition(all, 0.5s);
 		}
 
@@ -58,13 +58,12 @@
 
 	.menus {
 		position: relative;
-		margin-bottom: 0.9rem;
 
 		.indicator {
 			position: absolute;
 			left: var(--indicator-left);
 			width: var(--indicator-width);
-			bottom: -1.9rem;
+			bottom: -2rem;
 			height: 1px;
 			background-color: $dark-900;
 			transition: 0.5s 0.05s;
@@ -155,7 +154,6 @@
 
 	@include device(sm) {
 		display: inline-block;
-		margin-bottom: 1rem;
 	}
 }
 

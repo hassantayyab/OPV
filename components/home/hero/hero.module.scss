@@ -1,81 +1,85 @@
 .hero {
-  overflow: hidden;
-  height: 100%;
-  padding: 0 6rem;
-  position: relative;
+	overflow: hidden;
+	height: 100%;
+	padding: 0 6rem;
+	position: relative;
 
-  h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 8.4375rem;
-    font-weight: lighter;
-    letter-spacing: -0.28125rem;
-    height: 100%;
-    color: $dark-800;
-    visibility: hidden;
+	h1 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-size: 8.4375rem;
+		font-weight: lighter;
+		letter-spacing: -0.28125rem;
+		height: 100%;
+		color: $dark-800;
+		visibility: hidden;
 
-    @include device(md) {
-      font-size: 6.5rem;
-    }
+		@include device(md) {
+			font-size: 6.5rem;
+		}
 
-    @include device(sm) {
-      font-size: 4.25rem;
-    }
+		@include device(sm) {
+			font-size: 4.25rem;
+		}
 
-    @include device(xs) {
-      font-size: 3.75rem;
-    }
+		@include device(xs) {
+			font-size: 3.75rem;
+		}
 
-    div {
-      line-height: 1;
+		div {
+			line-height: 1;
 
-      &:nth-child(2) {
-        text-align: right;
-      }
+			&:nth-child(2) {
+				text-align: right;
+			}
 
-      &:last-child {
-        margin-left: 16%;
-      }
+			&:last-child {
+				margin-left: 16%;
+			}
 
-      &:not(:last-child) {
-        margin-bottom: 1rem;
-      }
+			&:not(:last-child) {
+				margin-bottom: 1rem;
+			}
 
-      @include device(sm) {
-        &:not(:last-child) {
-          margin-bottom: 2.75rem;
-        }
-      }
-    }
-  }
+			@include device(sm) {
+				&:not(:last-child) {
+					margin-bottom: 2.75rem;
+				}
+			}
+		}
+	}
 
-  button {
-    display: block;
-    margin: auto;
-    border: none;
-    background-color: transparent;
-    border-radius: 50%;
-    line-height: 0;
-    cursor: pointer;
-    margin-top: -4.5rem;
-    position: relative;
-    z-index: $zi-2;
+	button {
+		display: block;
+		margin: auto;
+		border: none;
+		background-color: transparent;
+		border-radius: 50%;
+		line-height: 0;
+		cursor: pointer;
+		margin-top: -4.5rem;
+		position: relative;
+		z-index: $zi-2;
 
-    img {
-      width: 2.5rem;
-    }
-  }
+		img {
+			width: 2.5rem;
+		}
+	}
 
-  @include device(lg) {
-    padding: 0 2rem;
-  }
+	@include device(lg) {
+		padding: 0 2rem;
+	}
 
-  @include device(sm) {
-    padding: 0 0;
-  }
+	@include device(sm) {
+		padding: 0 0;
 
-  @include device(xs) {
-    padding: 0;
-  }
+		button {
+			margin-top: -6.5rem;
+		}
+	}
+
+	@include device(xs) {
+		padding: 0;
+	}
 }

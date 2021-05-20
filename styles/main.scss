@@ -1,5 +1,6 @@
 @import "./normalize.scss";
 @import "./typography.scss";
+@import "./contact.scss"; // Next.js specific issue of scss modules getting removed on page change
 
 .canvas-wrapper {
   position: absolute;
