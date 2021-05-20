@@ -16,7 +16,7 @@ float a = 0.33;
 vec3 reflectionColor = vec3(1.0);
 
 float fresnelFunc(vec3 viewDirection, vec3 worldNormal) {
-  return pow( 1.00 + dot( viewDirection, worldNormal), 20.0 );
+  return pow( 1.00 + dot( viewDirection, worldNormal), 7.0 );
 }
 
 mat2 get2dRotateMatrix(float _angle) {
@@ -28,11 +28,11 @@ void main() {
   vec2 uv = gl_FragCoord.xy / resolution;
 
   // combine backface and frontface normal
-  vec3 normal = worldNormal * 0.5 * (1.0 - a) - 0.0 * a;
+  vec3 normal = worldNormal * (1.0 - a) - 0.0 * a;
 
   // calculate refraction and apply to uv
-  vec3 refracted = refract(viewDirection, normal, 1.0/ior);
-  uv += refracted.xy;
+  vec3 refracted = refract(viewDirection, normal, 1.0/ior) * 0.2;
+  uv -= refracted.xy;
 
   // sample environment texture
   vec4 tex = texture2D(envMap, uv);
