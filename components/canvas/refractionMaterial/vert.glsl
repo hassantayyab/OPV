@@ -35,6 +35,7 @@ void main() {
   
   vec4 transformedNormal = vec4(normal, 0.0);
   vec4 transformedPosition = vec4(newPosition, 1.0);
+  
   // #ifdef USE_INSTANCING
   //   transformedNormal = instanceMatrix * transformedNormal;
   //   transformedPosition = instanceMatrix * transformedPosition;

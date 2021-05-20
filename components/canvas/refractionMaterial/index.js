@@ -11,7 +11,6 @@ export default class RefractionMaterial extends ShaderMaterial {
 
     this.uniforms = {
       envMap: { value: options.envMap },
-      backfaceMap: { value: options.backfaceMap },
       resolution: { value: options.resolution },
 
       uTime: { value: options.uTime },

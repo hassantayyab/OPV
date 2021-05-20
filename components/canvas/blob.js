@@ -1,11 +1,11 @@
-import { WebGLRenderTarget, LinearFilter, MathUtils, Color } from 'three'
+import { WebGLRenderTarget, LinearFilter, MathUtils } from 'three'
 import React, { useMemo, useRef } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useAspect, useTexture } from '@react-three/drei'
 import { gsap } from 'gsap'
 import RefractionMaterial from './refractionMaterial'
-import BackfaceMaterial from './backfaceMaterial'
 import Slogan from './slogan'
+import { responsive } from '../utils/helpers'
 
 function Background() {
   const texture = useTexture('./blob/blank.png')
@@ -27,27 +27,10 @@ function Blob() {
   const model = useRef()
 
   // Create Fbo's and materials
-  const [
-    envFbo,
-    backfaceFbo,
-    backfaceMaterial,
-    refractionMaterial,
-  ] = useMemo(() => {
+  const [envFbo, refractionMaterial] = useMemo(() => {
     const envFboMemo = new WebGLRenderTarget(size.width, size.height)
-    const backfaceFboMemo = new WebGLRenderTarget(size.width, size.height)
-    const backfaceMaterialMemo = new BackfaceMaterial({
-      uTime: 0,
-      uBigWavesElevation: 0.25,
-      uBigWavesFrequencyX: 4.0,
-      uBigWavesFrequencyY: 1.0,
-      uBigWavesSpeed: 1.5,
-      uSmallWavesElevation: 0.0,
-      uSmallWavesFrequency: 1.0,
-      uSmallWavesSpeed: 1.5,
-    })
     const refractionMaterialMemo = new RefractionMaterial({
       envMap: envFboMemo.texture,
-      backfaceMap: backfaceFboMemo.texture,
       resolution: [size.width, size.height],
       uTime: 0,
       uBigWavesElevation: 0.25,
@@ -58,12 +41,7 @@ function Blob() {
       uSmallWavesFrequency: 1.0,
       uSmallWavesSpeed: 1.5,
     })
-    return [
-      envFboMemo,
-      backfaceFboMemo,
-      backfaceMaterialMemo,
-      refractionMaterialMemo,
-    ]
+    return [envFboMemo, refractionMaterialMemo]
   }, [size])
 
   // Render-loop
@@ -73,12 +51,7 @@ function Blob() {
     camera.layers.set(1)
     gl.setRenderTarget(envFbo)
     gl.render(scene, camera)
-    // Render cube backfaces to fbo
-    // camera.layers.set(0)
-    // model.current.material = backfaceMaterial
-    // gl.setRenderTarget(backfaceFbo)
-    // gl.clearDepth()
-    // gl.render(scene, camera)
+
     // Render env to screen
     camera.layers.set(1)
     gl.setRenderTarget(null)
@@ -92,9 +65,7 @@ function Blob() {
 
   useFrame(({ mouse, clock }) => {
     const elapsedTime = clock.getElapsedTime()
-
     refractionMaterial.uniforms.uTime.value = elapsedTime
-    // backfaceMaterial.uniforms.uTime.value = elapsedTime
     model.current.position.x = MathUtils.lerp(
       model.current.position.x,
       0 + mouse.x / 4,
@@ -133,6 +104,14 @@ function Blob() {
     })
   }
 
+  const blobSize = responsive(size.width, {
+    xs: 1.2,
+    sm: 1.3,
+    md: 1.5,
+    lg: 1.5,
+    xl: 1.9,
+  })
+
   return (
     <mesh
       ref={model}
@@ -140,7 +119,7 @@ function Blob() {
       onPointerOut={handlePointerOut}
       onClick={handleClick}
     >
-      <sphereGeometry args={[1.9, 64, 64]} />
+      <sphereGeometry args={[blobSize, 64, 64]} />
       <meshStandardMaterial />
     </mesh>
   )

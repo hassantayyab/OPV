@@ -1,5 +1,4 @@
 uniform sampler2D envMap;
-uniform sampler2D backfaceMap;
 uniform vec2 resolution;
 uniform float uTime;
 
@@ -14,7 +13,6 @@ varying vec3 viewDirection;
 float ior = 1.3;
 float a = 0.33;
 
-// vec3 fogColor = vec3(1.0);
 vec3 reflectionColor = vec3(1.0);
 
 float fresnelFunc(vec3 viewDirection, vec3 worldNormal) {
@@ -29,11 +27,8 @@ void main() {
   // screen coordinates
   vec2 uv = gl_FragCoord.xy / resolution;
 
-  // sample backface data from texture
-  vec3 backfaceNormal = texture2D(backfaceMap, uv).rgb;
-
   // combine backface and frontface normal
-  vec3 normal = worldNormal * 0.5 * (1.0 - a) - backfaceNormal * a;
+  vec3 normal = worldNormal * 0.5 * (1.0 - a) - 0.0 * a;
 
   // calculate refraction and apply to uv
   vec3 refracted = refract(viewDirection, normal, 1.0/ior);
