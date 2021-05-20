@@ -13,19 +13,19 @@
 	z-index: $zi-10;
 
 	img:first-of-type {
-		width: 8%;
+		width: 6%;
 
 		@include device(sm) {
-			width: 16%;
+			width: 14%;
 		}
 	}
 
 	img:last-of-type {
-		width: 45%;
+		width: 36%;
 		margin-top: 2rem;
 
 		@include device(sm) {
-			width: 75%;
+			width: 65%;
 		}
 	}
 
