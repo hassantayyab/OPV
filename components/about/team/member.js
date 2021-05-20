@@ -23,7 +23,11 @@ const Member = ({ data }) => {
 
   useEffect(() => {
     if (!expanded) {
-      gsap.to(textRef.current, { duration: 0.5, height: 0 })
+      gsap.to(textRef.current, {
+        duration: 0.5,
+        height: 0,
+        onComplete: ScrollTrigger.refresh,
+      })
     } else {
       gsap.set(textRef.current, { height: 'auto' })
       gsap.from(textRef.current, {
