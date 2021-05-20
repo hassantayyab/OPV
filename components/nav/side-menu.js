@@ -4,6 +4,25 @@ import Menus from './menus'
 import Container from '../container'
 import { fadeOut, fadeIn } from '../animations'
 
+export const menu = [
+  {
+    link: '/',
+    title: 'Home',
+  },
+  {
+    link: '/about',
+    title: 'About',
+  },
+  {
+    link: '/about#featured-profiles',
+    title: 'Portfolio',
+  },
+  {
+    link: '/contact',
+    title: 'Contact',
+  },
+]
+
 const SideMenu = ({ open, openChange }) => {
   const menuRef = useRef()
 
@@ -20,7 +39,12 @@ const SideMenu = ({ open, openChange }) => {
       <div className={styles.wrapper} ref={menuRef}>
         <div className={styles.header} />
         <div className={styles.menus}>
-          <Menus styles={styles} openChange={openChange} open={open} />
+          <Menus
+            styles={styles}
+            openChange={openChange}
+            open={open}
+            menu={menu}
+          />
         </div>
 
         <footer className={styles.footer}>
