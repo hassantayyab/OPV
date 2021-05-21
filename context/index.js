@@ -8,7 +8,7 @@ function ReadyProvider({ children }) {
 
   const { progress } = useProgress()
   useEffect(() => {
-    if (progress === 100) setTimeout(() => setReady(true), 1000)
+    if (progress === 100) setTimeout(() => setReady(true), 2000)
   }, [progress])
 
   const value = { isReady, progress }
