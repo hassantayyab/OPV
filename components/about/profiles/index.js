@@ -30,11 +30,6 @@ const Profiles = () => {
             alt="profile 3"
             ref={(e) => (els.current[2] = e)}
           />
-          <img
-            src="/profile-4.svg"
-            alt="profile 4"
-            ref={(e) => (els.current[3] = e)}
-          />
         </div>
       </Container>
     </div>
