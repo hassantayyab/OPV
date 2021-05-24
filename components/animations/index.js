@@ -111,10 +111,9 @@ export const fadeOut = (elements, opts) => {
 
 export const zoomIn = (element, opts) => {
   gsap.from(element, {
-    duration: 1.2,
+    duration: 1,
     scale: 0,
     opacity: 0,
-    ease: 'power4.inOut',
     ...opts,
   })
 }
