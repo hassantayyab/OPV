@@ -87,9 +87,9 @@ const Nav = ({ theme = 'light' }) => {
 
   useEffect(() => {
     if (open) {
-      document.body.classList.add('fixed-position')
+      document.body.classList.add('lock-scroll')
     } else {
-      document.body.classList.remove('fixed-position')
+      document.body.classList.remove('lock-scroll')
     }
   }, [open])
 
