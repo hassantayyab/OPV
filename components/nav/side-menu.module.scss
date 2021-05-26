@@ -3,7 +3,7 @@
 	flex-direction: column;
 	height: 100vh;
 	min-height: $mh;
-	overflow-y: auto;
+	// min-height: 30rem;
 
 	.header {
 		padding-top: 1rem;
@@ -34,6 +34,13 @@
 				}
 			}
 		}
+	}
+
+	.scrollWrapper {
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 
 	.menus {
@@ -87,7 +94,7 @@
 
 	.footer {
 		flex: 0 1 auto;
-		padding: 4rem 0;
+		padding: 4rem 0 6rem;
 		display: flex;
 
 		section {
@@ -106,7 +113,6 @@
 		.address {
 			font-weight: lighter;
 			line-height: 1.6;
-			margin-bottom: 2rem;
 		}
 
 		.socials {
@@ -126,7 +132,7 @@
 		}
 
 		@media (max-width: 321px) {
-			padding: 1rem 0;
+			padding: 1rem 0 4rem;
 
 			.heading {
 				margin-bottom: 0.5rem;

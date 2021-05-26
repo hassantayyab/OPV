@@ -85,13 +85,13 @@ const Nav = ({ theme = 'light' }) => {
     return ''
   }
 
-  // useEffect(() => {
-  //   if (open) {
-  //     document.body.classList.add('fixed-position')
-  //   } else {
-  //     document.body.classList.remove('fixed-position')
-  //   }
-  // }, [open])
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add('fixed-position')
+    } else {
+      document.body.classList.remove('fixed-position')
+    }
+  }, [open])
 
   useEffect(() => {
     if (navRef) {
