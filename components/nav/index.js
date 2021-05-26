@@ -140,8 +140,13 @@ const Nav = ({ theme = 'light' }) => {
                 onClick={() => setOpen(false)}
                 onKeyPress={() => setOpen(false)}
               >
-                <img src="/logo.svg" alt="logo" />
-                <img src="/logo-text.svg" alt="logo" />
+                <img width="100%" height="100%" src="/logo.svg" alt="logo" />
+                <img
+                  width="100%"
+                  height="100%"
+                  src="/logo-text.svg"
+                  alt="logo"
+                />
               </div>
             </Link>
 

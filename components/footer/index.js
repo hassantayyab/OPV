@@ -14,7 +14,12 @@ const Footer = ({ children }) => (
           <div className={styles.mBtn}>
             <Button href="/contact">
               <span>Contact</span>
-              <img src="/arrow-right.svg" alt="arrow" />
+              <img
+                width="auto"
+                height="auto"
+                src="/arrow-right.svg"
+                alt="arrow"
+              />
             </Button>
           </div>
           <div className={styles.separator} />
@@ -33,7 +38,12 @@ const Footer = ({ children }) => (
         <div className={styles.dBtn}>
           <Button href="/contact">
             <span>Contact</span>
-            <img src="/arrow-right.svg" alt="arrow" />
+            <img
+              width="100%"
+              height="100%"
+              src="/arrow-right.svg"
+              alt="arrow"
+            />
           </Button>
         </div>
       </section>

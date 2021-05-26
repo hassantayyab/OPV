@@ -46,7 +46,12 @@ const Hero = ({ scrollRef }) => {
           onClick={() => scrollRef && handleScroll(scrollRef)}
           ref={buttonRef}
         >
-          <img src="/down-arrow.svg" alt="down arrow" />
+          <img
+            width="100%"
+            height="100%"
+            src="/down-arrow.svg"
+            alt="down arrow"
+          />
         </button>
       </Container>
     </div>

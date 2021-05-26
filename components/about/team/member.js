@@ -101,12 +101,17 @@ const Member = ({ data }) => {
               </svg>
             </button>
             <a href={data.profile} target="_blank" rel="noreferrer">
-              <img src="/linkedin.svg" alt="social profile link" />
+              <img
+                width="100%"
+                height="100%"
+                src="/linkedin.svg"
+                alt="social profile link"
+              />
             </a>
           </div>
         </div>
         <div className={styles.image} ref={(e) => (els.current[2] = e)}>
-          <img src={data.image} alt="member" />
+          <img width="100%" height="100%" src={data.image} alt="member" />
         </div>
       </div>
     </div>

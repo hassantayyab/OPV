@@ -176,7 +176,12 @@ const Contact = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src="/linkedin.svg" alt="linkedin social link" />
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="/linkedin.svg"
+                    alt="linkedin social link"
+                  />
                 </a>
               </div>
             </aside>
