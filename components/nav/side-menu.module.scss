@@ -3,6 +3,8 @@
 	flex-direction: column;
 	height: 100vh;
 	min-height: $mh;
+	overflow-y: auto;
+
 	.header {
 		padding-top: 1rem;
 		display: flex;
